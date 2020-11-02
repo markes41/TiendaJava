@@ -1,3 +1,3 @@
 # TiendaJava
 
-##Buenas practicas
+## Buenas Practicas
