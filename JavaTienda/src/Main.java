@@ -8,7 +8,24 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
-		File articles = new File("articulos.txt");
+		
+		////////CREAMOS LA VENTANA Y LA SETEAMOS EN VISIBLE////////
+		Window ventana = new Window();
+		ventana.setVisible(true);
+		
+		///////
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		 File articles = new File("articulos.txt");
 			if(!articles.exists()) {
 				articles.createNewFile();
 			}
@@ -19,6 +36,7 @@ public class Main {
 			System.out.println("Escribi un texto: ");
 			bw.write(sc.next());
 			bw.close();
+		 */
 			
 			
 			
