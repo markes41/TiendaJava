@@ -9,22 +9,11 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		
-		////////CREAMOS LA VENTANA Y LA SETEAMOS EN VISIBLE////////
-		Window ventana = new Window();
-		ventana.setVisible(true);
-		
-		///////
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		/*
+		Window ventana = new Window();
+		ventana.setVisible(true); //VENTANA VISIBLE
+		*/
+
 		 File articles = new File("articulos.txt");
 			if(!articles.exists()) {
 				articles.createNewFile();
@@ -33,10 +22,8 @@ public class Main {
 			FileWriter write = new FileWriter(articles);
 			BufferedWriter bw = new BufferedWriter(write);
 			
-			System.out.println("Escribi un texto: ");
-			bw.write(sc.next());
-			bw.close();
-		 */
+			
+
 			
 			
 			

@@ -1,10 +1,12 @@
 import javax.swing.*;
-
+import javax.swing.JRadioButton;
 import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.JPanel;
 
+
 public class Window extends JFrame{
+	JPanel panel;
 	
 	public Window() {
 		super("Stock de artículos");
@@ -15,8 +17,25 @@ public class Window extends JFrame{
 	}
 	
 	private void iniciarComponentes() {
-		JPanel panel = new JPanel();
+		colocarPanel();
+		colocarTexto();
+		//colocarBotones();
+		//colocarChecks();
+	}
+	
+	private void colocarPanel() {
+		panel = new JPanel();
 		this.getContentPane().add(panel);//SE AGREGA EL PANEL
+	}
+	
+	private void colocarBotones() {
+		JButton boton1 = new JButton("SALIR");
+		boton1.setBounds(144, 200, 100, 100);
+		panel.add(boton1);
+	}
+	
+	private void colocarTexto() {
+		JRadioButton check1 = new JRadioButton();
 		
 	}
 }
