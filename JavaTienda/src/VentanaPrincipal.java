@@ -40,13 +40,6 @@ public class VentanaPrincipal extends JFrame {
 				}
 			}
 		});
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				
-			}
-
-		});
 		btnNewButton.setBounds(137, 140, 89, 23);
 		contentPane.add(btnNewButton);
 		
