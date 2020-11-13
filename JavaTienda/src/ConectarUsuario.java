@@ -2,6 +2,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -15,6 +17,7 @@ public class ConectarUsuario extends JFrame {
 	public JTextField txtUser;
 	public JTextField txtPass;
 	Archivo testUser = new Archivo();
+	VentanaPrincipal main = new VentanaPrincipal();
 
 	public ConectarUsuario() {
 		setTitle("Inicio de Sesi\u00F3n");
@@ -50,6 +53,12 @@ public class ConectarUsuario extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				testUser.leerFichero(txtUser.getText(), txtPass.getText());
+				if(testUser.isExiste() == true) {
+					setVisible(false);
+					main.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "No se encontró el usuario y/o contraseña.", "Credenciales erróneas", JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
 		btnConectar.setFont(new Font("Tahoma", Font.PLAIN, 14));

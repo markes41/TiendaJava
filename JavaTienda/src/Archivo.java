@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class Archivo{
 	
-	boolean existe = false;
+	private boolean existe = false;
 	String texto = null;
 	BufferedReader br = null;
 	BufferedWriter bw = null;
@@ -17,15 +17,16 @@ public class Archivo{
 		try {
 			FileReader usuario = new FileReader("usuarios.txt");
 			br = new BufferedReader(usuario);
+			String texto = br.readLine();
 			
-			while((texto = br.readLine()) != null) {
+			while(texto != null) {
 				String [] word = texto.split(" ");
-				if(word[0].equals(data1) && word[1].equals(data2)) {
-					System.out.println("Usuario encontrado");
+				if(word[2].equals(data1) && word[3].equals(data2)) {
 					existe = true;
-				}else {
-					JOptionPane.showMessageDialog(null, "No se encontró el usuario y/o contraseña.", "Credenciales erróneas", JOptionPane.WARNING_MESSAGE);
+					setExiste(existe);
 				}
+				texto = br.readLine();
+				
 			}
 			
 		}catch(Exception e) {
@@ -35,6 +36,8 @@ public class Archivo{
 			try {
 				if(br != null)
 					br.close();
+				if(bw != null)
+					bw.close();
 			}catch(Exception e) {
 				System.out.println("Error al cerrar el fichero");
 	            System.out.println(e.getMessage());
@@ -50,8 +53,10 @@ public class Archivo{
 		FileWriter fichero = null;
 		try {
 
-			fichero = new FileWriter("usuarios.txt");
-
+			fichero = new FileWriter("usuarios.txt", true);
+			bw = new BufferedWriter(fichero);
+			fichero.write("\n");
+			
 			for (String linea : lineas) {
 				fichero.write(linea + " ");
 			}
@@ -61,4 +66,21 @@ public class Archivo{
 			System.out.println("Mensaje de la excepción: " + ex.getMessage());
 		}
 }
+
+
+	
+	public boolean isExiste() {
+		return existe;
+	}
+
+
+	public void setExiste(boolean existe) {
+		this.existe = existe;
+	}
+	
+	
 }
+
+
+
+

@@ -19,7 +19,7 @@ public class createNewUser extends JFrame {
 	private JTextField textPass;
 	private JTextField textRepeatPass;
 	createUser user;
-	VentanaPrincipal main = new VentanaPrincipal();
+	ConectarUsuario login = new ConectarUsuario();
 
 
 	/**
@@ -94,10 +94,10 @@ public class createNewUser extends JFrame {
 						textUsername.getText(), 
 						textPass.getText(), 
 						textRepeatPass.getText());
-				if(user.pasarInfo() == 1) {
+				if(user.isCorrect() == true) {
 					setVisible(false);
-					main.setVisible(true);
-				}else {
+					login.setVisible(true);
+				}else if(user.isCorrect() == false) {
 					JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden. Vuelve a intentarlo", "Error contraseña", JOptionPane.WARNING_MESSAGE);
 				}
 			}
