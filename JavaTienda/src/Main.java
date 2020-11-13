@@ -10,10 +10,11 @@ public class Main{
 		//ConectarUsuario userconnection = new ConectarUsuario();
 		//userconnection.setVisible(true);
 		
-		//createNewUser newUser = new createNewUser();
-		//newUser.setVisible(true);
+		createNewUser newUser = new createNewUser();
+		newUser.setVisible(true);
 		Archivo arc = new Archivo();
 		
-		arc.leerFichero("sequeira");
+		
+	
 	}
 }

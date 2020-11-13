@@ -9,11 +9,10 @@ public class Archivo{
 	
 	BufferedReader br = null;
 	BufferedWriter bw = null;
-	FileReader usuario;
 	
 	public void leerFichero(String data) {
 		try {
-			usuario = new FileReader("usuarios.txt");
+			FileReader usuario = new FileReader("usuarios.txt");
 			br = new BufferedReader(usuario);
 			String texto = br.readLine();
 			
@@ -38,5 +37,23 @@ public class Archivo{
 			}
 		}
 	}
+	
+	public void escribirFichero(String nombre, String apellido, String username, String password) {
 
+		String[] lineas = {nombre, apellido, username, password};
+
+		FileWriter fichero = null;
+		try {
+
+			fichero = new FileWriter("usuarios.txt");
+
+			for (String linea : lineas) {
+				fichero.write(linea + "\n");
+			}
+			fichero.close();
+
+		} catch (Exception ex) {
+			System.out.println("Mensaje de la excepción: " + ex.getMessage());
+		}
+}
 }

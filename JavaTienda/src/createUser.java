@@ -5,6 +5,7 @@ import javax.swing.JTextField;
 
 public class createUser {
 	private String firstName, lastName, username, password, repeatPassword;
+	Archivo createUser = new Archivo();
 
 	public createUser(String firstName, String lastName, String username, String password, String repeatPassword) {
 		super();
@@ -13,6 +14,11 @@ public class createUser {
 		this.username = username;
 		this.password = password;
 		this.repeatPassword = repeatPassword;
+		pasarInfo();
+	}
+	
+	public void pasarInfo() {
+		createUser.escribirFichero(firstName, lastName, username, password);
 	}
 	
 	public String getFirstName() {
