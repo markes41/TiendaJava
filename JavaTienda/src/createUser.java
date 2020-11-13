@@ -1,5 +1,3 @@
-import javax.swing.JOptionPane;
-
 public class createUser {
 	private String firstName, lastName, username, password, repeatPassword;
 	Archivo createUser = new Archivo();

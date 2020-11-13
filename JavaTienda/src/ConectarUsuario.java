@@ -3,10 +3,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -57,7 +55,7 @@ public class ConectarUsuario extends JFrame {
 					setVisible(false);
 					main.setVisible(true);
 				}else {
-					JOptionPane.showMessageDialog(null, "No se encontro el usuario y/o contraseÃ±a.", "Credenciales erroneas", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "No se encontro el usuario y/o contraseña.", "Credenciales erroneas", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
