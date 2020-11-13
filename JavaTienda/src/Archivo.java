@@ -63,7 +63,7 @@ public class Archivo{
 			fichero.close();
 
 		} catch (Exception ex) {
-			System.out.println("Mensaje de la excepción: " + ex.getMessage());
+			System.out.println("Mensaje de la excepcion: " + ex.getMessage());
 		}
 }
 

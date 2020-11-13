@@ -65,12 +65,12 @@ public class createNewUser extends JFrame {
 		contentPane.add(textUsername);
 		textUsername.setColumns(10);
 		
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
+		JLabel lblContrasea = new JLabel("Contraseña");
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblContrasea.setBounds(73, 147, 105, 31);
 		contentPane.add(lblContrasea);
 		
-		JLabel lblRepearPass = new JLabel("Repetir contrase\u00F1a");
+		JLabel lblRepearPass = new JLabel("Repetir contraseña");
 		lblRepearPass.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblRepearPass.setBounds(258, 147, 128, 31);
 		contentPane.add(lblRepearPass);
@@ -98,7 +98,7 @@ public class createNewUser extends JFrame {
 					setVisible(false);
 					login.setVisible(true);
 				}else if(user.isCorrect() == false) {
-					JOptionPane.showMessageDialog(null, "Las contrase�as no coinciden. Vuelve a intentarlo", "Error contrase�a", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden. Vuelve a intentarlo", "Error contraseña", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});

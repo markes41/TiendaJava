@@ -20,7 +20,7 @@ public class ConectarUsuario extends JFrame {
 	VentanaPrincipal main = new VentanaPrincipal();
 
 	public ConectarUsuario() {
-		setTitle("Inicio de Sesi\u00F3n");
+		setTitle("Inicio de Sesion");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(370,175);
 		setLocationRelativeTo(null);
@@ -34,7 +34,7 @@ public class ConectarUsuario extends JFrame {
 		lblUsuario.setBounds(35, 11, 47, 31);
 		contentPane.add(lblUsuario);
 		
-		JLabel lblNewLabel = new JLabel("Contrase\u00F1a");
+		JLabel lblNewLabel = new JLabel("ContraseÃ±a");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel.setBounds(10, 53, 72, 31);
 		contentPane.add(lblNewLabel);
@@ -57,7 +57,7 @@ public class ConectarUsuario extends JFrame {
 					setVisible(false);
 					main.setVisible(true);
 				}else {
-					JOptionPane.showMessageDialog(null, "No se encontró el usuario y/o contraseña.", "Credenciales erróneas", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "No se encontro el usuario y/o contraseÃ±a.", "Credenciales erroneas", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
