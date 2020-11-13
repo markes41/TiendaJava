@@ -1,19 +1,14 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class createNewUser extends JFrame {
 
@@ -24,6 +19,7 @@ public class createNewUser extends JFrame {
 	private JTextField textPass;
 	private JTextField textRepeatPass;
 	createUser user;
+	VentanaPrincipal main = new VentanaPrincipal();
 
 
 	/**
@@ -98,6 +94,12 @@ public class createNewUser extends JFrame {
 						textUsername.getText(), 
 						textPass.getText(), 
 						textRepeatPass.getText());
+				if(user.pasarInfo() == 1) {
+					setVisible(false);
+					main.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden. Vuelve a intentarlo", "Error contraseña", JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
 		btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 14));

@@ -3,27 +3,31 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
+
+import javax.swing.JOptionPane;
 
 public class Archivo{
 	
+	boolean existe = false;
+	String texto = null;
 	BufferedReader br = null;
 	BufferedWriter bw = null;
 	
-	public void leerFichero(String data) {
+	public void leerFichero(String data1, String data2) {
 		try {
 			FileReader usuario = new FileReader("usuarios.txt");
 			br = new BufferedReader(usuario);
-			String texto = br.readLine();
 			
-			while(texto != null) {
-				if(data.equals(texto)) {
-					System.out.println(data+" y "+texto+" son iguales.");
+			while((texto = br.readLine()) != null) {
+				String [] word = texto.split(" ");
+				if(word[0].equals(data1) && word[1].equals(data2)) {
+					System.out.println("Usuario encontrado");
+					existe = true;
 				}else {
-					System.out.println("No se encontró lo que buscabas.");
+					JOptionPane.showMessageDialog(null, "No se encontró el usuario y/o contraseña.", "Credenciales erróneas", JOptionPane.WARNING_MESSAGE);
 				}
-				texto = br.readLine();
 			}
+			
 		}catch(Exception e) {
 			 System.out.println("Error: Fichero no encontrado");
 	         System.out.println(e.getMessage());
@@ -38,6 +42,7 @@ public class Archivo{
 		}
 	}
 	
+	
 	public void escribirFichero(String nombre, String apellido, String username, String password) {
 
 		String[] lineas = {nombre, apellido, username, password};
@@ -48,7 +53,7 @@ public class Archivo{
 			fichero = new FileWriter("usuarios.txt");
 
 			for (String linea : lineas) {
-				fichero.write(linea + "\n");
+				fichero.write(linea + " ");
 			}
 			fichero.close();
 

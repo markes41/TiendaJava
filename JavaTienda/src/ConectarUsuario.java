@@ -1,6 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -9,12 +6,15 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ConectarUsuario extends JFrame {
 
 	private JPanel contentPane;
-	public JTextField textField;
-	public JPasswordField passwordField;
+	public JTextField txtUser;
+	public JTextField txtPass;
+	Archivo testUser = new Archivo();
 
 	public ConectarUsuario() {
 		setTitle("Inicio de Sesi\u00F3n");
@@ -36,21 +36,35 @@ public class ConectarUsuario extends JFrame {
 		lblNewLabel.setBounds(10, 53, 72, 31);
 		contentPane.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(92, 16, 220, 24);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtUser = new JTextField();
+		txtUser.setBounds(92, 16, 220, 24);
+		contentPane.add(txtUser);
+		txtUser.setColumns(10);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(92, 58, 220, 24);
-		contentPane.add(passwordField);
+		txtPass = new JTextField();
+		txtPass.setBounds(92, 58, 220, 24);
+		contentPane.add(txtPass);
 		
 		JButton btnConectar = new JButton("Conectar");
+		btnConectar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				testUser.leerFichero(txtUser.getText(), txtPass.getText());
+			}
+		});
 		btnConectar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnConectar.setBounds(95, 93, 100, 37);
 		contentPane.add(btnConectar);
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				createNewUser register = new createNewUser();
+				register.setVisible(true);
+				setVisible(false);
+			}
+		});
 		btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnRegistrarse.setBounds(205, 93, 100, 37);
 		contentPane.add(btnRegistrarse);

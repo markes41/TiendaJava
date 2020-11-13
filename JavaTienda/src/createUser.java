@@ -1,7 +1,4 @@
-import java.io.IOException;
 
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 public class createUser {
 	private String firstName, lastName, username, password, repeatPassword;
@@ -17,8 +14,13 @@ public class createUser {
 		pasarInfo();
 	}
 	
-	public void pasarInfo() {
-		createUser.escribirFichero(firstName, lastName, username, password);
+	public int pasarInfo() {
+			if(getPassword().equals(getRepeatPassword())) {
+				createUser.escribirFichero(firstName,lastName,username,password);
+				return 1;
+			}else {
+				return 0;
+			}
 	}
 	
 	public String getFirstName() {
