@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class VentanaArticulo extends JFrame {
 
@@ -53,14 +54,9 @@ public class VentanaArticulo extends JFrame {
 	private void initialize() {
 		frmArticulos = new JFrame();
 		frmArticulos.setTitle("Articulos");
-		frmArticulos.setBounds(100, 100, 498, 298);
+		frmArticulos.setBounds(100, 100, 499, 299);
 		frmArticulos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmArticulos.getContentPane().setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Codigo");
-		lblNewLabel.setBounds(166, 65, 45, 16);
-		lblNewLabel.setToolTipText("");
-		frmArticulos.getContentPane().add(lblNewLabel);
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
 		btnNewButton_1.setBounds(287, 225, 86, 23);
@@ -81,7 +77,7 @@ public class VentanaArticulo extends JFrame {
 		frmArticulos.getContentPane().add(textField);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre");
-		lblNewLabel_1.setBounds(162, 96, 45, 14);
+		lblNewLabel_1.setBounds(171, 96, 37, 14);
 		frmArticulos.getContentPane().add(lblNewLabel_1);
 		
 		textField_1 = new JTextField();
@@ -90,7 +86,7 @@ public class VentanaArticulo extends JFrame {
 		textField_1.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Descripcion");
-		lblNewLabel_2.setBounds(146, 131, 62, 14);
+		lblNewLabel_2.setBounds(154, 131, 54, 14);
 		frmArticulos.getContentPane().add(lblNewLabel_2);
 		
 		textField_2 = new JTextField();
@@ -99,12 +95,22 @@ public class VentanaArticulo extends JFrame {
 		textField_2.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Precio");
-		lblNewLabel_3.setBounds(174, 162, 34, 14);
+		lblNewLabel_3.setBounds(179, 162, 29, 14);
 		frmArticulos.getContentPane().add(lblNewLabel_3);
 		
 		textField_3 = new JTextField();
 		textField_3.setBounds(218, 159, 92, 20);
 		frmArticulos.getContentPane().add(textField_3);
 		textField_3.setColumns(10);
+		
+		JLabel lblNewLabel_4 = new JLabel("A\u00F1adir un nuevo articulo");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_4.setBounds(152, 11, 175, 14);
+		frmArticulos.getContentPane().add(lblNewLabel_4);
+		
+		JLabel lblNewLabel = new JLabel("Codigo");
+		lblNewLabel.setToolTipText("");
+		lblNewLabel.setBounds(175, 66, 33, 16);
+		frmArticulos.getContentPane().add(lblNewLabel);
 	}
 }

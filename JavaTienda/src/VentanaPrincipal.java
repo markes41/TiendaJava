@@ -10,16 +10,21 @@ import javax.swing.JList;
 import javax.swing.JScrollBar;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
 
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
+	private JTable table;
 
 	public VentanaPrincipal() {
 		setResizable(false);
 		setTitle("Stock de Articulos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800,600);
+		setSize(346,548);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
@@ -29,36 +34,46 @@ public class VentanaPrincipal extends JFrame {
 		
 		JLabel lblListaDeArticulos = new JLabel("Lista de articulos");
 		lblListaDeArticulos.setHorizontalAlignment(SwingConstants.CENTER);
-		lblListaDeArticulos.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblListaDeArticulos.setBounds(55, 39, 133, 23);
+		lblListaDeArticulos.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblListaDeArticulos.setBounds(99, 11, 133, 23);
 		contentPane.add(lblListaDeArticulos);
 		
-		JList list = new JList();
-		list.setBounds(29, 62, 186, 388);
-		contentPane.add(list);
-		
 		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(199, 62, 17, 388);
+		scrollBar.setBounds(303, 73, 17, 388);
 		contentPane.add(scrollBar);
 		
-		JButton btnAgregar = new JButton("AGREGAR");
-		btnAgregar.addActionListener(new ActionListener() {
+		JButton btnNewButton_2_1 = new JButton("AGREGAR");
+		btnNewButton_2_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnAgregar.setBounds(225, 62, 89, 23);
-		contentPane.add(btnAgregar);
+		btnNewButton_2_1.setBounds(20, 472, 81, 31);
+		contentPane.add(btnNewButton_2_1);
 		
-		JButton btnNewButton_1 = new JButton("ELIMINAR");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		JButton btnNewButton_2_2 = new JButton("ELIMINAR");
+		btnNewButton_2_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(225, 131, 89, 23);
-		contentPane.add(btnNewButton_1);
+		btnNewButton_2_2.setBounds(223, 472, 81, 31);
+		contentPane.add(btnNewButton_2_2);
 		
 		JButton btnNewButton_2 = new JButton("EDITAR");
-		btnNewButton_2.setBounds(225, 96, 89, 23);
+		btnNewButton_2.setBounds(120, 472, 81, 31);
 		contentPane.add(btnNewButton_2);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 73, 294, 388);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Codigo", "Nombre", "Descripcion", "Precio"
+			}
+		));
+		scrollPane.setViewportView(table);
 	}
 }
