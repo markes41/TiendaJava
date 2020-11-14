@@ -19,7 +19,10 @@ import java.awt.event.ActionEvent;
 public class VentanaArticulo extends JFrame {
 
 	private JFrame frmArticulos;
-	private JTextField txtRegerg;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -50,58 +53,58 @@ public class VentanaArticulo extends JFrame {
 	private void initialize() {
 		frmArticulos = new JFrame();
 		frmArticulos.setTitle("Articulos");
-		frmArticulos.setBounds(100, 100, 579, 443);
+		frmArticulos.setBounds(100, 100, 498, 298);
 		frmArticulos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmArticulos.getContentPane().setLayout(null);
 		
-		JPanel panel = new JPanel();
-		frmArticulos.getContentPane().add(panel, BorderLayout.WEST);
-		
-		JLabel lblNewLabel = new JLabel("Codigo de articulo");
+		JLabel lblNewLabel = new JLabel("Codigo");
+		lblNewLabel.setBounds(166, 65, 45, 16);
 		lblNewLabel.setToolTipText("");
-		
-		txtRegerg = new JTextField();
-		txtRegerg.setText("regerg");
-		txtRegerg.setAlignmentY(Component.TOP_ALIGNMENT);
-		txtRegerg.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Guardar");
+		frmArticulos.getContentPane().add(lblNewLabel);
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnNewButton_1.setBounds(287, 225, 86, 23);
+		frmArticulos.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("Guardar");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 563, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(363, Short.MAX_VALUE)
-					.addComponent(btnNewButton_1)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton)
-					.addGap(36))
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(txtRegerg, GroupLayout.PREFERRED_SIZE, 563, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(37)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(txtRegerg, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
-					.addGap(208)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton)
-						.addComponent(btnNewButton_1))
-					.addContainerGap())
-		);
-		panel.setLayout(gl_panel);
+		btnNewButton_1_1.setBounds(386, 225, 86, 23);
+		frmArticulos.getContentPane().add(btnNewButton_1_1);
+		
+		textField = new JTextField();
+		textField.setBounds(218, 64, 92, 18);
+		textField.setColumns(10);
+		textField.setAlignmentY(0.0f);
+		frmArticulos.getContentPane().add(textField);
+		
+		JLabel lblNewLabel_1 = new JLabel("Nombre");
+		lblNewLabel_1.setBounds(162, 96, 45, 14);
+		frmArticulos.getContentPane().add(lblNewLabel_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(218, 93, 92, 20);
+		frmArticulos.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("Descripcion");
+		lblNewLabel_2.setBounds(146, 131, 62, 14);
+		frmArticulos.getContentPane().add(lblNewLabel_2);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(218, 128, 92, 20);
+		frmArticulos.getContentPane().add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblNewLabel_3 = new JLabel("Precio");
+		lblNewLabel_3.setBounds(174, 162, 34, 14);
+		frmArticulos.getContentPane().add(lblNewLabel_3);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(218, 159, 92, 20);
+		frmArticulos.getContentPane().add(textField_3);
+		textField_3.setColumns(10);
 	}
 }
