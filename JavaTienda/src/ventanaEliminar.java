@@ -39,17 +39,17 @@ public class ventanaEliminar {
 	private void initialize() {
 		frmEliminar = new JFrame();
 		frmEliminar.setTitle("Eliminar");
-		frmEliminar.setBounds(100, 100, 412, 210);
+		frmEliminar.setBounds(100, 100, 355, 189);
 		frmEliminar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmEliminar.getContentPane().setLayout(null);
 			 
 		
 		JLabel lblNewLabel = new JLabel("ESTA SEGURO QUE DESEA ELIMINAR EL PRODUCTO?");
-		lblNewLabel.setBounds(66, 11, 263, 83);
+		lblNewLabel.setBounds(37, 11, 263, 49);
 		frmEliminar.getContentPane().add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("NO");
-		btnNewButton.setBounds(76, 105, 89, 23);
+		btnNewButton.setBounds(37, 71, 89, 23);
 		frmEliminar.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("SI");
@@ -57,7 +57,7 @@ public class ventanaEliminar {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(240, 105, 89, 23);
+		btnNewButton_1.setBounds(211, 71, 89, 23);
 		frmEliminar.getContentPane().add(btnNewButton_1);
 	}
 
