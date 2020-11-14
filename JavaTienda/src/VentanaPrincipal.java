@@ -14,7 +14,6 @@ import javax.swing.SwingConstants;
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
-	public JTextField textoRelleno;
 
 	public VentanaPrincipal() {
 		setResizable(false);
@@ -27,20 +26,6 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JButton btnNewButton = new JButton("Agregar");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		btnNewButton.setBounds(496, 372, 89, 23);
-		contentPane.add(btnNewButton);
-		
-		textoRelleno = new JTextField();
-		textoRelleno.setBounds(499, 341, 86, 20);
-		contentPane.add(textoRelleno);
-		textoRelleno.setColumns(10);
 		
 		JLabel lblListaDeArticulos = new JLabel("Lista de articulos");
 		lblListaDeArticulos.setHorizontalAlignment(SwingConstants.CENTER);

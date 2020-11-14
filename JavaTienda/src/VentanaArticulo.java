@@ -1,5 +1,4 @@
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -17,7 +16,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VentanaArticulo {
+public class VentanaArticulo extends JFrame {
 
 	private JFrame frmArticulos;
 	private JTextField txtRegerg;
@@ -55,7 +54,7 @@ public class VentanaArticulo {
 		frmArticulos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
-		frmArticulos.getContentPane().add(panel, BorderLayout.CENTER);
+		frmArticulos.getContentPane().add(panel, BorderLayout.WEST);
 		
 		JLabel lblNewLabel = new JLabel("Codigo de articulo");
 		lblNewLabel.setToolTipText("");
@@ -77,9 +76,7 @@ public class VentanaArticulo {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtRegerg, GroupLayout.PREFERRED_SIZE, 563, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 563, GroupLayout.PREFERRED_SIZE))
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 563, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
 					.addContainerGap(363, Short.MAX_VALUE)
@@ -87,6 +84,10 @@ public class VentanaArticulo {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnNewButton)
 					.addGap(36))
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(txtRegerg, GroupLayout.PREFERRED_SIZE, 563, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
