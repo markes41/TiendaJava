@@ -43,7 +43,7 @@ public class ventanaEditar {
 	private void initialize() {
 		frmEditarArticulo = new JFrame();
 		frmEditarArticulo.setTitle("Editar articulo");
-		frmEditarArticulo.setBounds(100, 100, 340, 310);
+		frmEditarArticulo.setBounds(100, 100, 335, 310);
 		frmEditarArticulo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmEditarArticulo.getContentPane().setLayout(null);
 		

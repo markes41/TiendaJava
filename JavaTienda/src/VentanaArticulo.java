@@ -1,112 +1,117 @@
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.BoxLayout;
-import java.awt.Component;
-import java.awt.GridLayout;
-import javax.swing.SwingConstants;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Font;
 
 public class VentanaArticulo extends JFrame {
 
-	private JFrame frmArticulos;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JPanel contentPane;
+	private JTextField textCodigo;
+	private JTextField textNombre;
+	private JTextField textDescripcion;
+	private JTextField textPrecio;
+	createArticulo articulo;
+
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaArticulo window = new VentanaArticulo();
-					window.frmArticulos.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
+	 * Create the frame.
 	 */
 	public VentanaArticulo() {
-		initialize();
-	}
+		
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		
+		JFrame ventana = new JFrame();
+		ventana.setDefaultCloseOperation( HIDE_ON_CLOSE );
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frmArticulos = new JFrame();
-		frmArticulos.setTitle("Articulos");
-		frmArticulos.setBounds(100, 100, 340, 310);
-		frmArticulos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmArticulos.getContentPane().setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(126, 47, 92, 18);
-		textField.setColumns(10);
-		textField.setAlignmentY(0.0f);
-		frmArticulos.getContentPane().add(textField);
+		setSize(335,314);
+		setLocationRelativeTo(null);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nombre");
-		lblNewLabel_1.setBounds(79, 79, 37, 14);
-		frmArticulos.getContentPane().add(lblNewLabel_1);
+		JLabel lblPrimerNombre = new JLabel("Codigo");
+		lblPrimerNombre.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblPrimerNombre.setBounds(81, 68, 47, 31);
+		contentPane.add(lblPrimerNombre);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(126, 76, 92, 20);
-		frmArticulos.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textCodigo = new JTextField();
+		textCodigo.setBounds(138, 74, 105, 20);
+		contentPane.add(textCodigo);
+		textCodigo.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Descripcion");
-		lblNewLabel_2.setBounds(62, 104, 54, 14);
-		frmArticulos.getContentPane().add(lblNewLabel_2);
+		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNombre.setBounds(73, 110, 55, 17);
+		contentPane.add(lblNombre);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(126, 107, 92, 20);
-		frmArticulos.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		textNombre = new JTextField();
+		textNombre.setBounds(138, 109, 105, 20);
+		contentPane.add(textNombre);
+		textNombre.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Precio");
-		lblNewLabel_3.setBounds(87, 141, 29, 14);
-		frmArticulos.getContentPane().add(lblNewLabel_3);
+		JLabel lblDescripcion= new JLabel("Descripcion");
+		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblDescripcion.setBounds(56, 134, 80, 31);
+		contentPane.add(lblDescripcion);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(126, 138, 92, 20);
-		frmArticulos.getContentPane().add(textField_3);
-		textField_3.setColumns(10);
+		textDescripcion = new JTextField();
+		textDescripcion.setBounds(139, 140, 105, 20);
+		contentPane.add(textDescripcion);
+		textDescripcion.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("A\u00F1adir un nuevo articulo");
+		JLabel lblPrecio = new JLabel("Precio");
+		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblPrecio.setBounds(81, 165, 55, 31);
+		contentPane.add(lblPrecio);
+		
+		textPrecio = new JTextField();
+		textPrecio.setBounds(139, 171, 105, 20);
+		contentPane.add(textPrecio);
+		textPrecio.setColumns(10);
+
+		
+		JButton btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+
+		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCerrar.setBounds(31, 217, 105, 31);
+		contentPane.add(btnCerrar);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				articulo = new createArticulo(
+						textCodigo.getText(), 
+						textNombre.getText(), 
+						textDescripcion.getText(), 
+						textPrecio.getText());
+				}
+			});
+		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnGuardar.setBounds(177, 217, 105, 31);
+		contentPane.add(btnGuardar);
+		
+		JLabel lblNewLabel_4 = new JLabel("Agregar un articulo");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_4.setBounds(75, 11, 175, 14);
-		frmArticulos.getContentPane().add(lblNewLabel_4);
-		
-		JLabel lblNewLabel = new JLabel("Codigo");
-		lblNewLabel.setToolTipText("");
-		lblNewLabel.setBounds(83, 48, 33, 16);
-		frmArticulos.getContentPane().add(lblNewLabel);
-		
-		JButton btnNewButton_1 = new JButton("Cancelar");
-		btnNewButton_1.setBounds(54, 186, 92, 33);
-		frmArticulos.getContentPane().add(btnNewButton_1);
-		
-		JButton btnNewButton_1_1 = new JButton("Cancelar");
-		btnNewButton_1_1.setBounds(183, 186, 92, 33);
-		frmArticulos.getContentPane().add(btnNewButton_1_1);
+		lblNewLabel_4.setBounds(94, 24, 150, 20);
+		contentPane.add(lblNewLabel_4);
 	}
 }
