@@ -91,13 +91,16 @@ public class createNewUser extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
+				//Primero chequeamos que no exista el usuario
 				browseUser.leerFichero(textUsername.getText());
 				if(browseUser.isExiste() == true) {
 					JOptionPane.showMessageDialog(null, "Usuario", "Error user", JOptionPane.WARNING_MESSAGE);
 					browseUser.setExiste(false);
+				//Después chequeamos que las password sean iguales
 				}else if(!(textPass.getText().equals(textRepeatPass.getText()))){
 					JOptionPane.showMessageDialog(null, "Password distintas", "Error Password", JOptionPane.WARNING_MESSAGE);
 				}else {
+				//Una vez que se validaron las 2 condiciones de arriba, se crea el usuario.
 					user = new createUser(textName.getText(), 
 						textLastName.getText(), 
 						textUsername.getText(), 
