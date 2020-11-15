@@ -79,5 +79,5 @@ public class ConectarUsuario extends JFrame {
 	}
 	
 	
-	
+}
 }
