@@ -1,7 +1,10 @@
+import javax.swing.JOptionPane;
+
 public class createUser {
 	private String firstName, lastName, username, password, repeatPassword;
 	Archivo createUser = new Archivo();
 	private boolean correct = false;
+	browseRepeatUser browseUser = new browseRepeatUser(); 
 
 	public createUser(String firstName, String lastName, String username, String password, String repeatPassword) {
 		super();
@@ -11,12 +14,15 @@ public class createUser {
 		this.password = password;
 		this.repeatPassword = repeatPassword;
 		
-		if(getPassword().equals(getRepeatPassword())) {
-			createUser.escribirFichero(firstName,lastName,username,password);
-			correct = true;
-			setCorrect(correct);
-		}
-		
+		createUser.escribirFichero(firstName,lastName,username,password);
+	}
+	
+	public boolean checkPassword(String data1, String data2) {
+		if(data1.equals(data2))
+			return true;
+		else
+			return false;
+
 	}
 	
 	public String getFirstName() {
