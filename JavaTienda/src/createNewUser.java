@@ -7,8 +7,11 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
 
 public class createNewUser extends JFrame {
 
@@ -119,6 +122,22 @@ public class createNewUser extends JFrame {
 		contentPane.add(btnRegistrarse);
 		
 		JButton btnVolver = new JButton("Volver");
+		btnVolver.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				btnVolver.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						new ConectarUsuario().setVisible(true);
+						this.setVisible(false);				
+						dispose();
+					}
+
+					private void setVisible(boolean b) {		
+					}
+				});	
+				
+			}
+		});
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVolver.setBounds(63, 239, 118, 40);
 		contentPane.add(btnVolver);

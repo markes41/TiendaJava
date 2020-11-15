@@ -16,8 +16,9 @@ public class ConectarUsuario extends JFrame {
 	public JTextField txtPass;
 	Archivo testUser = new Archivo();
 	VentanaPrincipal main = new VentanaPrincipal();
-
+	
 	public ConectarUsuario() {
+		
 		setTitle("Inicio de Sesion");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(370,175);
@@ -76,4 +77,7 @@ public class ConectarUsuario extends JFrame {
 		btnRegistrarse.setBounds(205, 93, 100, 37);
 		contentPane.add(btnRegistrarse);
 	}
+	
+	
+	
 }
