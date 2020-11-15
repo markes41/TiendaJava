@@ -20,6 +20,7 @@ public class createNewUser extends JFrame {
 	private JTextField textRepeatPass;
 	createUser user;
 	ConectarUsuario login = new ConectarUsuario();
+	browseRepeatUser browseUser = new browseRepeatUser();
 
 
 	/**
@@ -89,17 +90,28 @@ public class createNewUser extends JFrame {
 		btnRegistrarse.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				user = new createUser(textName.getText(), 
+				
+				//Primero chequeamos que no exista el usuario
+				browseUser.leerFichero(textUsername.getText());
+				if(browseUser.isExiste() == true) {
+					JOptionPane.showMessageDialog(null, "Usuario", "Error user", JOptionPane.WARNING_MESSAGE);
+					browseUser.setExiste(false);
+				//Después chequeamos que las password sean iguales
+				}else if(!(textPass.getText().equals(textRepeatPass.getText()))){
+					JOptionPane.showMessageDialog(null, "Password distintas", "Error Password", JOptionPane.WARNING_MESSAGE);
+				}else {
+				//Una vez que se validaron las 2 condiciones de arriba, se crea el usuario.
+					user = new createUser(textName.getText(), 
 						textLastName.getText(), 
 						textUsername.getText(), 
 						textPass.getText(), 
 						textRepeatPass.getText());
-				if(user.isCorrect() == true) {
-					setVisible(false);
-					login.setVisible(true);
-				}else if(user.isCorrect() == false) {
-					JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden. Vuelve a intentarlo", "Error contraseña", JOptionPane.WARNING_MESSAGE);
+						setVisible(false);
+						login.setVisible(true);
 				}
+				
+				
+				
 			}
 		});
 		btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 14));
