@@ -8,6 +8,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ConectarUsuario extends JFrame {
 
@@ -48,9 +50,8 @@ public class ConectarUsuario extends JFrame {
 		contentPane.add(txtPass);
 		
 		JButton btnConectar = new JButton("Conectar");
-		btnConectar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnConectar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				testUser.leerFichero(txtUser.getText(), txtPass.getText());
 				if(testUser.isExiste() == true) {
 					setVisible(false);
@@ -65,9 +66,8 @@ public class ConectarUsuario extends JFrame {
 		contentPane.add(btnConectar);
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
-		btnRegistrarse.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				createNewUser register = new createNewUser();
 				register.setVisible(true);
 				setVisible(false);

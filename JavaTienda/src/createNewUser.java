@@ -90,10 +90,8 @@ public class createNewUser extends JFrame {
 		textRepeatPass.setColumns(10);
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
-		btnRegistrarse.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				//Primero chequeamos que no exista el usuario
 				browseUser.leerFichero(textUsername.getText());
 				if(browseUser.isExiste() == true) {
@@ -112,9 +110,6 @@ public class createNewUser extends JFrame {
 						setVisible(false);
 						login.setVisible(true);
 				}
-				
-				
-				
 			}
 		});
 		btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -122,21 +117,14 @@ public class createNewUser extends JFrame {
 		contentPane.add(btnRegistrarse);
 		
 		JButton btnVolver = new JButton("Volver");
-		btnVolver.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				btnVolver.addActionListener(new ActionListener() {
+		btnVolver.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						new ConectarUsuario().setVisible(true);
 						this.setVisible(false);				
 						dispose();
 					}
-
 					private void setVisible(boolean b) {		
-					}
-				});	
-				
-			}
+					}				
 		});
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVolver.setBounds(63, 239, 118, 40);

@@ -22,6 +22,7 @@ public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	Archivo test = new Archivo();
 
 
 	public VentanaPrincipal() {
@@ -69,7 +70,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 73, 301, 388);
+		scrollPane.setBounds(10, 73, 301, 31);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -77,9 +78,14 @@ public class VentanaPrincipal extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Codigo", "Nombre", "Descripcion", "Precio"
+				"Codigo", "Nombre", "Descripcion", "Precio",
+				
 			}
 		));
 		scrollPane.setViewportView(table);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 104, 301, 360);
+		contentPane.add(panel);
 	}
 }
