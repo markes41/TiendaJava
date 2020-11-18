@@ -88,6 +88,7 @@ public class VentanaPrincipal extends JFrame {
 		panel.setBounds(10, 104, 301, 360);
 		contentPane.add(panel);
 		
+		ConectarUsuario.
 		
 		if(test.isEmptyEmployee() == false) {
 			btnNewButton_2.setVisible(false);
