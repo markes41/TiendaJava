@@ -1,8 +1,5 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-
+import java.io.*;
+import java.util.Scanner;
 
 public class Archivo{
 	
@@ -49,34 +46,27 @@ public class Archivo{
 	}
 	
 	//ARCHIVO
-	public void leerFicheroArchivo(String data1, String data2) {
+	public void leerFicheroArchivo() {
+		File fichero = new File("Articulos.txt");
+		Scanner s = null;
+
 		try {
-			FileReader usuario = new FileReader("articulos.txt");
-			bra = new BufferedReader(usuario);
-			String texto = bra.readLine();
-			
-			while(texto != null) {
-				String [] word = texto.split(" ");
-				if(word[2].equals(data1) && word[3].equals(data2)) {
-					existe = true;
-					setExiste(existe);
-				}
-				texto = bra.readLine();
-				
+			System.out.println("Leer el fichero");
+			s = new Scanner(fichero);
+
+			while(s.hasNextLine()){
+				String linea = s.nextLine();
+				System.out.println(linea);
 			}
-			
-		}catch(Exception e) {
-			 System.out.println("Error: Fichero no encontrado");
-	         System.out.println(e.getMessage());
-		} finally {
+		} catch (Exception ex){
+			System.out.println("Mensaje:" + ex.getMessage());
+		}
+		finally {
 			try {
-				if(bra != null)
-					bra.close();
-				if(bwa != null)
-					bwa.close();
-			}catch(Exception e) {
-				System.out.println("Error al cerrar el fichero");
-	            System.out.println(e.getMessage());
+				if (s != null)
+						s.close();
+			} catch (Exception ex2){
+				System.out.println("mensaje 2:" + ex2.getMessage());
 			}
 		}
 	}
