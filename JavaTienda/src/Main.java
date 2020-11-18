@@ -1,9 +1,11 @@
+import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main{
-
 	public static void main(String[] args) throws IOException{
-		
+
 		ConectarUsuario login = new ConectarUsuario();
 		login.setVisible(true);
 		
@@ -15,10 +17,15 @@ public class Main{
 		//createNewUser newUser = new createNewUser();
 		//newUser.setVisible(true);
 		Archivo arc = new Archivo();
+		//arc.leerFicheroArchivo();
 		
-		
-		
-		
-	
+
+
+
+
 	}
-}
+
+	}
+
+
+
