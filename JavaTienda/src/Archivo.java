@@ -7,8 +7,9 @@ import java.io.FileWriter;
 public class Archivo{
 	
 	private boolean existe = false;
-	String texto = null;
 	private boolean emptyEmployee = false;
+	private String username;
+	String texto = null;
 	BufferedReader br = null;
 	BufferedWriter bw = null;
 	BufferedReader bra = null;
@@ -30,8 +31,6 @@ public class Archivo{
 				texto = br.readLine();
 				
 			}
-			
-			
 			
 		}catch(Exception e) {
 			 System.out.println("Error: Fichero no encontrado");
@@ -128,21 +127,19 @@ public class Archivo{
 
 	public void buscarEmpleado(String data1) {
 		try {
-			FileReader usuario = new FileReader("usuarios.txt");
-			br = new BufferedReader(usuario);
+			FileReader empleado = new FileReader("empleados.txt");
+			br = new BufferedReader(empleado);
 			String texto = br.readLine();
 			
 			while(texto != null) {
 				String [] word = texto.split(" ");
-				if(word[4].equals(data1)) {
+				if(word[0].equals(data1)) {
 					emptyEmployee = true;
 					setEmptyEmployee(emptyEmployee);
 				}
 				texto = br.readLine();
 				
 			}
-			
-			
 			
 		}catch(Exception e) {
 			 System.out.println("Error: Fichero no encontrado");
@@ -164,22 +161,28 @@ public class Archivo{
 	public boolean isExiste() {
 		return existe;
 	}
-
-
+	
+	
 	public void setExiste(boolean existe) {
 		this.existe = existe;
 	}
 	
-	
-	
-	
-
 	public boolean isEmptyEmployee() {
 		return emptyEmployee;
 	}
 
 	public void setEmptyEmployee(boolean emptyEmployee) {
 		this.emptyEmployee = emptyEmployee;
+	}
+
+	
+	public String getUsername() {
+		return username;
+	}
+
+	
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	

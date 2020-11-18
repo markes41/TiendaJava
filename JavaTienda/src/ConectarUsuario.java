@@ -52,6 +52,7 @@ public class ConectarUsuario extends JFrame {
 		JButton btnConectar = new JButton("Conectar");
 		btnConectar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				testUser.leerFichero(txtUser.getText(), txtPass.getText());
 				if(testUser.isExiste() == true) {
 					setVisible(false);

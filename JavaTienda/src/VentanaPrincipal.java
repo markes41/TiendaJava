@@ -88,16 +88,11 @@ public class VentanaPrincipal extends JFrame {
 		panel.setBounds(10, 104, 301, 360);
 		contentPane.add(panel);
 		
-		JLabel lblEmpty = new JLabel("Empty");
-		lblEmpty.setBounds(109, 33, 104, 14);
-		contentPane.add(lblEmpty);
 		
-		test.buscarEmpleado("empleado");
-		
-		if(test.isEmptyEmployee() == true)
-			lblEmpty.setText("Empleado");
-		else
-			lblEmpty.setText("Usuario");
-		
+		if(test.isEmptyEmployee() == false) {
+			btnNewButton_2.setVisible(false);
+			btnNewButton_2_2.setVisible(false);
+			
+		}
 	}
 }
