@@ -106,8 +106,9 @@ public class Archivo{
 			fichero.write("\n");
 
 				for (String linea : lineas) {
-					fichero.write(linea + " ");
+					fichero.write(linea + " ");	
 				}
+				
 				fichero.close();
 
 		} catch (Exception ex) {

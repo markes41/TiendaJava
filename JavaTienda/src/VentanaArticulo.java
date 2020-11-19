@@ -26,7 +26,7 @@ public class VentanaArticulo extends JFrame {
 	createArticulo articulo;
 	
 	public VentanaArticulo() {
-		
+		Archivo arc = new Archivo();
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JFrame ventana = new JFrame();
@@ -110,18 +110,12 @@ public class VentanaArticulo extends JFrame {
 					
 						if(textCodigo.getText() == null || textNombre.getText() == null || textDescripcion.getText() == null || textPrecio.getText().equals("")) 
 						{ 
-							txtErrorPorFavor = new JTextField();
-							txtErrorPorFavor.setText("ERROR POR FAVOR LLENE TODOS LOS FORMULARIOS");
-							txtErrorPorFavor.setBounds(31, 0, 280, 20);
-							contentPane.add(txtErrorPorFavor);
-							txtErrorPorFavor.setColumns(10);		
+
+							JOptionPane.showMessageDialog(null, "ERROR LLENE TODOS LOS DATOS", "ERROR", JOptionPane.WARNING_MESSAGE);
+
 							
 						} else {
-							txtErrorPorFavor = new JTextField();
-							txtErrorPorFavor.setText("LOS DATOS SE HAN GUARDADO!!!");
-							txtErrorPorFavor.setBounds(31, 0, 280, 20);
-							contentPane.add(txtErrorPorFavor);
-							txtErrorPorFavor.setColumns(10);	
+							JOptionPane.showMessageDialog(null, "LOS DATOS SE HAN GUARDADO", "GUARDADO", JOptionPane.INFORMATION_MESSAGE);								
 						}
 						
 						limpiar();

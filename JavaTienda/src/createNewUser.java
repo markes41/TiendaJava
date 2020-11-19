@@ -108,6 +108,11 @@ public class createNewUser extends JFrame {
 						setVisible(false);
 						login.setVisible(true);
 				}
+				
+				if(textLastName.getText() == null || textUsername.getText() == null || textPass.getText() == null || textRepeatPass.getText().equals("")) 
+				{ 
+					JOptionPane.showMessageDialog(null, "ERROR LLENE TODOS LOS DATOS", "ERROR", JOptionPane.WARNING_MESSAGE);	
+				}
 			}
 		});
 		btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 14));
