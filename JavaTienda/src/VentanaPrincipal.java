@@ -89,11 +89,16 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(panel);
 		
 		JLabel lblNewLabel = new JLabel();
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(109, 34, 123, 14);
 		lblNewLabel.setText(username);
 		contentPane.add(lblNewLabel);
 		
-		
+		if(username.equals("Cliente")) {
+			btnNewButton_2_2.setVisible(false);
+			btnAgregar.setVisible(false);
+			btnNewButton_2.setVisible(false);
+		}
 			
 		
 	}
