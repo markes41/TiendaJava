@@ -107,9 +107,8 @@ public class Archivo{
 
 				for (String linea : lineas) {
 					fichero.write(linea + " ");
-					fichero.close();
-					
 				}
+				fichero.close();
 
 		} catch (Exception ex) {
 			System.out.println("Mensaje de la excepcion: " + ex.getMessage());
