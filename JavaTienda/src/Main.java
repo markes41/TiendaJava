@@ -16,7 +16,6 @@ public class Main{
 		//userconnection.setVisible(true);
 		//createNewUser newUser = new createNewUser();
 		//newUser.setVisible(true);
-		VentanaArticulo arc = new VentanaArticulo();
 		//arc.leerFicheroArchivo();
 
 

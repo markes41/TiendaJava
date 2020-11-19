@@ -17,10 +17,6 @@ import java.awt.event.ActionEvent;
 
 public class VentanaArticulo extends JFrame {
 	
-	String cod;
-	String nom;
-	String des;
-	String pre;
 	private JPanel contentPane;
 	private JTextField textCodigo;
 	private JTextField textNombre;
@@ -135,6 +131,7 @@ public class VentanaArticulo extends JFrame {
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnGuardar.setBounds(177, 217, 105, 31);
 		contentPane.add(btnGuardar);
+		
 		JLabel lblNewLabel_4 = new JLabel("Agregar un articulo");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_4.setBounds(94, 24, 150, 20);

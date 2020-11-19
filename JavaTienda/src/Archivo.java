@@ -104,11 +104,12 @@ public class Archivo{
 			fichero = new FileWriter("articulos.txt", true);
 			bwa = new BufferedWriter(fichero);
 			fichero.write("\n");
-			
-			for (String linea : lineas) {
-				fichero.write(linea + " ");
-			}
-			fichero.close();
+
+				for (String linea : lineas) {
+					fichero.write(linea + " ");
+					fichero.close();
+					
+				}
 
 		} catch (Exception ex) {
 			System.out.println("Mensaje de la excepcion: " + ex.getMessage());

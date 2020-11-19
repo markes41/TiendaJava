@@ -44,13 +44,6 @@ public class createArticulo {
 		this.precio = precio;
 	}
 
-	public int length() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-
-	
 	}
 	
 

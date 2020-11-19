@@ -28,7 +28,6 @@ import javax.swing.DefaultComboBoxModel;
 
 public class VentanaPrincipal extends JFrame {
 	private JPanel contentPane;
-	private final JTable JTableArchivo = new JTable();
 	createArticulo articulo;
 
 	public VentanaPrincipal(String username) {
@@ -82,26 +81,10 @@ public class VentanaPrincipal extends JFrame {
 		lblNewLabel.setBounds(109, 34, 123, 14);
 		lblNewLabel.setText(username);
 		contentPane.add(lblNewLabel);
-		JTableArchivo.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-			},
-			new String[] {
-				"Codigo", "Nombre", "Descripcion", "Precio"
-			}
-		));
-		JTableArchivo.setBounds(20, 188, 283, 176);
-		contentPane.add(JTableArchivo);
+		
+		JList list = new JList();
+		list.setBounds(20, 73, 291, 388);
+		contentPane.add(list);
 			 
 		
 		if(username.equals("Cliente")) {
