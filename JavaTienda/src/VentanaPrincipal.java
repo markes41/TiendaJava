@@ -25,7 +25,7 @@ public class VentanaPrincipal extends JFrame {
 	Archivo test = new Archivo();
 
 
-	public VentanaPrincipal() {
+	public VentanaPrincipal(String username) {
 		setResizable(false);
 		setTitle("Stock de Articulos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,12 +88,13 @@ public class VentanaPrincipal extends JFrame {
 		panel.setBounds(10, 104, 301, 360);
 		contentPane.add(panel);
 		
-		ConectarUsuario.
+		JLabel lblNewLabel = new JLabel();
+		lblNewLabel.setBounds(109, 34, 123, 14);
+		lblNewLabel.setText(username);
+		contentPane.add(lblNewLabel);
 		
-		if(test.isEmptyEmployee() == false) {
-			btnNewButton_2.setVisible(false);
-			btnNewButton_2_2.setVisible(false);
+		
 			
-		}
+		
 	}
 }

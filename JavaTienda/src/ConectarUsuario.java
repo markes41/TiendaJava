@@ -17,7 +17,8 @@ public class ConectarUsuario extends JFrame {
 	public JTextField txtUser;
 	public JTextField txtPass;
 	Archivo testUser = new Archivo();
-	VentanaPrincipal main = new VentanaPrincipal();
+	String typeUser;
+	
 	
 	public ConectarUsuario() {
 		
@@ -55,6 +56,13 @@ public class ConectarUsuario extends JFrame {
 
 				testUser.leerFichero(txtUser.getText(), txtPass.getText());
 				if(testUser.isExiste() == true) {
+					testUser.buscarEmpleado(txtUser.getText());
+					if(testUser.isEmptyEmployee() == true)
+						typeUser = "Empleado";
+					else
+						typeUser = "Cliente";
+					
+					VentanaPrincipal main = new VentanaPrincipal(typeUser);
 					setVisible(false);
 					main.setVisible(true);
 				}else {
