@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -17,13 +18,18 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
+import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
+
+import java.awt.Color;
+import javax.swing.ListSelectionModel;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class VentanaPrincipal extends JFrame {
-
 	private JPanel contentPane;
-	private JTable table;
-	Archivo test = new Archivo();
-
+	private final JTable JTableArchivo = new JTable();
+	createArticulo articulo;
 
 	public VentanaPrincipal(String username) {
 		setResizable(false);
@@ -57,47 +63,51 @@ public class VentanaPrincipal extends JFrame {
 		btnAgregar.setBounds(20, 472, 90, 31);
 		contentPane.add(btnAgregar);
 		
-		JButton btnNewButton_2_2 = new JButton("ELIMINAR");
-		btnNewButton_2_2.addActionListener(new ActionListener() {
+		JButton btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_2_2.setBounds(223, 472, 88, 31);
-		contentPane.add(btnNewButton_2_2);
+		btnEliminar.setBounds(223, 472, 88, 31);
+		contentPane.add(btnEliminar);
 		
-		JButton btnNewButton_2 = new JButton("EDITAR");
-		btnNewButton_2.setBounds(120, 472, 93, 31);
-		contentPane.add(btnNewButton_2);
+		JButton btnEditar = new JButton("EDITAR");
+		btnEditar.setBounds(120, 472, 93, 31);
+		contentPane.add(btnEditar);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 73, 301, 31);
-		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Codigo", "Nombre", "Descripcion", "Precio",
-				
-			}
-		));
-		scrollPane.setViewportView(table);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 104, 301, 360);
-		contentPane.add(panel);
 		
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(109, 34, 123, 14);
 		lblNewLabel.setText(username);
 		contentPane.add(lblNewLabel);
+		JTableArchivo.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			},
+			new String[] {
+				"Codigo", "Nombre", "Descripcion", "Precio"
+			}
+		));
+		JTableArchivo.setBounds(20, 188, 283, 176);
+		contentPane.add(JTableArchivo);
+			 
 		
 		if(username.equals("Cliente")) {
-			btnNewButton_2_2.setVisible(false);
+			btnEliminar.setVisible(false);
 			btnAgregar.setVisible(false);
-			btnNewButton_2.setVisible(false);
+			btnEditar.setVisible(false);
 		}
 			
 		

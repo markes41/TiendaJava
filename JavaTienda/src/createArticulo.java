@@ -43,6 +43,11 @@ public class createArticulo {
 	public void setPrecio(String precio) {
 		this.precio = precio;
 	}
+
+	public int length() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 
 	

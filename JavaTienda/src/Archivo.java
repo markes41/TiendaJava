@@ -70,7 +70,7 @@ public class Archivo{
 			}
 		}
 	}
-	
+
 	//USUARIO
 	public void escribirFichero(String nombre, String apellido, String username, String password) {
 
@@ -114,6 +114,8 @@ public class Archivo{
 			System.out.println("Mensaje de la excepcion: " + ex.getMessage());
 		}
 }
+	
+	//Empleado
 
 	public void buscarEmpleado(String data1) {
 		try {

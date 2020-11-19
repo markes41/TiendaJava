@@ -11,22 +11,24 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class VentanaArticulo extends JFrame {
-
+	
+	String cod;
+	String nom;
+	String des;
+	String pre;
 	private JPanel contentPane;
 	private JTextField textCodigo;
 	private JTextField textNombre;
 	private JTextField textDescripcion;
 	private JTextField textPrecio;
+	private JTextField txtErrorPorFavor;
 	createArticulo articulo;
-
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public VentanaArticulo() {
 		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -96,22 +98,50 @@ public class VentanaArticulo extends JFrame {
 		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addMouseListener(new MouseAdapter() {
-			@Override
+			private void limpiar() {
+				textCodigo.setText("");
+				textNombre.setText("");
+				textDescripcion.setText("");
+				textPrecio.setText("");
+			}
+			@Override		
 			public void mouseClicked(MouseEvent arg0) {
-				articulo = new createArticulo(
-						textCodigo.getText(), 
-						textNombre.getText(), 
-						textDescripcion.getText(), 
-						textPrecio.getText());
-				}
+					articulo = new createArticulo(
+					textCodigo.getText(), 
+					textNombre.getText(), 
+					textDescripcion.getText(), 
+					textPrecio.getText());
+					
+						if(textCodigo.getText() == null || textNombre.getText() == null || textDescripcion.getText() == null || textPrecio.getText().equals("")) 
+						{ 
+							txtErrorPorFavor = new JTextField();
+							txtErrorPorFavor.setText("ERROR POR FAVOR LLENE TODOS LOS FORMULARIOS");
+							txtErrorPorFavor.setBounds(31, 0, 280, 20);
+							contentPane.add(txtErrorPorFavor);
+							txtErrorPorFavor.setColumns(10);		
+							
+						} else {
+							txtErrorPorFavor = new JTextField();
+							txtErrorPorFavor.setText("LOS DATOS SE HAN GUARDADO!!!");
+							txtErrorPorFavor.setBounds(31, 0, 280, 20);
+							contentPane.add(txtErrorPorFavor);
+							txtErrorPorFavor.setColumns(10);	
+						}
+						
+						limpiar();
+			} 
 			});
+
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnGuardar.setBounds(177, 217, 105, 31);
 		contentPane.add(btnGuardar);
-		
 		JLabel lblNewLabel_4 = new JLabel("Agregar un articulo");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_4.setBounds(94, 24, 150, 20);
 		contentPane.add(lblNewLabel_4);
+		
+
+		
+
 	}
 }
