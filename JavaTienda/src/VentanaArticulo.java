@@ -9,24 +9,23 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class VentanaArticulo extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textCodigo;
 	private JTextField textNombre;
 	private JTextField textDescripcion;
 	private JTextField textPrecio;
-	private JTextField txtErrorPorFavor;
 	createArticulo articulo;
 	
 	public VentanaArticulo() {
-		Archivo arc = new Archivo();
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JFrame ventana = new JFrame();
