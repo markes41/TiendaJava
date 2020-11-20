@@ -11,9 +11,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 public class VentanaPrincipal extends JFrame {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	createArticulo articulo;
@@ -22,24 +20,24 @@ public class VentanaPrincipal extends JFrame {
 		setResizable(false);
 		setTitle("Stock de Articulos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(363,561);
+		setSize(363, 561);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblListaDeArticulos = new JLabel("Lista de articulos");
 		lblListaDeArticulos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblListaDeArticulos.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblListaDeArticulos.setBounds(99, 11, 133, 23);
 		contentPane.add(lblListaDeArticulos);
-		
+
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(309, 73, 17, 388);
 		contentPane.add(scrollBar);
-		
+
 		JButton btnAgregar = new JButton("AGREGAR");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -49,7 +47,7 @@ public class VentanaPrincipal extends JFrame {
 		});
 		btnAgregar.setBounds(20, 472, 90, 31);
 		contentPane.add(btnAgregar);
-		
+
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -57,30 +55,26 @@ public class VentanaPrincipal extends JFrame {
 		});
 		btnEliminar.setBounds(223, 472, 88, 31);
 		contentPane.add(btnEliminar);
-		
+
 		JButton btnEditar = new JButton("EDITAR");
 		btnEditar.setBounds(120, 472, 93, 31);
 		contentPane.add(btnEditar);
-		
-		
-		
+
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(109, 34, 123, 14);
 		lblNewLabel.setText(username);
 		contentPane.add(lblNewLabel);
-		
+
 		JList list = new JList();
 		list.setBounds(20, 73, 291, 388);
 		contentPane.add(list);
-			 
-		
-		if(username.equals("Cliente")) {
+
+		if (username.equals("Cliente")) {
 			btnEliminar.setVisible(false);
 			btnAgregar.setVisible(false);
 			btnEditar.setVisible(false);
 		}
-			
-		
+
 	}
 }

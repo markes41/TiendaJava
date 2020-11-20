@@ -8,8 +8,8 @@ public class createArticulo {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
-		createArticulo.escribirFicheroA(codigo,nombre,descripcion,precio);
-		
+		createArticulo.escribirFicheroA(codigo, nombre, descripcion, precio);
+
 	}
 
 	public String getCodigo() {
@@ -44,6 +44,4 @@ public class createArticulo {
 		this.precio = precio;
 	}
 
-	}
-	
-
+}

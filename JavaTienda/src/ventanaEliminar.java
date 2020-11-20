@@ -9,9 +9,6 @@ public class ventanaEliminar {
 
 	private JFrame frmEliminar;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -25,32 +22,25 @@ public class ventanaEliminar {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public ventanaEliminar() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmEliminar = new JFrame();
 		frmEliminar.setTitle("Eliminar");
 		frmEliminar.setBounds(100, 100, 355, 189);
 		frmEliminar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmEliminar.getContentPane().setLayout(null);
-			 
-		
+
 		JLabel lblNewLabel = new JLabel("ESTA SEGURO QUE DESEA ELIMINAR EL PRODUCTO?");
 		lblNewLabel.setBounds(37, 11, 263, 49);
 		frmEliminar.getContentPane().add(lblNewLabel);
-		
+
 		JButton btnNewButton = new JButton("NO");
 		btnNewButton.setBounds(37, 71, 89, 23);
 		frmEliminar.getContentPane().add(btnNewButton);
-		
+
 		JButton btnNewButton_1 = new JButton("SI");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
