@@ -2,8 +2,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 
-import javax.swing.JOptionPane;
-
 public class browseRepeatUser {
 	
 	BufferedReader br;
