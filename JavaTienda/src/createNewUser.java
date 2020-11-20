@@ -9,12 +9,11 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 
 public class createNewUser extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textName;
 	private JTextField textLastName;
@@ -94,10 +93,10 @@ public class createNewUser extends JFrame {
 
 				browseUser.leerFichero(textUsername.getText());
 				if(browseUser.isExiste() == true) {
-					JOptionPane.showMessageDialog(null, "Usuario", "Error user", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", JOptionPane.WARNING_MESSAGE);
 					browseUser.setExiste(false);
 				}else if(!(textPass.getText().equals(textRepeatPass.getText()))){
-					JOptionPane.showMessageDialog(null, "Password distintas", "Error Password", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Contraseñas distintas", "Error", JOptionPane.WARNING_MESSAGE);
 				}else {
 		
 					user = new createUser(textName.getText(), 
@@ -109,9 +108,10 @@ public class createNewUser extends JFrame {
 						login.setVisible(true);
 				}
 				
-				if(textLastName.getText() == null || textUsername.getText() == null || textPass.getText() == null || textRepeatPass.getText().equals("")) 
+				if(textName.getText() == null || textLastName.getText() == null || textUsername.getText() == null || textPass.getText() == null || textRepeatPass.getText().equals("")) 
 				{ 
-					JOptionPane.showMessageDialog(null, "ERROR LLENE TODOS LOS DATOS", "ERROR", JOptionPane.WARNING_MESSAGE);	
+					JOptionPane.showMessageDialog(null, "ERROR LLENE TODOS LOS DATOS", "ERROR", JOptionPane.WARNING_MESSAGE);
+
 				}
 			}
 		});
