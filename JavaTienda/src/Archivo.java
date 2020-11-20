@@ -80,11 +80,15 @@ public class Archivo{
 		try {
 
 			fichero = new FileWriter("usuarios.txt", true);
-			bw = new BufferedWriter(fichero);
-			fichero.write("\n");
+			bw = new BufferedWriter(fichero);					
 			
-			for (String linea : lineas) {
-				fichero.write(linea + " ");
+			if(nombre.equals("") || apellido.equals("") || username.equals("") || password.equals("")) {
+				fichero.close();
+			}else {
+				for (String linea : lineas) {
+					fichero.write(linea + " ");
+				}
+				fichero.write("\n");
 			}
 			fichero.close();
 
@@ -103,10 +107,15 @@ public class Archivo{
 
 			fichero = new FileWriter("articulos.txt", true);
 			bwa = new BufferedWriter(fichero);
-			fichero.write("\n");
 
-				for (String linea : lineas) {
-					fichero.write(linea + " ");	
+				
+				if(codigo.equals("") || nombre.equals("") || descripcion.equals("") || precio.equals("")) {
+					fichero.close();
+				}else {
+					for (String linea : lineas) {
+						fichero.write(linea + " ");	
+					}
+					fichero.write("\n");
 				}
 				
 				fichero.close();
