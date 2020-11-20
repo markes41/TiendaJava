@@ -1,4 +1,4 @@
-import javax.swing.JOptionPane;
+
 
 public class createUser {
 	private String firstName, lastName, username, password, repeatPassword;
@@ -15,7 +15,6 @@ public class createUser {
 		this.repeatPassword = repeatPassword;
 		
 		createUser.escribirFichero(firstName,lastName,username,password);
-		VentanaPrincipal test = new VentanaPrincipal(username);
 	}
 	
 	public boolean checkPassword(String data1, String data2) {
