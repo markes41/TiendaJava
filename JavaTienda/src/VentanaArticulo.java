@@ -22,6 +22,7 @@ public class VentanaArticulo extends JFrame {
 	private JTextField textDescripcion;
 	private JTextField textPrecio;
 	createArticulo articulo;
+	private JTextField txtCantidad;
 
 	public VentanaArticulo() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -29,7 +30,7 @@ public class VentanaArticulo extends JFrame {
 		JFrame ventana = new JFrame();
 		ventana.setDefaultCloseOperation(HIDE_ON_CLOSE);
 
-		setSize(335, 314);
+		setSize(335, 310);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -75,6 +76,16 @@ public class VentanaArticulo extends JFrame {
 		textPrecio.setBounds(139, 171, 105, 20);
 		contentPane.add(textPrecio);
 		textPrecio.setColumns(10);
+		
+		JLabel lblCantidad = new JLabel("Cantidad");
+		lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblCantidad.setBounds(72, 196, 55, 31);
+		contentPane.add(lblCantidad);
+		
+		txtCantidad = new JTextField();
+		txtCantidad.setColumns(10);
+		txtCantidad.setBounds(138, 202, 105, 20);
+		contentPane.add(txtCantidad);
 
 		JButton btnCerrar = new JButton("Cerrar");
 		btnCerrar.addActionListener(new ActionListener() {
@@ -84,7 +95,7 @@ public class VentanaArticulo extends JFrame {
 		});
 
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnCerrar.setBounds(31, 217, 105, 31);
+		btnCerrar.setBounds(31, 233, 105, 31);
 		contentPane.add(btnCerrar);
 
 		JButton btnGuardar = new JButton("Guardar");
@@ -94,13 +105,14 @@ public class VentanaArticulo extends JFrame {
 				textNombre.setText("");
 				textDescripcion.setText("");
 				textPrecio.setText("");
+				txtCantidad.setText("");
 			}
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
 				articulo = new createArticulo(textCodigo.getText(), textNombre.getText(), textDescripcion.getText(),
-						textPrecio.getText());
+						textPrecio.getText(), txtCantidad.getText());
 
 				if (textCodigo.getText() == null || textNombre.getText() == null || textDescripcion.getText() == null
 						|| textPrecio.getText().equals("")) {
@@ -124,13 +136,15 @@ public class VentanaArticulo extends JFrame {
 		});
 
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnGuardar.setBounds(177, 217, 105, 31);
+		btnGuardar.setBounds(177, 233, 105, 31);
 		contentPane.add(btnGuardar);
 
 		JLabel lblNewLabel_4 = new JLabel("Agregar un articulo");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_4.setBounds(94, 24, 150, 20);
 		contentPane.add(lblNewLabel_4);
+		
+		
 
 	}
 }

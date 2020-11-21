@@ -1,14 +1,15 @@
 public class createArticulo {
-	private String codigo, nombre, descripcion, precio;
+	private String codigo, nombre, descripcion, precio, cantidad;
 	Archivo createArticulo = new Archivo();
 
-	public createArticulo(String codigo, String nombre, String descripcion, String precio) {
+	public createArticulo(String codigo, String nombre, String descripcion, String precio, String cantidad) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
-		createArticulo.escribirFicheroA(codigo, nombre, descripcion, precio);
+		this.cantidad = cantidad;
+		createArticulo.escribirFicheroA(codigo, nombre, descripcion, precio, cantidad);
 
 	}
 
@@ -43,5 +44,15 @@ public class createArticulo {
 	public void setPrecio(String precio) {
 		this.precio = precio;
 	}
+
+	public String getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(String cantidad) {
+		this.cantidad = cantidad;
+	}
+	
+	
 
 }

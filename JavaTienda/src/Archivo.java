@@ -6,16 +6,18 @@ public class Archivo {
 	private boolean existe = false;
 	private boolean emptyEmployee = false;
 	private String username;
-	String texto = null;
-	BufferedReader br = null;
-	BufferedWriter bw = null;
-	BufferedReader bra = null;
-	BufferedWriter bwa = null;
 	int i = 0;
 	private String nombre[] = new String[999];
 	private String desc[] = new String[999];
 	private String code[] = new String[999];
 	private String price[] = new String[999];
+	private String cantidad[] = new String[999];
+	String texto = null;
+	BufferedReader br = null;
+	BufferedWriter bw = null;
+	BufferedReader bra = null;
+	BufferedWriter bwa = null;
+	
 
 	// LEER USUARIO
 	public void leerFichero(String data1, String data2) {
@@ -102,16 +104,16 @@ public class Archivo {
 	}
 
 	// ESCRIBIR ARCHIVO
-	public void escribirFicheroA(String codigo, String nombre, String descripcion, String precio) {
+	public void escribirFicheroA(String codigo, String nombre, String descripcion, String precio, String cantidad) {
 
-		String[] lineas = { codigo, nombre, descripcion, precio };
+		String[] lineas = { codigo, nombre, descripcion, precio, cantidad};
 
 		FileWriter fichero = null;
 		try {
 			fichero = new FileWriter("articulos.txt", true);
 			bwa = new BufferedWriter(fichero);
 
-			if (codigo.equals("") || nombre.equals("") || descripcion.equals("") || precio.equals("")) {
+			if (codigo.equals("") || nombre.equals("") || descripcion.equals("") || precio.equals("") || cantidad.equals("")) {
 				fichero.close();
 			} else if(isNumeric(codigo)){
 				for (String linea : lineas) {
@@ -174,6 +176,7 @@ public class Archivo {
 				nombre[i] = word[1];
 				desc[i] = word[2];
 				price[i] = word[3];
+				cantidad[i] = word[4];
 				
 				texto = br.readLine();
 				i++;
@@ -183,6 +186,7 @@ public class Archivo {
 			setDesc(desc);
 			setCode(code);
 			setPrice(price);
+			setCantidad(cantidad);
 
 		} catch (Exception e) {
 			System.out.println("Error: Fichero no encontrado");
@@ -262,6 +266,15 @@ public class Archivo {
 	
 	public void setPrice(String[] price) {
 		this.price = price;
+	}
+	
+	
+	public String[] getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(String[] cantidad) {
+		this.cantidad = cantidad;
 	}
 
 	//CLASE AUXILIAR PARA COMPARAR SI ES UN NUMERO

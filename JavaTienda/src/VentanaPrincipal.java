@@ -74,16 +74,14 @@ public class VentanaPrincipal extends JFrame {
 		table = new JTable();
 		
 		table.setModel(new DefaultTableModel(
-				
 			new Object[][] {
 			},
 			new String[] {
-				"Nombre", "Descripci\u00F3n", "Codigo", "Precio"
+				"Nombre", "Cantidad", "Descripci\u00F3n", "Codigo", "Precio"
 			}
 		) {
-			private static final long serialVersionUID = 1L;
 			Class[] columnTypes = new Class[] {
-				String.class, String.class, Integer.class, Double.class
+				Object.class, Integer.class, Object.class, Object.class, Object.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
@@ -96,12 +94,13 @@ public class VentanaPrincipal extends JFrame {
 		String[] codigo = test.getCode();
 		String[] desc = test.getDesc();
 		String[] price = test.getPrice();
+		String[] cantidad = test.getCantidad();
 		
 		for(int i = 0; i < nombre.length; i++) {
 			if(nombre[i] == null) {
 				break;
 			}else {
-				modelo.addRow(new Object[] {nombre[i], desc[i], Integer.parseInt(codigo[i]), Double.parseDouble(price[i])});
+				modelo.addRow(new Object[] {nombre[i],Integer.parseInt(cantidad[i]) ,desc[i], Integer.parseInt(codigo[i]), Double.parseDouble(price[i])});
 			}
 		}
 		
@@ -109,7 +108,9 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				deleteAllRows();
+				System.out.println(table.getSelectedRow());
+				System.out.println(table.getSelectedColumn());
+				//deleteAllRows();
 			}
 		});
 		btnEliminar.setBounds(223, 472, 88, 31);
@@ -125,13 +126,13 @@ public class VentanaPrincipal extends JFrame {
 
 	}
 	//metodo para eliminar columnas
-	public void deleteAllRows() { 
+	/*public void deleteAllRows() { 
 		 if(table.getRowCount()>0){
 	            javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(0,table.getColumnCount());
 	            table.setModel(modelo);
 	        }
 	    
-	} 
+	} */
 	 
 }
 
