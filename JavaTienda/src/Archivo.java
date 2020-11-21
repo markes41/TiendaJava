@@ -180,6 +180,9 @@ public class Archivo {
 			}
 			
 			setNombre(nombre);
+			setDesc(desc);
+			setCode(code);
+			setPrice(price);
 
 		} catch (Exception e) {
 			System.out.println("Error: Fichero no encontrado");
@@ -226,11 +229,42 @@ public class Archivo {
 		return nombre;
 	}
 
+	
 	public void setNombre(String[] nombre) {
 		this.nombre = nombre;
 	}
 
+	
+	public String[] getDesc() {
+		return desc;
+	}
 
+	
+	public void setDesc(String[] desc) {
+		this.desc = desc;
+	}
+
+	
+	public String[] getCode() {
+		return code;
+	}
+
+	
+	public void setCode(String[] code) {
+		this.code = code;
+	}
+
+	
+	public String[] getPrice() {
+		return price;
+	}
+
+	
+	public void setPrice(String[] price) {
+		this.price = price;
+	}
+
+	
 	
 	
 
