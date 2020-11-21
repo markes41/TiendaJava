@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -97,6 +98,7 @@ public class VentanaArticulo extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				
 				articulo = new createArticulo(textCodigo.getText(), textNombre.getText(), textDescripcion.getText(),
 						textPrecio.getText());
 
