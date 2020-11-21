@@ -51,15 +51,13 @@ public class VentanaPrincipal extends JFrame {
 		btnAgregar.setBounds(20, 472, 90, 31);
 		contentPane.add(btnAgregar);
 
-		JButton btnEliminar = new JButton("ELIMINAR");
-		btnEliminar.addActionListener(new ActionListener() {
+
+
+		JButton btnEditar = new JButton("EDITAR");
+		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnEliminar.setBounds(223, 472, 88, 31);
-		contentPane.add(btnEliminar);
-
-		JButton btnEditar = new JButton("EDITAR");
 		btnEditar.setBounds(120, 472, 93, 31);
 		contentPane.add(btnEditar);
 
@@ -74,13 +72,16 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
+		
 		table.setModel(new DefaultTableModel(
+				
 			new Object[][] {
 			},
 			new String[] {
 				"Nombre", "Descripci\u00F3n", "Codigo", "Precio"
 			}
 		) {
+			private static final long serialVersionUID = 1L;
 			Class[] columnTypes = new Class[] {
 				String.class, String.class, Integer.class, Double.class
 			};
@@ -89,32 +90,30 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		scrollPane.setViewportView(table);
+		DefaultTableModel modelo = (DefaultTableModel)table.getModel();
+		test.buscarArticulos();
+		String[] nombre = test.getNombre();
+		String[] codigo = test.getCode();
+		String[] desc = test.getDesc();
+		String[] price = test.getPrice();
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.addActionListener(new ActionListener() {
+		for(int i = 0; i < nombre.length; i++) {
+			if(nombre[i] == null) {
+				break;
+			}else {
+				modelo.addRow(new Object[] {nombre[i], desc[i], Integer.parseInt(codigo[i]), Double.parseDouble(price[i])});
+			}
+		}
+		
+		
+		JButton btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DefaultTableModel modelo = (DefaultTableModel)table.getModel();
-				
-				test.buscarArticulos();
-				String[] nombre = test.getNombre();
-				String[] codigo = test.getCode();
-				String[] desc = test.getDesc();
-				String[] price = test.getPrice();
-				
-				for(int i = 0; i < nombre.length; i++) {
-					if(nombre[i] == null) {
-						break;
-					}else {
-						modelo.addRow(new Object[] {nombre[i], desc[i], Integer.parseInt(codigo[i]), Double.parseDouble(price[i])});
-					}
-				}
-				
+				deleteAllRows();
 			}
 		});
-		btnNewButton.setBounds(120, 498, 89, 23);
-		contentPane.add(btnNewButton);
-		
-		
+		btnEliminar.setBounds(223, 472, 88, 31);
+		contentPane.add(btnEliminar);
 		
 		if (userType.equals("Cliente")) {
 		btnEliminar.setVisible(false);
@@ -125,4 +124,17 @@ public class VentanaPrincipal extends JFrame {
 		
 
 	}
+	//metodo para eliminar columnas
+	public void deleteAllRows() { 
+		 if(table.getRowCount()>0){
+	            javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(0,table.getColumnCount());
+	            table.setModel(modelo);
+	        }
+	    
+	} 
+	 
 }
+
+
+
+
