@@ -102,7 +102,11 @@ public class VentanaPrincipal extends JFrame {
 				String[] price = test.getPrice();
 				
 				for(int i = 0; i < nombre.length; i++) {
-					modelo.addRow(new Object[] {nombre[i], desc[i], Integer.parseInt(codigo[i]), Double.parseDouble(price[i])});
+					if(nombre[i].equals(null)) {
+						break;
+					}else {
+						modelo.addRow(new Object[] {nombre[i], desc[i], Integer.parseInt(codigo[i]), Double.parseDouble(price[i])});
+					}
 				}
 				
 			}
