@@ -5,7 +5,8 @@ public class Main {
 
 		ConectarUsuario login = new ConectarUsuario();
 		login.setVisible(true);
-
+		//Archivo test = new Archivo();
+		//test.buscarArticulos();
 		// VentanaPrincipal window = new VentanaPrincipal();
 		// window.setVisible(true);
 		// ConectarUsuario userconnection = new ConectarUsuario();

@@ -11,6 +11,11 @@ public class Archivo {
 	BufferedWriter bw = null;
 	BufferedReader bra = null;
 	BufferedWriter bwa = null;
+	int i = 0;
+	private String nombre[] = new String[999];
+	private String desc[] = new String[999];
+	private String code[] = new String[999];
+	private String price[] = new String[999];
 
 	// LEER USUARIO
 	public void leerFichero(String data1, String data2) {
@@ -123,7 +128,6 @@ public class Archivo {
 	}
 
 	//BUSCAR EMPLEADO
-
 	public void buscarEmpleado(String data1) {
 		try {
 			FileReader empleado = new FileReader("empleados.txt");
@@ -156,6 +160,43 @@ public class Archivo {
 		}
 	}
 
+	//BUSCAR ARTICULOS
+	public void buscarArticulos() {
+		try {
+			FileReader articles = new FileReader("articulos.txt");
+			br = new BufferedReader(articles);
+			String texto = br.readLine();
+			
+			
+			while (texto != null) {
+				String[] word = texto.split(" ");
+				code[i] = word[0];
+				nombre[i] = word[1];
+				desc[i] = word[2];
+				price[i] = word[3];
+				
+				texto = br.readLine();
+				i++;
+			}
+			
+			setNombre(nombre);
+
+		} catch (Exception e) {
+			System.out.println("Error: Fichero no encontrado");
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (br != null)
+					br.close();
+				if (bw != null)
+					bw.close();
+			} catch (Exception e) {
+				System.out.println("Error al cerrar el fichero");
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+	
 	public boolean isExiste() {
 		return existe;
 	}
@@ -179,5 +220,18 @@ public class Archivo {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+	
+	public String[] getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String[] nombre) {
+		this.nombre = nombre;
+	}
+
+
+	
+	
 
 }

@@ -20,6 +20,7 @@ public class VentanaPrincipal extends JFrame {
 	private JPanel contentPane;
 	createArticulo articulo;
 	private JTable table;
+	Archivo test = new Archivo();
 	
 
 	public VentanaPrincipal(String userType) {
@@ -93,7 +94,11 @@ public class VentanaPrincipal extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DefaultTableModel modelo = (DefaultTableModel)table.getModel();
-				modelo.addRow(new Object[] {"asd", "asd1", 15, 15.25});
+				
+				test.buscarArticulos();
+				String[] nombre = test.getNombre();
+				
+				modelo.addRow(new Object[] {nombre[1], "asd1", 15, 15.25});
 				
 			}
 		});
@@ -107,7 +112,6 @@ public class VentanaPrincipal extends JFrame {
 		btnAgregar.setVisible(false);
 		btnEditar.setVisible(false);
 		}
-		
 		
 		
 
