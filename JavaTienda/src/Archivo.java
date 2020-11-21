@@ -88,7 +88,7 @@ public class Archivo {
 
 			if (nombre.equals("") || apellido.equals("") || username.equals("") || password.equals("")) {
 				fichero.close();
-			} else{
+			} else {
 				for (String linea : lineas) {
 					fichero.write(linea + " ");
 				}
@@ -113,7 +113,7 @@ public class Archivo {
 
 			if (codigo.equals("") || nombre.equals("") || descripcion.equals("") || precio.equals("")) {
 				fichero.close();
-			} else if(isNumeric(codigo)){
+			} else {
 				for (String linea : lineas) {
 					fichero.write(linea + " ");
 				}
@@ -264,14 +264,8 @@ public class Archivo {
 		this.price = price;
 	}
 
-	//CLASE AUXILIAR PARA COMPARAR SI ES UN NUMERO
-	  public static boolean isNumeric(String cadena){
-	        try {
-	                Integer.parseInt(cadena);
-	                return true;
-	        } catch (NumberFormatException nfe){
-	                return false;
-	        }}
+	
+	
 	
 
 }

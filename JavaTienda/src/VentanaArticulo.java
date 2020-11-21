@@ -69,7 +69,7 @@ public class VentanaArticulo extends JFrame {
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblPrecio.setBounds(81, 165, 55, 31);
 		contentPane.add(lblPrecio);
-		
+
 		textPrecio = new JTextField();
 		textPrecio.setBounds(139, 171, 105, 20);
 		contentPane.add(textPrecio);
@@ -106,13 +106,7 @@ public class VentanaArticulo extends JFrame {
 					JOptionPane.showMessageDialog(null, "ERROR LLENE TODOS LOS DATOS", "ERROR",
 							JOptionPane.WARNING_MESSAGE);
 
-				} else if(!Archivo.isNumeric(textCodigo.getText())) {
-					
-					JOptionPane.showMessageDialog(null, "ERROR EL CODIGO Y EL PRECIO TIENE QUE SER UN DATO NUMERICO", "ERROR",
-							JOptionPane.WARNING_MESSAGE);
-				}
-				
-				else {
+				} else {
 					JOptionPane.showMessageDialog(null, "LOS DATOS SE HAN GUARDADO", "GUARDADO",
 							JOptionPane.INFORMATION_MESSAGE);
 				}
