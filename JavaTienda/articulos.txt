@@ -5,3 +5,4 @@
 40 trapo latita 11 55 
 39 cuchillo latita 10 55 
 38 vaso latita 9 55 
+1 Cargador carga 25 5 

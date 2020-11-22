@@ -32,7 +32,9 @@ public class VentanaPrincipal extends JFrame {
 	Archivo test = new Archivo();
 	ImageIcon carrito = new ImageIcon("carrito.png");
 	private JTextField textCantidad;
-	VentanaCarrito carro;
+	int i = 0;
+	String[] nombre = new String[100]; String[] cantidad = new String[100]; String[] precio = new String[100];
+
 	
 	
 
@@ -129,18 +131,6 @@ public class VentanaPrincipal extends JFrame {
 		btnEliminar.setBounds(223, 472, 88, 31);
 		contentPane.add(btnEliminar);
 		
-		JLabel lblCarrito = new JLabel("");
-		lblCarrito.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				carro.setVisible(true);
-			}
-		});
-		lblCarrito.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCarrito.setBounds(263, 17, 46, 45);
-		lblCarrito.setIcon(carrito);
-		contentPane.add(lblCarrito);
-		
 		textCantidad = new JTextField();
 		textCantidad.addKeyListener(new KeyAdapter() {
 			@Override
@@ -163,22 +153,36 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
-				int fila = table.getSelectedRow();
-				String nombre = (modelo.getValueAt(fila, 0)).toString();
-				String cantidad = textCantidad.getText();
 				
+				int fila = table.getSelectedRow();
 				if(Integer.parseInt(textCantidad.getText()) > 0) {
-					carro = new VentanaCarrito(nombre, cantidad, (modelo.getValueAt(fila, 4)));
+					nombre[i] = (modelo.getValueAt(fila, 0)).toString();
+					cantidad[i] = textCantidad.getText();
+					precio[i] = (modelo.getValueAt(fila, 4)).toString();
 				}else {
 					JOptionPane.showMessageDialog(null, "Rellene el campo o ingrese una cantidad mayor a 0.",
 							"Cantidad errónea", JOptionPane.WARNING_MESSAGE);
 				}
 				
+				i++;
 				textCantidad.setText("");
 			}
 		});
 		btnCantidad.setBounds(20, 514, 88, 31);
 		contentPane.add(btnCantidad);
+		
+		JLabel lblCarrito = new JLabel("");
+		lblCarrito.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				VentanaCarrito carro = new VentanaCarrito(nombre, cantidad, precio);
+				carro.setVisible(true);
+			}
+		});
+		lblCarrito.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCarrito.setBounds(263, 17, 46, 45);
+		lblCarrito.setIcon(carrito);
+		contentPane.add(lblCarrito);
 		
 		if (userType.equals("Cliente")) {
 		btnEliminar.setVisible(false);

@@ -20,7 +20,7 @@ public class VentanaCarrito extends JFrame {
 	private JTable table;
 
 
-	public VentanaCarrito(String nombre, String cantidad, Object precio) {
+	public VentanaCarrito(String[] nombre, String[] cantidad, String[] precio) {
 		setTitle("Carrito de compras");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(265, 340);
@@ -62,10 +62,19 @@ public class VentanaCarrito extends JFrame {
 		btnNewButton.setBounds(10, 256, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		String test = precio.toString();
-		double test1 = Double.parseDouble(test);
-		int cantidadParse = Integer.parseInt(cantidad);
-		modelo.addRow(new Object[] {nombre, cantidadParse, test1 * cantidadParse});
+		/////////////////////////////////////////////////////////////////
+		
+		for(int i = 0; i < nombre.length; i++) {
+			if(nombre[i].equals(null)){
+				break;
+			}else {
+				System.out.println(nombre[i]+" "+cantidad[i]+" "+precio[i]);
+			}
+		}
+		
+		//modelo.addRow(new Object[] {nombre, cantidadParse, test1 * cantidadParse});
+		
+		////////////////////////////////////////////////////////////////
 		
 		JButton btnNewButton_1 = new JButton("COMPRAR");
 		btnNewButton_1.setBounds(150, 256, 89, 23);
