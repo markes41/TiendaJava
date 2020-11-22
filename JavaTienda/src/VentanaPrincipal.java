@@ -36,6 +36,7 @@ public class VentanaPrincipal extends JFrame {
 	int cantTotal;
 	double resultFinal;
 	DefaultTableModel modeloCarrito;
+	DefaultTableModel modelo;
 
 	
 	
@@ -107,28 +108,12 @@ public class VentanaPrincipal extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		//PASAR DATOS DE ARTICULOS.TXT A LA TABLA ARTICULOS//
-		DefaultTableModel modelo = (DefaultTableModel)table.getModel();
-		test.buscarArticulos();
-		String[] nombre = test.getNombre();
-		String[] codigo = test.getCode();
-		String[] desc = test.getDesc();
-		String[] price = test.getPrice();
-		String[] cantidad = test.getCantidad();
-		
-		for(int i = 0; i < nombre.length; i++) {
-			if(nombre[i] == null) {
-				break;
-			}else {
-				modelo.addRow(new Object[] {nombre[i],Integer.parseInt(cantidad[i]) ,desc[i], Integer.parseInt(codigo[i]), Double.parseDouble(price[i])});
-			}
-		}
+		pasarDatosDeArticulos();
 		//////////////////////////////////////////////////////
 		
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(table.getSelectedRow());
-				System.out.println(table.getSelectedColumn());
 				//deleteAllRows();
 			}
 		});
@@ -156,23 +141,7 @@ public class VentanaPrincipal extends JFrame {
 		btnCantidad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				modeloCarrito = (DefaultTableModel)tableCarrito.getModel();
-				int fila = table.getSelectedRow();
-				if(Integer.parseInt(textCantidad.getText()) > 0) {
-					/////////////////////////////////////////////////////////////
-					String nameProduct = (modelo.getValueAt(fila, 0)).toString();
-					int cantProduct = Integer.parseInt(textCantidad.getText());
-					String priceProduct = (modelo.getValueAt(fila, 4)).toString();
-					
-					////////////////////////PASAR VALORES A TABLA CARRITO//////////////////////////
-					modeloCarrito.addRow(new Object[] {nameProduct, cantProduct, Double.parseDouble(priceProduct) * cantProduct});
-				}else {
-					JOptionPane.showMessageDialog(null, "Rellene el campo o ingrese una cantidad mayor a 0.",
-							"Cantidad errónea", JOptionPane.WARNING_MESSAGE);
-				}
-
-				textCantidad.setText("");
-				
+				agregarElementosToCarrito();
 			}
 			
 		});
@@ -209,7 +178,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnBorrar = new JButton("BORRAR ");
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				borrarFilaSeleccionada();
+				borrarFilaSeleccionadaCarrito();
 			}
 		});
 		btnBorrar.setBounds(319, 472, 123, 31);
@@ -218,7 +187,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnNewButton = new JButton("COMPRAR");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				confirmarCompra();
+				confirmarCompraCarrito();
 				resetTableCarrito();
 			}
 		});
@@ -235,7 +204,7 @@ public class VentanaPrincipal extends JFrame {
 
 	}
 	
-	public void confirmarCompra() {
+	public void confirmarCompraCarrito() {
 		for(int i = 0; i < tableCarrito.getRowCount(); i++) {
 			resultFinal += (double) tableCarrito.getValueAt(i, 2);
 		}
@@ -249,8 +218,46 @@ public class VentanaPrincipal extends JFrame {
 		modeloCarrito.setRowCount(0);
 	}
 	
-	public void borrarFilaSeleccionada() {
+	public void borrarFilaSeleccionadaCarrito() {
 		modeloCarrito.removeRow(tableCarrito.getSelectedRow());
+	}
+
+	public void agregarElementosToCarrito(){
+		modeloCarrito = (DefaultTableModel)tableCarrito.getModel();
+		int fila = table.getSelectedRow();
+		if(Integer.parseInt(textCantidad.getText()) > 0) {
+			/////////////////////////////////////////////////////////////
+			String nameProduct = (modelo.getValueAt(fila, 0)).toString();
+			int cantProduct = Integer.parseInt(textCantidad.getText());
+			String priceProduct = (modelo.getValueAt(fila, 4)).toString();
+			
+			////////////////////////PASAR VALORES A TABLA CARRITO//////////////////////////
+			modeloCarrito.addRow(new Object[] {nameProduct, cantProduct, Double.parseDouble(priceProduct) * cantProduct});
+		}else {
+			JOptionPane.showMessageDialog(null, "Rellene el campo o ingrese una cantidad mayor a 0.",
+					"Cantidad errónea", JOptionPane.WARNING_MESSAGE);
+		}
+
+		textCantidad.setText("");
+		
+	}
+
+	public void pasarDatosDeArticulos() {
+		modelo = (DefaultTableModel)table.getModel();
+		test.buscarArticulos();
+		String[] nombre = test.getNombre();
+		String[] codigo = test.getCode();
+		String[] desc = test.getDesc();
+		String[] price = test.getPrice();
+		String[] cantidad = test.getCantidad();
+		
+		for(int i = 0; i < nombre.length; i++) {
+			if(nombre[i] == null) {
+				break;
+			}else {
+				modelo.addRow(new Object[] {nombre[i],Integer.parseInt(cantidad[i]) ,desc[i], Integer.parseInt(codigo[i]), Double.parseDouble(price[i])});
+			}
+		}
 	}
 }
 
