@@ -32,8 +32,10 @@ public class VentanaPrincipal extends JFrame {
 	Archivo test = new Archivo();
 	ImageIcon carrito = new ImageIcon("carrito.png");
 	private JTextField textCantidad;
-	int i = 0;
-	String[] nombre = new String[100]; String[] cantidad = new String[100]; String[] precio = new String[100];
+	private JTable tableCarrito;
+	int cantTotal;
+	double resultFinal;
+	DefaultTableModel modeloCarrito;
 
 	
 	
@@ -42,7 +44,7 @@ public class VentanaPrincipal extends JFrame {
 		setResizable(false);
 		setTitle("Stock de Articulos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(363, 601);
+		setSize(600, 577);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
@@ -103,6 +105,8 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		scrollPane.setViewportView(table);
+		
+		//PASAR DATOS DE ARTICULOS.TXT A LA TABLA ARTICULOS//
 		DefaultTableModel modelo = (DefaultTableModel)table.getModel();
 		test.buscarArticulos();
 		String[] nombre = test.getNombre();
@@ -118,7 +122,7 @@ public class VentanaPrincipal extends JFrame {
 				modelo.addRow(new Object[] {nombre[i],Integer.parseInt(cantidad[i]) ,desc[i], Integer.parseInt(codigo[i]), Double.parseDouble(price[i])});
 			}
 		}
-		
+		//////////////////////////////////////////////////////
 		
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {
@@ -149,40 +153,77 @@ public class VentanaPrincipal extends JFrame {
 		textCantidad.setColumns(10);
 		
 		JButton btnCantidad = new JButton("AGREGAR");
-		btnCantidad.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnCantidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				
-				
+				modeloCarrito = (DefaultTableModel)tableCarrito.getModel();
 				int fila = table.getSelectedRow();
 				if(Integer.parseInt(textCantidad.getText()) > 0) {
-					nombre[i] = (modelo.getValueAt(fila, 0)).toString();
-					cantidad[i] = textCantidad.getText();
-					precio[i] = (modelo.getValueAt(fila, 4)).toString();
+					/////////////////////////////////////////////////////////////
+					String nameProduct = (modelo.getValueAt(fila, 0)).toString();
+					int cantProduct = Integer.parseInt(textCantidad.getText());
+					String priceProduct = (modelo.getValueAt(fila, 4)).toString();
+					
+					////////////////////////PASAR VALORES A TABLA CARRITO//////////////////////////
+					modeloCarrito.addRow(new Object[] {nameProduct, cantProduct, Double.parseDouble(priceProduct) * cantProduct});
 				}else {
 					JOptionPane.showMessageDialog(null, "Rellene el campo o ingrese una cantidad mayor a 0.",
 							"Cantidad errónea", JOptionPane.WARNING_MESSAGE);
 				}
-				
-				i++;
+
 				textCantidad.setText("");
+				
 			}
+			
 		});
 		btnCantidad.setBounds(20, 514, 88, 31);
 		contentPane.add(btnCantidad);
 		
-		JLabel lblCarrito = new JLabel("");
-		lblCarrito.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				VentanaCarrito carro = new VentanaCarrito(nombre, cantidad, precio);
-				carro.setVisible(true);
+		JLabel lblNewLabel_1 = new JLabel("Carrito de compras");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(385, 17, 177, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(319, 73, 265, 388);
+		contentPane.add(scrollPane_1);
+		
+		tableCarrito = new JTable();
+		tableCarrito.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Nombre", "Cantidad", "Total"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, Integer.class, Double.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
 			}
 		});
-		lblCarrito.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCarrito.setBounds(263, 17, 46, 45);
-		lblCarrito.setIcon(carrito);
-		contentPane.add(lblCarrito);
+		scrollPane_1.setViewportView(tableCarrito);
+		
+		JButton btnBorrar = new JButton("BORRAR ");
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				borrarFilaSeleccionada();
+			}
+		});
+		btnBorrar.setBounds(319, 472, 123, 31);
+		contentPane.add(btnBorrar);
+		
+		JButton btnNewButton = new JButton("COMPRAR");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				confirmarCompra();
+				resetTableCarrito();
+			}
+		});
+		btnNewButton.setBounds(462, 472, 123, 31);
+		contentPane.add(btnNewButton);
 		
 		if (userType.equals("Cliente")) {
 		btnEliminar.setVisible(false);
@@ -192,6 +233,24 @@ public class VentanaPrincipal extends JFrame {
 		
 		
 
+	}
+	
+	public void confirmarCompra() {
+		for(int i = 0; i < tableCarrito.getRowCount(); i++) {
+			resultFinal += (double) tableCarrito.getValueAt(i, 2);
+		}
+		
+		JOptionPane.showMessageDialog(null, "¡Has realizado una compra por $"+resultFinal+"!",
+				"Compra exitosa.", JOptionPane.WARNING_MESSAGE);
+		resultFinal = 0;
+	}
+	
+	public void resetTableCarrito() {
+		modeloCarrito.setRowCount(0);
+	}
+	
+	public void borrarFilaSeleccionada() {
+		modeloCarrito.removeRow(tableCarrito.getSelectedRow());
 	}
 }
 
