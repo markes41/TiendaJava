@@ -111,24 +111,17 @@ public class VentanaPrincipal extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Nombre", "Descripci\u00F3n", "Cantidad", "Codigo", "Precio"
+				"Nombre", "Cantidad", "Codigo", "Precio"
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				String.class, String.class, Integer.class, Integer.class, Integer.class
+				String.class, Integer.class, Integer.class, Integer.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
-			boolean[] columnEditables = new boolean[] {
-				false, false, false, false, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
 		});
-		table.getColumnModel().getColumn(0).setResizable(false);
-		table.getColumnModel().getColumn(4).setResizable(false);
+		table.getColumnModel().getColumn(3).setResizable(false);
 		scrollPane.setViewportView(table);
 		
 		//PASAR DATOS DE ARTICULOS.TXT A LA TABLA ARTICULOS//
@@ -292,7 +285,7 @@ public class VentanaPrincipal extends JFrame {
 			if(nombre[i] == null) {
 				break;
 			}else {
-				modelo.addRow(new Object[] {nombre[i],Integer.parseInt(cantidad[i]) ,desc[i], Integer.parseInt(codigo[i]), Integer.parseInt(price[i])});
+				modelo.addRow(new Object[] {nombre[i],Integer.parseInt(cantidad[i]) , Integer.parseInt(codigo[i]), Integer.parseInt(price[i])});
 			}
 		}
 	}

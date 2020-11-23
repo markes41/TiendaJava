@@ -17,7 +17,7 @@ public class browseRepeatUser {
 
 			while (texto != null) {
 				String[] word = texto.split(" ");
-				if (word[2].equals(data1)) {
+				if (word[2].equalsIgnoreCase(data1)) {
 					existe = true;
 					setExiste(existe);
 				}

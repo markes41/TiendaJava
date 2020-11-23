@@ -28,7 +28,7 @@ public class Archivo {
 
 			while (texto != null) {
 				String[] word = texto.split(" ");
-				if (word[2].equals(data1) && word[3].equals(data2)) {
+				if (word[2].equalsIgnoreCase(data1) && word[3].equals(data2)) {
 					existe = true;
 					setExiste(existe);
 				}

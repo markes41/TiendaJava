@@ -1,8 +1,8 @@
-44 lata latita 15 55 
-43 teclado latita 14 55 
-42 mouse latita 13 55 
-41 celular latita 12 55 
-40 trapo latita 11 55 
-39 cuchillo latita 10 55 
-38 vaso latita 9 55 
+44 Lata latita 15 55 
+43 Teclado latita 14 55 
+42 Mouse latita 13 55 
+41 Celular latita 12 55 
+40 Trapo latita 11 55 
+39 Cuchillo latita 10 55 
+38 Vaso latita 9 55 
 1 Cargador carga 25 5 
