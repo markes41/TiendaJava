@@ -259,7 +259,7 @@ public class VentanaPrincipal extends JFrame {
 			/////////////////////////////////////////////////////////////
 			String nameProduct = (modelo.getValueAt(fila, 0)).toString();
 			int cantProduct = Integer.parseInt(textCantidad.getText());
-			String priceProduct = (modelo.getValueAt(fila, 4)).toString();
+			String priceProduct = (modelo.getValueAt(fila, 3)).toString();
 			
 			////////////////////////PASAR VALORES A TABLA CARRITO//////////////////////////
 			modeloCarrito.addRow(new Object[] {nameProduct, cantProduct, Double.parseDouble(priceProduct) * cantProduct});
