@@ -8,7 +8,6 @@ public class Archivo {
 	private String username;
 	int i = 0;
 	private String nombre[] = new String[999];
-	private String desc[] = new String[999];
 	private String code[] = new String[999];
 	private String price[] = new String[999];
 	private String cantidad[] = new String[999];
@@ -104,16 +103,16 @@ public class Archivo {
 	}
 
 	// ESCRIBIR ARCHIVO
-	public void escribirFicheroA(String codigo, String nombre, String descripcion, String precio, String cantidad) {
+	public void escribirFicheroA(String codigo, String nombre, String precio, String cantidad) {
 
-		String[] lineas = { codigo, nombre, descripcion, precio, cantidad};
+		String[] lineas = { codigo, nombre,  precio, cantidad};
 
 		FileWriter fichero = null;
 		try {
 			fichero = new FileWriter("articulos.txt", true);
 			bwa = new BufferedWriter(fichero);
 
-			if (codigo.equals("") || nombre.equals("") || descripcion.equals("") || 
+			if (codigo.equals("") || nombre.equals("") ||  
 					precio.equals("") || cantidad.equals("")) {
 				fichero.close();
 			} else if(isNumeric(codigo)){
@@ -175,16 +174,14 @@ public class Archivo {
 				String[] word = texto.split(" ");
 				code[i] = word[0];
 				nombre[i] = word[1];
-				desc[i] = word[2];
-				price[i] = word[3];
-				cantidad[i] = word[4];
+				price[i] = word[2];
+				cantidad[i] = word[3];
 				
 				texto = br.readLine();
 				i++;
 			}
 			
 			setNombre(nombre);
-			setDesc(desc);
 			setCode(code);
 			setPrice(price);
 			setCantidad(cantidad);
@@ -237,13 +234,6 @@ public class Archivo {
 		this.nombre = nombre;
 	}
 
-	public String[] getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String[] desc) {
-		this.desc = desc;
-	}
 
 	public String[] getCode() {
 		return code;

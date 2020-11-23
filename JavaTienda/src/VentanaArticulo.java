@@ -111,7 +111,7 @@ public class VentanaArticulo extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
-				articulo = new createArticulo(textCodigo.getText(), textNombre.getText(), textDescripcion.getText(),
+				articulo = new createArticulo(textCodigo.getText(), textNombre.getText(),
 						textPrecio.getText(), txtCantidad.getText());
 
 				if (textCodigo.getText() == null || textNombre.getText() == null || textDescripcion.getText() == null

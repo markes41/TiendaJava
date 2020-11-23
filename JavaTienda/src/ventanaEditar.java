@@ -20,22 +20,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class VentanaEditar extends JFrame {
+public class ventanaEditar extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCode;
 	private JTextField txtName;
-	private JTextField txtDesc;
 	private JTextField txtCantidad;
 	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
 	private JLabel lblNewLabel_4;
 	private JTextField txtPrice;
 
-	public VentanaEditar(String data) {
+	public ventanaEditar(String data) {
 		setTitle("Editar art\u00EDculo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(249, 309);
+		setSize(249, 248);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -70,11 +68,6 @@ public class VentanaEditar extends JFrame {
 		contentPane.add(txtName);
 		txtName.setColumns(10);
 		
-		txtDesc = new JTextField();
-		txtDesc.setBounds(88, 109, 118, 20);
-		contentPane.add(txtDesc);
-		txtDesc.setColumns(10);
-		
 		txtCantidad = new JTextField();
 		txtCantidad.addKeyListener(new KeyAdapter() {
 			@Override
@@ -88,7 +81,7 @@ public class VentanaEditar extends JFrame {
 			}
 			}
 		});
-		txtCantidad.setBounds(88, 140, 118, 20);
+		txtCantidad.setBounds(88, 109, 118, 20);
 		contentPane.add(txtCantidad);
 		txtCantidad.setColumns(10);
 		
@@ -104,20 +97,14 @@ public class VentanaEditar extends JFrame {
 		lblNewLabel_2.setBounds(10, 81, 68, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		lblNewLabel_3 = new JLabel("Descripci\u00F3n");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_3.setBounds(10, 112, 68, 14);
-		contentPane.add(lblNewLabel_3);
-		
 		lblNewLabel_4 = new JLabel("Cantidad");
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_4.setBounds(10, 143, 68, 14);
+		lblNewLabel_4.setBounds(10, 112, 68, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		JButton btnVolver = new JButton("VOLVER");
-		btnVolver.setBounds(20, 227, 89, 32);
+		btnVolver.setBounds(20, 171, 89, 32);
 		contentPane.add(btnVolver);
 		
 		JButton btnGuardar = new JButton("GUARDAR");
@@ -125,13 +112,12 @@ public class VentanaEditar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(txtCode.equals("") || txtName.equals("") || txtCantidad.equals("") || 
-						txtPrice.equals("") || txtDesc.equals("")) {
+						txtPrice.equals("")) {
 					JOptionPane.showMessageDialog(null, "Completá todos los casilleros antes de darle a 'GUARDAR'.",
 							"Datos sin rellenar", JOptionPane.WARNING_MESSAGE);
 				}else {
 					String replaceWith = txtCode.getText()+" "+
 											txtName.getText()+" "+
-											txtDesc.getText()+" "+	
 											txtPrice.getText()+" "+	
 											txtCantidad.getText()+" ";
 					replaceSelected(data, replaceWith);
@@ -140,13 +126,13 @@ public class VentanaEditar extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(134, 227, 89, 32);
+		btnGuardar.setBounds(134, 171, 89, 32);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("Precio");
 		lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_4_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_4_1.setBounds(10, 174, 68, 14);
+		lblNewLabel_4_1.setBounds(10, 143, 68, 14);
 		contentPane.add(lblNewLabel_4_1);
 		
 		txtPrice = new JTextField();
@@ -163,7 +149,7 @@ public class VentanaEditar extends JFrame {
 			}
 		});
 		txtPrice.setColumns(10);
-		txtPrice.setBounds(88, 171, 118, 20);
+		txtPrice.setBounds(88, 140, 118, 20);
 		contentPane.add(txtPrice);
 	}
 	

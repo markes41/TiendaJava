@@ -43,7 +43,7 @@ public class VentanaPrincipal extends JFrame {
 	double resultFinal;
 	DefaultTableModel modeloCarrito;
 	DefaultTableModel modelo;
-	VentanaEditar edit;
+	ventanaEditar edit;
 	
 	
 
@@ -277,7 +277,6 @@ public class VentanaPrincipal extends JFrame {
 		test.buscarArticulos();
 		String[] nombre = test.getNombre();
 		String[] codigo = test.getCode();
-		String[] desc = test.getDesc();
 		String[] price = test.getPrice();
 		String[] cantidad = test.getCantidad();
 		
@@ -316,9 +315,8 @@ public class VentanaPrincipal extends JFrame {
 			String datos = modelo.getValueAt(fila, 3).toString()+" "+
 							modelo.getValueAt(fila, 0).toString() +" "+ 
 							modelo.getValueAt(fila, 2).toString()+" "+ 
-							modelo.getValueAt(fila, 4).toString()+" "+
 							modelo.getValueAt(fila, 1).toString()+" "; 
-			edit = new VentanaEditar(datos);
+			edit = new ventanaEditar(datos);
 			edit.setVisible(true);
 			
 		}
