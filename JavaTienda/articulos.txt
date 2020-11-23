@@ -6,4 +6,4 @@
 39 Cuchillo 10 55 
 38 Vaso 9 55 
 1 Cargador 25 5 
-55 asdas 3 28 
+55 asdas 3 20 

@@ -44,6 +44,7 @@ public class VentanaPrincipal extends JFrame {
 	DefaultTableModel modeloCarrito;
 	DefaultTableModel modelo;
 	ventanaEditar edit;
+	int cantProduct; int fila;
 	
 	
 
@@ -205,6 +206,7 @@ public class VentanaPrincipal extends JFrame {
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				confirmarCompraCarrito();
+				restarCantidad(cantProduct, (int) modelo.getValueAt(fila, 1));
 				
 			}
 		});
@@ -254,14 +256,14 @@ public class VentanaPrincipal extends JFrame {
 
 	public void agregarElementosToCarrito(){
 		modeloCarrito = (DefaultTableModel)tableCarrito.getModel();
-		int fila = table.getSelectedRow();
+		fila = table.getSelectedRow();
 		if(Integer.parseInt(textCantidad.getText()) > 0) {
 			/////////////////////////////////////////////////////////////
 			String nameProduct = (modelo.getValueAt(fila, 0)).toString();
-			int cantProduct = Integer.parseInt(textCantidad.getText());
+			cantProduct = Integer.parseInt(textCantidad.getText());
 			String priceProduct = (modelo.getValueAt(fila, 3)).toString();
 			
-			restarCantidad(cantProduct, (int) modelo.getValueAt(fila, 1));
+			
 			
 			////////////////////////PASAR VALORES A TABLA CARRITO//////////////////////////
 			modeloCarrito.addRow(new Object[] {nameProduct, cantProduct, Double.parseDouble(priceProduct) * cantProduct});
