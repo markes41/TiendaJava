@@ -19,6 +19,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.OutputStreamWriter;
+
 import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -37,6 +43,8 @@ public class VentanaPrincipal extends JFrame {
 	double resultFinal;
 	DefaultTableModel modeloCarrito;
 	DefaultTableModel modelo;
+	ventanaEditar edit;
+	
 
 	
 	
@@ -56,7 +64,7 @@ public class VentanaPrincipal extends JFrame {
 		JLabel lblListaDeArticulos = new JLabel("Lista de articulos");
 		lblListaDeArticulos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblListaDeArticulos.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblListaDeArticulos.setBounds(99, 11, 133, 23);
+		lblListaDeArticulos.setBounds(20, 11, 289, 23);
 		contentPane.add(lblListaDeArticulos);
 
 		JButton btnAgregar = new JButton("NUEVO");
@@ -74,6 +82,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnEditar = new JButton("EDITAR");
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				obtenerNombreObjetoModificar();
 			}
 		});
 		btnEditar.setBounds(120, 472, 93, 31);
@@ -81,7 +90,7 @@ public class VentanaPrincipal extends JFrame {
 
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(109, 34, 123, 14);
+		lblNewLabel.setBounds(20, 34, 289, 14);
 		lblNewLabel.setText(userType);
 		contentPane.add(lblNewLabel);
 		
@@ -114,7 +123,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//deleteAllRows();
+				obtenerNombreObjetoEliminado();
 			}
 		});
 		btnEliminar.setBounds(223, 472, 88, 31);
@@ -151,7 +160,7 @@ public class VentanaPrincipal extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Carrito de compras");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(385, 17, 177, 14);
+		lblNewLabel_1.setBounds(319, 15, 265, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -184,20 +193,22 @@ public class VentanaPrincipal extends JFrame {
 		btnBorrar.setBounds(319, 472, 123, 31);
 		contentPane.add(btnBorrar);
 		
-		JButton btnNewButton = new JButton("COMPRAR");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnComprar = new JButton("COMPRAR");
+		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				confirmarCompraCarrito();
-				resetTableCarrito();
+				
 			}
 		});
-		btnNewButton.setBounds(462, 472, 123, 31);
-		contentPane.add(btnNewButton);
+		btnComprar.setBounds(462, 472, 123, 31);
+		contentPane.add(btnComprar);
 		
 		if (userType.equals("Cliente")) {
 		btnEliminar.setVisible(false);
 		btnAgregar.setVisible(false);
 		btnEditar.setVisible(false);
+		btnCantidad.setBounds(20, 472, 88, 31);
+		textCantidad.setBounds(120, 476, 189, 23);		
 		}
 		
 		
@@ -209,8 +220,14 @@ public class VentanaPrincipal extends JFrame {
 			resultFinal += (double) tableCarrito.getValueAt(i, 2);
 		}
 		
-		JOptionPane.showMessageDialog(null, "¡Has realizado una compra por $"+resultFinal+"!",
-				"Compra exitosa.", JOptionPane.WARNING_MESSAGE);
+		if(tableCarrito.getRowCount() == 0) {
+			JOptionPane.showMessageDialog(null, "Antes de comprar, tenés que agregar algo al carrito.",
+					"Compra no realizada.", JOptionPane.WARNING_MESSAGE);
+		}else {
+			JOptionPane.showMessageDialog(null, "¡Has realizado una compra por $"+resultFinal+"!",
+					"Compra exitosa.", JOptionPane.WARNING_MESSAGE);
+			resetTableCarrito();
+		}
 		resultFinal = 0;
 	}
 	
@@ -219,7 +236,12 @@ public class VentanaPrincipal extends JFrame {
 	}
 	
 	public void borrarFilaSeleccionadaCarrito() {
-		modeloCarrito.removeRow(tableCarrito.getSelectedRow());
+		if(tableCarrito.getSelectedRow() == -1) {
+			JOptionPane.showMessageDialog(null, "Tenés que seleccionar una fila, en la lista del carrito, la cual borrar.",
+					"No hay fila seleccionada", JOptionPane.WARNING_MESSAGE);
+		}else {
+			modeloCarrito.removeRow(tableCarrito.getSelectedRow());
+		}
 	}
 
 	public void agregarElementosToCarrito(){
@@ -259,6 +281,33 @@ public class VentanaPrincipal extends JFrame {
 			}
 		}
 	}
+
+	public void obtenerNombreObjetoEliminado() {
+		if(table.getSelectedRow() == -1) {
+			JOptionPane.showMessageDialog(null, "Tenés que seleccionar una fila, en la lista de artículos, la cual borrar.",
+					"No hay fila seleccionada", JOptionPane.WARNING_MESSAGE);
+		}else {
+			String nombreBorrado = modelo.getValueAt(table.getSelectedRow(), 0).toString();
+			modelo.removeRow(table.getSelectedRow());
+			borrarElementoSeleccionado(nombreBorrado);
+		}
+	}
+	
+	public void borrarElementoSeleccionado(String lineaToBorrar) {
+		
+	}
+
+	public void obtenerNombreObjetoModificar() {
+		int fila = table.getSelectedRow();
+		
+		if(table.getSelectedRow() == -1) {
+			JOptionPane.showMessageDialog(null, "Tenés que seleccionar una fila, en la lista del carrito, la cual editar.",
+					"No hay fila seleccionada", JOptionPane.WARNING_MESSAGE);
+		}else {
+			
+		}
+	}
+
 }
 
 
