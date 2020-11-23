@@ -261,6 +261,8 @@ public class VentanaPrincipal extends JFrame {
 			int cantProduct = Integer.parseInt(textCantidad.getText());
 			String priceProduct = (modelo.getValueAt(fila, 3)).toString();
 			
+			restarCantidad(cantProduct, (int) modelo.getValueAt(fila, 1));
+			
 			////////////////////////PASAR VALORES A TABLA CARRITO//////////////////////////
 			modeloCarrito.addRow(new Object[] {nameProduct, cantProduct, Double.parseDouble(priceProduct) * cantProduct});
 		}else {
@@ -320,6 +322,34 @@ public class VentanaPrincipal extends JFrame {
 			edit.setVisible(true);
 			
 		}
+	}
+	
+	public void restarCantidad(int cantidadElegida, int cantidadEnTabla) {
+		 try {
+	           // input the file content to the StringBuffer "input"
+	           BufferedReader file = new BufferedReader(new FileReader("articulos.txt"));
+	           String line;
+	           StringBuffer inputBuffer = new StringBuffer();
+
+	           while ((line = file.readLine()) != null) {
+	               inputBuffer.append(line);
+	               inputBuffer.append('\n');
+	           }
+	           String inputStr = inputBuffer.toString();
+
+	           file.close();
+	           int cantidadToPasar = cantidadEnTabla - cantidadElegida;
+
+	           
+	           inputStr = inputStr.replace(String.valueOf(cantidadEnTabla), String.valueOf(cantidadToPasar)); 
+
+	           FileOutputStream fileOut = new FileOutputStream("articulos.txt");
+	           fileOut.write(inputStr.getBytes());
+	           fileOut.close();
+
+	       } catch (Exception e) {
+	           System.out.println("No se ha podido leer el fichero correctamente.");
+	       }
 	}
 
 }

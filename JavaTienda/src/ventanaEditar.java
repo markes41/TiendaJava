@@ -155,7 +155,6 @@ public class ventanaEditar extends JFrame {
 	
 	public static void replaceSelected(String oldLine, String replaceWith) {
 	       try {
-	           // input the file content to the StringBuffer "input"
 	           BufferedReader file = new BufferedReader(new FileReader("articulos.txt"));
 	           String line;
 	           StringBuffer inputBuffer = new StringBuffer();
