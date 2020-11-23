@@ -1,79 +1,197 @@
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import java.awt.Font;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-public class ventanaEditar {
+public class VentanaEditar extends JFrame {
 
-	private JFrame frmEditarArticulo;
-	private JTextField textCodigo;
-	private JTextField textNombre;
-	private JTextField textDesc;
-	private JTextField textPrice;
+	private JPanel contentPane;
+	private JTextField txtCode;
+	private JTextField txtName;
+	private JTextField txtDesc;
+	private JTextField txtCantidad;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	private JLabel lblNewLabel_4;
+	private JTextField txtPrice;
 
-
-	public ventanaEditar() {
-		frmEditarArticulo = new JFrame();
-		frmEditarArticulo.setTitle("Editar articulo");
-		frmEditarArticulo.setBounds(100, 100, 335, 269);
-		frmEditarArticulo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmEditarArticulo.getContentPane().setLayout(null);
-
-		JLabel lblNewLabel = new JLabel("Codigo");
-		lblNewLabel.setToolTipText("");
-		lblNewLabel.setBounds(83, 50, 33, 16);
-		frmEditarArticulo.getContentPane().add(lblNewLabel);
-
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(54, 183, 92, 33);
-		frmEditarArticulo.getContentPane().add(btnCancelar);
-
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(181, 183, 86, 33);
-		frmEditarArticulo.getContentPane().add(btnGuardar);
-
-		textCodigo = new JTextField();
-		textCodigo.setColumns(10);
-		textCodigo.setAlignmentY(0.0f);
-		textCodigo.setBounds(126, 49, 92, 18);
-		frmEditarArticulo.getContentPane().add(textCodigo);
-
-		JLabel lblNewLabel_1 = new JLabel("Nombre");
-		lblNewLabel_1.setBounds(79, 81, 37, 14);
-		frmEditarArticulo.getContentPane().add(lblNewLabel_1);
-
-		textNombre = new JTextField();
-		textNombre.setColumns(10);
-		textNombre.setBounds(126, 78, 92, 20);
-		frmEditarArticulo.getContentPane().add(textNombre);
-
-		JLabel lblNewLabel_2 = new JLabel("Descripcion");
-		lblNewLabel_2.setBounds(62, 112, 54, 14);
-		frmEditarArticulo.getContentPane().add(lblNewLabel_2);
-
-		textDesc = new JTextField();
-		textDesc.setColumns(10);
-		textDesc.setBounds(126, 109, 92, 20);
-		frmEditarArticulo.getContentPane().add(textDesc);
-
-		JLabel lblNewLabel_3 = new JLabel("Precio");
-		lblNewLabel_3.setBounds(87, 143, 29, 14);
-		frmEditarArticulo.getContentPane().add(lblNewLabel_3);
-
-		textPrice = new JTextField();
-		textPrice.setColumns(10);
-		textPrice.setBounds(126, 140, 92, 20);
-		frmEditarArticulo.getContentPane().add(textPrice);
-
-		JLabel lblNewLabel_4 = new JLabel("Editar un articulo");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_4.setBounds(10, 11, 299, 14);
-		frmEditarArticulo.getContentPane().add(lblNewLabel_4);
+	public VentanaEditar(String data) {
+		setTitle("Editar art\u00EDculo");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(249, 309);
+		setLocationRelativeTo(null);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("EDITAR ART\u00CDCULO");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(10, 11, 213, 27);
+		contentPane.add(lblNewLabel);
+		
+		txtCode = new JTextField();
+		txtCode.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char validar=evt.getKeyChar();
+				
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					evt.consume();
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+				}
+			}
+		});
+		txtCode.setBounds(88, 47, 118, 20);
+		contentPane.add(txtCode);
+		txtCode.setColumns(10);
+		
+		txtName = new JTextField();
+		txtName.setBounds(88, 78, 118, 20);
+		contentPane.add(txtName);
+		txtName.setColumns(10);
+		
+		txtDesc = new JTextField();
+		txtDesc.setBounds(88, 109, 118, 20);
+		contentPane.add(txtDesc);
+		txtDesc.setColumns(10);
+		
+		txtCantidad = new JTextField();
+		txtCantidad.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char validar=evt.getKeyChar();
+				
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					evt.consume();
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+			}
+			}
+		});
+		txtCantidad.setBounds(88, 140, 118, 20);
+		contentPane.add(txtCantidad);
+		txtCantidad.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1.setBounds(20, 49, 60, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("Nombre");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_2.setBounds(10, 81, 68, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		lblNewLabel_3 = new JLabel("Descripci\u00F3n");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_3.setBounds(10, 112, 68, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		lblNewLabel_4 = new JLabel("Cantidad");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_4.setBounds(10, 143, 68, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.setBounds(20, 227, 89, 32);
+		contentPane.add(btnVolver);
+		
+		JButton btnGuardar = new JButton("GUARDAR");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtCode.equals("") || txtName.equals("") || txtCantidad.equals("") || 
+						txtPrice.equals("") || txtDesc.equals("")) {
+					JOptionPane.showMessageDialog(null, "Completá todos los casilleros antes de darle a 'GUARDAR'.",
+							"Datos sin rellenar", JOptionPane.WARNING_MESSAGE);
+				}else {
+					String replaceWith = txtCode.getText()+" "+
+											txtName.getText()+" "+
+											txtDesc.getText()+" "+	
+											txtPrice.getText()+" "+	
+											txtCantidad.getText()+" ";
+					replaceSelected(data, replaceWith);
+					setVisible(false);
+				}
+				
+			}
+		});
+		btnGuardar.setBounds(134, 227, 89, 32);
+		contentPane.add(btnGuardar);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("Precio");
+		lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_4_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_4_1.setBounds(10, 174, 68, 14);
+		contentPane.add(lblNewLabel_4_1);
+		
+		txtPrice = new JTextField();
+		txtPrice.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char validar=evt.getKeyChar();
+				
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					evt.consume();
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+			}
+			}
+		});
+		txtPrice.setColumns(10);
+		txtPrice.setBounds(88, 171, 118, 20);
+		contentPane.add(txtPrice);
 	}
+	
+	public static void replaceSelected(String oldLine, String replaceWith) {
+	       try {
+	           // input the file content to the StringBuffer "input"
+	           BufferedReader file = new BufferedReader(new FileReader("articulos.txt"));
+	           String line;
+	           StringBuffer inputBuffer = new StringBuffer();
+
+	           while ((line = file.readLine()) != null) {
+	               inputBuffer.append(line);
+	               inputBuffer.append('\n');
+	           }
+	           String inputStr = inputBuffer.toString();
+
+	           file.close();
+
+	           inputStr = inputStr.replace(oldLine, replaceWith); 
+
+	           FileOutputStream fileOut = new FileOutputStream("articulos.txt");
+	           fileOut.write(inputStr.getBytes());
+	           fileOut.close();
+
+	       } catch (Exception e) {
+	           System.out.println("No se ha podido leer el fichero correctamente.");
+	       }
+
+}
 }
 

@@ -113,7 +113,8 @@ public class Archivo {
 			fichero = new FileWriter("articulos.txt", true);
 			bwa = new BufferedWriter(fichero);
 
-			if (codigo.equals("") || nombre.equals("") || descripcion.equals("") || precio.equals("") || cantidad.equals("")) {
+			if (codigo.equals("") || nombre.equals("") || descripcion.equals("") || 
+					precio.equals("") || cantidad.equals("")) {
 				fichero.close();
 			} else if(isNumeric(codigo)){
 				for (String linea : lineas) {

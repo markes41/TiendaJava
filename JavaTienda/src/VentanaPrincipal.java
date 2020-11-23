@@ -43,7 +43,8 @@ public class VentanaPrincipal extends JFrame {
 	double resultFinal;
 	DefaultTableModel modeloCarrito;
 	DefaultTableModel modelo;
-	ventanaEditar edit;
+	VentanaEditar edit;
+	
 	
 
 	
@@ -85,6 +86,12 @@ public class VentanaPrincipal extends JFrame {
 				obtenerNombreObjetoModificar();
 			}
 		});
+		btnEditar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+ 
+			}
+		});
 		btnEditar.setBounds(120, 472, 93, 31);
 		contentPane.add(btnEditar);
 
@@ -104,16 +111,24 @@ public class VentanaPrincipal extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Nombre", "Cantidad", "Descripci\u00F3n", "Codigo", "Precio"
+				"Nombre", "Descripci\u00F3n", "Cantidad", "Codigo", "Precio"
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				Object.class, Integer.class, Object.class, Object.class, Object.class
+				String.class, String.class, Integer.class, Integer.class, Integer.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
 		});
+		table.getColumnModel().getColumn(0).setResizable(false);
+		table.getColumnModel().getColumn(4).setResizable(false);
 		scrollPane.setViewportView(table);
 		
 		//PASAR DATOS DE ARTICULOS.TXT A LA TABLA ARTICULOS//
@@ -277,7 +292,7 @@ public class VentanaPrincipal extends JFrame {
 			if(nombre[i] == null) {
 				break;
 			}else {
-				modelo.addRow(new Object[] {nombre[i],Integer.parseInt(cantidad[i]) ,desc[i], Integer.parseInt(codigo[i]), Double.parseDouble(price[i])});
+				modelo.addRow(new Object[] {nombre[i],Integer.parseInt(cantidad[i]) ,desc[i], Integer.parseInt(codigo[i]), Integer.parseInt(price[i])});
 			}
 		}
 	}
@@ -299,11 +314,19 @@ public class VentanaPrincipal extends JFrame {
 
 	public void obtenerNombreObjetoModificar() {
 		int fila = table.getSelectedRow();
+		modeloCarrito = (DefaultTableModel)tableCarrito.getModel();
 		
 		if(table.getSelectedRow() == -1) {
 			JOptionPane.showMessageDialog(null, "Tenés que seleccionar una fila, en la lista del carrito, la cual editar.",
 					"No hay fila seleccionada", JOptionPane.WARNING_MESSAGE);
 		}else {
+			String datos = modelo.getValueAt(fila, 3).toString()+" "+
+							modelo.getValueAt(fila, 0).toString() +" "+ 
+							modelo.getValueAt(fila, 2).toString()+" "+ 
+							modelo.getValueAt(fila, 4).toString()+" "+
+							modelo.getValueAt(fila, 1).toString()+" "; 
+			edit = new VentanaEditar(datos);
+			edit.setVisible(true);
 			
 		}
 	}
