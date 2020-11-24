@@ -294,14 +294,19 @@ public class VentanaPrincipal extends JFrame {
 		for(int i = 0; i < nombre.length; i++) {
 			if(nombre[i] == null) {
 				break;
-			}else {
+			}else{
 				modelo.addRow(new Object[] {nombre[i],Integer.parseInt(cantidad[i]) , Integer.parseInt(codigo[i]), Integer.parseInt(price[i])});
+				
 			}
 		}
 	}
 	
 	public void ActualizarDatos() {
-		modelo.setRowCount(0); 	
+		
+		for(int i = modelo.getRowCount() - 1; i >= 0; i--) 
+		{ 
+		    modelo.removeRow(i); 
+		} 
 		
 	}
 	
