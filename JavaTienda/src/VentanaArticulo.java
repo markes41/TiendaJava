@@ -22,8 +22,9 @@ public class VentanaArticulo extends JFrame {
 	private JTextField textDescripcion;
 	private JTextField textPrecio;
 	createArticulo articulo;
+	VentanaPrincipal principal;
 	private JTextField txtCantidad;
-
+	
 	public VentanaArticulo() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
@@ -130,7 +131,6 @@ public class VentanaArticulo extends JFrame {
 					JOptionPane.showMessageDialog(null, "LOS DATOS SE HAN GUARDADO", "GUARDADO",
 							JOptionPane.INFORMATION_MESSAGE);
 				}
-
 				limpiar();
 			}
 		});
