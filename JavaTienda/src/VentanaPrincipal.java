@@ -16,6 +16,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -36,6 +37,7 @@ public class VentanaPrincipal extends JFrame {
 	createArticulo articulo;
 	private JTable table;
 	Archivo test = new Archivo();
+	createArticulo prueba = new createArticulo();
 	ImageIcon carrito = new ImageIcon("carrito.png");
 	private JTextField textCantidad;
 	private JTable tableCarrito;
@@ -55,7 +57,7 @@ public class VentanaPrincipal extends JFrame {
 		setResizable(false);
 		setTitle("Stock de Articulos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(600, 577);
+		setSize(598, 600);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("");
@@ -213,6 +215,15 @@ public class VentanaPrincipal extends JFrame {
 		btnComprar.setBounds(462, 472, 123, 31);
 		contentPane.add(btnComprar);
 		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ActualizarDatos();
+			}
+		});
+		btnNewButton.setBounds(329, 518, 89, 23);
+		contentPane.add(btnNewButton);
+		
 		if (userType.equals("Cliente")) {
 		btnEliminar.setVisible(false);
 		btnAgregar.setVisible(false);
@@ -224,7 +235,7 @@ public class VentanaPrincipal extends JFrame {
 		
 
 	}
-	
+
 	public void confirmarCompraCarrito() {
 		for(int i = 0; i < tableCarrito.getRowCount(); i++) {
 			resultFinal += (double) tableCarrito.getValueAt(i, 2);
@@ -292,6 +303,16 @@ public class VentanaPrincipal extends JFrame {
 			}
 		}
 	}
+	
+	public void ActualizarDatos() {
+		pasarDatosDeArticulos();
+			
+		
+	}
+	
+	public VentanaPrincipal() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public void obtenerNombreObjetoEliminado() {
 		if(table.getSelectedRow() == -1) {
@@ -353,7 +374,6 @@ public class VentanaPrincipal extends JFrame {
 	           System.out.println("No se ha podido leer el fichero correctamente.");
 	       }
 	}
-
 }
 
 
