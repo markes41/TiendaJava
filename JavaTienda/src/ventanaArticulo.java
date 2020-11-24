@@ -1,10 +1,8 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -15,18 +13,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class VentanaArticulo extends JFrame {
+public class ventanaArticulo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textCodigo;
 	private JTextField textNombre;
 	private JTextField textPrecio;
-	createArticulo articulo;
-	VentanaPrincipal principal;
+	crearArticulo articulo;
+	ventanaPrincipal principal;
 	private JTextField txtCantidad;
 	
-	public VentanaArticulo() {
+	public ventanaArticulo() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
 		JFrame ventana = new JFrame();
@@ -138,7 +136,7 @@ public class VentanaArticulo extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
-				articulo = new createArticulo(textCodigo.getText(), textNombre.getText(),
+				articulo = new crearArticulo(textCodigo.getText(), textNombre.getText(),
 						textPrecio.getText(), txtCantidad.getText());
 
 				if (textCodigo.getText() == null || textNombre.getText() == null
@@ -147,7 +145,7 @@ public class VentanaArticulo extends JFrame {
 					JOptionPane.showMessageDialog(null, "Llená todos los datos antes de crear un nuevo artículo", "Datos sin rellenar",
 							JOptionPane.WARNING_MESSAGE);
 
-				} else if(!Archivo.isNumeric(textCodigo.getText())) {
+				} else if(!archivo.isNumeric(textCodigo.getText())) {
 					
 					JOptionPane.showMessageDialog(null, "Ingresaste un carácter que no es número, volvé a intentarlo.", "Carácter erróneo",
 							JOptionPane.WARNING_MESSAGE);

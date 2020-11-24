@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class createNewUser extends JFrame {
+public class crearNuevoUsuario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -20,11 +20,11 @@ public class createNewUser extends JFrame {
 	private JTextField textUsername;
 	private JTextField textPass;
 	private JTextField textRepeatPass;
-	createUser user;
-	ConectarUsuario login = new ConectarUsuario();
-	browseRepeatUser browseUser = new browseRepeatUser();
+	crearUsuario usuario;
+	conectarUsuario login = new conectarUsuario();
+	buscarUsuariosRepetidos usuarioRepetido = new buscarUsuariosRepetidos();
 
-	public createNewUser() {
+	public crearNuevoUsuario() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(450, 350);
@@ -87,15 +87,15 @@ public class createNewUser extends JFrame {
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				browseUser.leerFichero(textUsername.getText());
-				if (browseUser.isExiste() == true) {
+				usuarioRepetido.leerFichero(textUsername.getText());
+				if (usuarioRepetido.isExiste() == true) {
 					JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", JOptionPane.WARNING_MESSAGE);
-					browseUser.setExiste(false);
+					usuarioRepetido.setExiste(false);
 				} else if (!(textPass.getText().equals(textRepeatPass.getText()))) {
 					JOptionPane.showMessageDialog(null, "Contraseñas distintas", "Error", JOptionPane.WARNING_MESSAGE);
 				} else {
 
-					user = new createUser(textName.getText(), textLastName.getText(), textUsername.getText(),
+					usuario = new crearUsuario(textName.getText(), textLastName.getText(), textUsername.getText(),
 							textPass.getText(), textRepeatPass.getText());
 					setVisible(false);
 					login.setVisible(true);
@@ -116,7 +116,7 @@ public class createNewUser extends JFrame {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ConectarUsuario().setVisible(true);
+				new conectarUsuario().setVisible(true);
 				this.setVisible(false);
 				dispose();
 			}

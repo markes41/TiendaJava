@@ -1,22 +1,21 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class Archivo {
+public class archivo {
 
 	private boolean existe = false;
-	private boolean emptyEmployee = false;
-	private String username;
+	private boolean vacio = false;
+	private String nombreUsuario;
 	int i = 0;
 	private String nombre[] = new String[999];
-	private String code[] = new String[999];
-	private String price[] = new String[999];
+	private String codigo[] = new String[999];
+	private String precio[] = new String[999];
 	private String cantidad[] = new String[999];
 	String texto = null;
 	BufferedReader br = null;
 	BufferedWriter bw = null;
 	BufferedReader bra = null;
 	BufferedWriter bwa = null;
-	
 
 	// LEER USUARIO
 	public void leerFichero(String data1, String data2) {
@@ -89,7 +88,7 @@ public class Archivo {
 
 			if (nombre.equals("") || apellido.equals("") || username.equals("") || password.equals("")) {
 				fichero.close();
-			} else{
+			} else {
 				for (String linea : lineas) {
 					fichero.write(linea + " ");
 				}
@@ -105,17 +104,16 @@ public class Archivo {
 	// ESCRIBIR ARCHIVO
 	public void escribirFicheroA(String codigo, String nombre, String precio, String cantidad) {
 
-		String[] lineas = { codigo, nombre,  precio, cantidad};
+		String[] lineas = { codigo, nombre, precio, cantidad };
 
 		FileWriter fichero = null;
 		try {
 			fichero = new FileWriter("articulos.txt", true);
 			bwa = new BufferedWriter(fichero);
 
-			if (codigo.equals("") || nombre.equals("") ||  
-					precio.equals("") || cantidad.equals("")) {
+			if (codigo.equals("") || nombre.equals("") || precio.equals("") || cantidad.equals("")) {
 				fichero.close();
-			} else if(isNumeric(codigo)){
+			} else if (isNumeric(codigo)) {
 				for (String linea : lineas) {
 					fichero.write(linea + " ");
 				}
@@ -129,7 +127,7 @@ public class Archivo {
 		}
 	}
 
-	//BUSCAR EMPLEADO
+	// BUSCAR EMPLEADO
 	public void buscarEmpleado(String data1) {
 		try {
 			FileReader empleado = new FileReader("empleados.txt");
@@ -139,8 +137,8 @@ public class Archivo {
 			while (texto != null) {
 				String[] word = texto.split(" ");
 				if (word[0].equals(data1)) {
-					emptyEmployee = true;
-					setEmptyEmployee(emptyEmployee);
+					vacio = true;
+					setEmptyEmployee(vacio);
 				}
 				texto = br.readLine();
 
@@ -162,27 +160,27 @@ public class Archivo {
 		}
 	}
 
-	//BUSCAR ARTICULOS
+	// BUSCAR ARTICULOS
 	public void buscarArticulos() {
 		try {
 			FileReader articles = new FileReader("articulos.txt");
 			br = new BufferedReader(articles);
 			String texto = br.readLine();
-			
+
 			while (texto != null) {
 				String[] word = texto.split(" ");
-				code[i] = word[0];
+				codigo[i] = word[0];
 				nombre[i] = word[1];
-				price[i] = word[2];
+				precio[i] = word[2];
 				cantidad[i] = word[3];
-				
+
 				texto = br.readLine();
 				i++;
 			}
-			
+
 			setNombre(nombre);
-			setCode(code);
-			setPrice(price);
+			setCode(codigo);
+			setPrice(precio);
 			setCantidad(cantidad);
 
 		} catch (Exception e) {
@@ -200,7 +198,7 @@ public class Archivo {
 			}
 		}
 	}
-	
+
 	public boolean isExiste() {
 		return existe;
 	}
@@ -210,19 +208,19 @@ public class Archivo {
 	}
 
 	public boolean isEmptyEmployee() {
-		return emptyEmployee;
+		return vacio;
 	}
 
 	public void setEmptyEmployee(boolean emptyEmployee) {
-		this.emptyEmployee = emptyEmployee;
+		this.vacio = emptyEmployee;
 	}
 
 	public String getUsername() {
-		return username;
+		return nombreUsuario;
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.nombreUsuario = username;
 	}
 
 	public String[] getNombre() {
@@ -233,23 +231,22 @@ public class Archivo {
 		this.nombre = nombre;
 	}
 
-
 	public String[] getCode() {
-		return code;
+		return codigo;
 	}
 
 	public void setCode(String[] code) {
-		this.code = code;
+		this.codigo = code;
 	}
 
 	public String[] getPrice() {
-		return price;
+		return precio;
 	}
 
 	public void setPrice(String[] price) {
-		this.price = price;
+		this.precio = price;
 	}
-	
+
 	public String[] getCantidad() {
 		return cantidad;
 	}
@@ -258,14 +255,14 @@ public class Archivo {
 		this.cantidad = cantidad;
 	}
 
-	//CLASE AUXILIAR PARA COMPARAR SI ES UN NUMERO
-	public static boolean isNumeric(String cadena){
-	        try {
-	                Integer.parseInt(cadena);
-	                return true;
-	        } catch (NumberFormatException nfe){
-	                return false;
-	        }}
-	
+	// CLASE AUXILIAR PARA COMPARAR SI ES UN NUMERO
+	public static boolean isNumeric(String cadena) {
+		try {
+			Integer.parseInt(cadena);
+			return true;
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+	}
 
 }
