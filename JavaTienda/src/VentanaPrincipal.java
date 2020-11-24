@@ -37,7 +37,6 @@ public class VentanaPrincipal extends JFrame {
 	createArticulo articulo;
 	private JTable table;
 	Archivo test = new Archivo();
-	createArticulo prueba = new createArticulo();
 	ImageIcon carrito = new ImageIcon("carrito.png");
 	private JTextField textCantidad;
 	private JTable tableCarrito;
@@ -47,10 +46,6 @@ public class VentanaPrincipal extends JFrame {
 	DefaultTableModel modelo;
 	ventanaEditar edit;
 	int cantProduct; int fila;
-	
-	
-
-	
 	
 
 	public VentanaPrincipal(String userType) {
@@ -219,6 +214,7 @@ public class VentanaPrincipal extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ActualizarDatos();
+				pasarDatosDeArticulos();
 			}
 		});
 		btnNewButton.setBounds(329, 518, 89, 23);
@@ -305,8 +301,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 	
 	public void ActualizarDatos() {
-		pasarDatosDeArticulos();
-			
+		modelo.setRowCount(0); 	
 		
 	}
 	
