@@ -133,7 +133,9 @@ public class VentanaArticulo extends JFrame {
 				}
 				limpiar();
 			}
+			
 		});
+		
 
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnGuardar.setBounds(177, 233, 105, 31);
