@@ -229,8 +229,6 @@ public class VentanaPrincipal extends JFrame {
 		btnCantidad.setBounds(20, 472, 88, 31);
 		textCantidad.setBounds(120, 476, 189, 23);		
 		}
-		
-		
 
 	}
 
@@ -266,7 +264,13 @@ public class VentanaPrincipal extends JFrame {
 	public void agregarElementosToCarrito(){
 		modeloCarrito = (DefaultTableModel)tableCarrito.getModel();
 		fila = table.getSelectedRow();
-		if(Integer.parseInt(textCantidad.getText()) > 0) {
+		if(textCantidad.getText().equals("")){
+			JOptionPane.showMessageDialog(null, "Rellene el campo o ingrese una cantidad mayor a 0.",
+					"Cantidad errónea", JOptionPane.WARNING_MESSAGE);
+		}
+		
+		else if(Integer.parseInt(textCantidad.getText()) > 0)
+		{
 			/////////////////////////////////////////////////////////////
 			String nameProduct = (modelo.getValueAt(fila, 0)).toString();
 			cantProduct = Integer.parseInt(textCantidad.getText());
