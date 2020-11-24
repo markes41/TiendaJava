@@ -111,8 +111,8 @@ public class ventanaEditar extends JFrame {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(txtCode.equals("") || txtName.equals("") || txtCantidad.equals("") || 
-						txtPrice.equals("")) {
+				if(txtCode.getText().equals("") || txtName.getText().equals("") || txtCantidad.getText().equals("") || 
+						txtPrice.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Completá todos los casilleros antes de darle a 'GUARDAR'.",
 							"Datos sin rellenar", JOptionPane.WARNING_MESSAGE);
 				}else {
