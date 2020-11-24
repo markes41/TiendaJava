@@ -360,9 +360,9 @@ public class VentanaPrincipal extends JFrame {
 			JOptionPane.showMessageDialog(null, "Tenés que seleccionar una fila, en la lista del carrito, la cual editar.",
 					"No hay fila seleccionada", JOptionPane.WARNING_MESSAGE);
 		}else {
-			String datos = modelo.getValueAt(fila, 3).toString()+" "+
+			String datos = modelo.getValueAt(fila, 2).toString()+" "+
 							modelo.getValueAt(fila, 0).toString() +" "+ 
-							modelo.getValueAt(fila, 2).toString()+" "+ 
+							modelo.getValueAt(fila, 3).toString()+" "+ 
 							modelo.getValueAt(fila, 1).toString()+" "; 
 			edit = new ventanaEditar(datos);
 			edit.setVisible(true);
