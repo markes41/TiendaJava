@@ -284,6 +284,9 @@ public class VentanaPrincipal extends JFrame {
 		if(textCantidad.getText().equals("")){
 			JOptionPane.showMessageDialog(null, "Rellene el campo o ingrese una cantidad mayor a 0.",
 					"Cantidad errónea", JOptionPane.WARNING_MESSAGE);
+		}else if(!Archivo.isNumeric(textCantidad.getText())) {
+			JOptionPane.showMessageDialog(null, "Ingresaste un carácter que no es número, volvé a intentarlo.",
+					"Carácter erróneo", JOptionPane.WARNING_MESSAGE);
 		}
 		
 		else if(Integer.parseInt(textCantidad.getText()) > 0)

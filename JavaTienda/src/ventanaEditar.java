@@ -115,7 +115,14 @@ public class ventanaEditar extends JFrame {
 						txtPrice.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Completá todos los casilleros antes de darle a 'GUARDAR'.",
 							"Datos sin rellenar", JOptionPane.WARNING_MESSAGE);
+				}else if(!Archivo.isNumeric(txtCode.getText()) || !Archivo.isNumeric(txtCantidad.getText()) || 
+						!Archivo.isNumeric(txtPrice.getText())) {
+					
+					JOptionPane.showMessageDialog(null, "Ingresaste un carácter que no es número, volvé a intentarlo.", "Carácter erróneo",
+							JOptionPane.WARNING_MESSAGE);
+				
 				}else {
+				
 					String replaceWith = txtCode.getText()+" "+
 											txtName.getText()+" "+
 											txtPrice.getText()+" "+	
