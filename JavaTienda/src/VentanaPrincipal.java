@@ -22,8 +22,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 import javax.swing.JTextField;
@@ -122,6 +125,12 @@ public class VentanaPrincipal extends JFrame {
 		table.getColumnModel().getColumn(3).setResizable(false);
 		scrollPane.setViewportView(table);
 		
+		try {
+			RemoveEmptyLines();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		//PASAR DATOS DE ARTICULOS.TXT A LA TABLA ARTICULOS//
 		pasarDatosDeArticulos();
 		//////////////////////////////////////////////////////
@@ -193,6 +202,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnBorrar = new JButton("BORRAR ");
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				obtenerNombreObjetoEliminado();
 				borrarFilaSeleccionadaCarrito();
 			}
 		});
@@ -216,7 +226,14 @@ public class VentanaPrincipal extends JFrame {
 				JOptionPane.showMessageDialog(null, "Vera el nuevo valor en lo ultimo de su tabla pero por falta de personal en nuestras oficinas se le duplicaran sus articulos, para una mayor eficacia agregue sus articulos y reinicie el programa.",
 						"ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
 				ActualizarDatos();
+				try {
+					RemoveEmptyLines();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				pasarDatosDeArticulos();
+				
 			}
 		});
 		btnNewButton.setBounds(329, 518, 100, 23);
@@ -312,25 +329,20 @@ public class VentanaPrincipal extends JFrame {
 		modelo.setRowCount(0); 
 
 	}
-	
-	public VentanaPrincipal() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public void obtenerNombreObjetoEliminado() {
 		if(table.getSelectedRow() == -1) {
 			JOptionPane.showMessageDialog(null, "Tenés que seleccionar una fila, en la lista de artículos, la cual borrar.",
 					"No hay fila seleccionada", JOptionPane.WARNING_MESSAGE);
 		}else {
-			String nombreBorrado = modelo.getValueAt(table.getSelectedRow(), 0).toString();
+			String nombreBorrado =  modelo.getValueAt(table.getSelectedRow(), 2).toString()+" "+
+									(String) modelo.getValueAt(table.getSelectedRow(), 0)+" "+
+									modelo.getValueAt(table.getSelectedRow(), 3).toString()+" "+
+									modelo.getValueAt(table.getSelectedRow(), 1).toString();
 			modelo.removeRow(table.getSelectedRow());
-			borrarElementoSeleccionado(nombreBorrado);
+			borrarLinea(nombreBorrado);
 			
 		}
-	}
-	
-	public void borrarElementoSeleccionado(String lineaToBorrar) {
-		
 	}
 
 	public void obtenerNombreObjetoModificar() {
@@ -351,7 +363,6 @@ public class VentanaPrincipal extends JFrame {
 		}
 	}
 	
-
 	public void restarCantidad(int cantidadElegida, int cantidadEnTabla) {
 		 try {
 	           // input the file content to the StringBuffer "input"
@@ -379,6 +390,59 @@ public class VentanaPrincipal extends JFrame {
 	           System.out.println("No se ha podido leer el fichero correctamente.");
 	       }
 	}
+	
+	public void borrarLinea(String lineaToBorrar) {
+		try {
+	           BufferedReader file = new BufferedReader(new FileReader("articulos.txt"));
+	           String line;
+	           StringBuffer inputBuffer = new StringBuffer();
+
+	           while ((line = file.readLine()) != null) {
+	               inputBuffer.append(line);
+	               inputBuffer.append('\n');
+	           }
+	           String inputStr = inputBuffer.toString();
+
+	           file.close();
+
+	           inputStr = inputStr.replace(lineaToBorrar, ""); 
+
+	           FileOutputStream fileOut = new FileOutputStream("articulos.txt");
+	           fileOut.write(inputStr.getBytes());
+	           fileOut.close();
+	           
+
+	       } catch (Exception e) {
+	           System.out.println("No se ha podido leer el fichero correctamente.");
+	       }
+	}
+	
+	public static void RemoveEmptyLines() throws IOException
+    {
+           File inputFile = new File("articulos.txt");
+           BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+           String inputFileReader;
+           ArrayList <String> DataArray = new ArrayList<String>();
+           while((inputFileReader=reader.readLine())!=null)
+           {
+               if(inputFileReader.length()==0)
+               {
+                   continue;
+               }
+               DataArray.add(inputFileReader);
+           }
+           reader.close();
+
+           BufferedWriter bw = new BufferedWriter(new FileWriter("articulos.txt"));
+           for(int i=0;i<DataArray.size();i++)
+           {
+               bw.write(DataArray.get(i));
+               bw.newLine();
+               bw.flush();
+           }
+           bw.close();
+    }
+	
 }
 
 
