@@ -169,7 +169,6 @@ public class Archivo {
 			br = new BufferedReader(articles);
 			String texto = br.readLine();
 			
-			
 			while (texto != null) {
 				String[] word = texto.split(" ");
 				code[i] = word[0];
