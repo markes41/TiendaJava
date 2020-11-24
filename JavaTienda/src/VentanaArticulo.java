@@ -12,6 +12,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class VentanaArticulo extends JFrame {
 
@@ -19,7 +21,6 @@ public class VentanaArticulo extends JFrame {
 	private JPanel contentPane;
 	private JTextField textCodigo;
 	private JTextField textNombre;
-	private JTextField textDescripcion;
 	private JTextField textPrecio;
 	createArticulo articulo;
 	VentanaPrincipal principal;
@@ -31,7 +32,7 @@ public class VentanaArticulo extends JFrame {
 		JFrame ventana = new JFrame();
 		ventana.setDefaultCloseOperation(HIDE_ON_CLOSE);
 
-		setSize(335, 310);
+		setSize(335, 282);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -44,6 +45,18 @@ public class VentanaArticulo extends JFrame {
 		contentPane.add(lblPrimerNombre);
 
 		textCodigo = new JTextField();
+		textCodigo.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char validar=evt.getKeyChar();
+				
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					evt.consume();
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+			}
+			}
+		});
 		textCodigo.setBounds(138, 74, 105, 20);
 		contentPane.add(textCodigo);
 		textCodigo.setColumns(10);
@@ -58,34 +71,48 @@ public class VentanaArticulo extends JFrame {
 		contentPane.add(textNombre);
 		textNombre.setColumns(10);
 
-		JLabel lblDescripcion = new JLabel("Descripcion");
-		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblDescripcion.setBounds(56, 134, 80, 31);
-		contentPane.add(lblDescripcion);
-
-		textDescripcion = new JTextField();
-		textDescripcion.setBounds(139, 140, 105, 20);
-		contentPane.add(textDescripcion);
-		textDescripcion.setColumns(10);
-
 		JLabel lblPrecio = new JLabel("Precio");
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblPrecio.setBounds(81, 165, 55, 31);
+		lblPrecio.setBounds(82, 138, 55, 31);
 		contentPane.add(lblPrecio);
 		
 		textPrecio = new JTextField();
-		textPrecio.setBounds(139, 171, 105, 20);
+		textPrecio.setBounds(140, 144, 105, 20);
+		textPrecio.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char validar=evt.getKeyChar();
+				
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					evt.consume();
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+			}
+			}
+		});
 		contentPane.add(textPrecio);
 		textPrecio.setColumns(10);
 		
 		JLabel lblCantidad = new JLabel("Cantidad");
 		lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblCantidad.setBounds(72, 196, 55, 31);
+		lblCantidad.setBounds(73, 169, 55, 31);
 		contentPane.add(lblCantidad);
 		
 		txtCantidad = new JTextField();
 		txtCantidad.setColumns(10);
-		txtCantidad.setBounds(138, 202, 105, 20);
+		txtCantidad.setBounds(139, 175, 105, 20);
+		txtCantidad.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char validar=evt.getKeyChar();
+				
+				if(Character.isLetter(validar)) {
+					getToolkit().beep();
+					evt.consume();
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+			}
+			}
+		});
 		contentPane.add(txtCantidad);
 
 		JButton btnCerrar = new JButton("Cerrar");
@@ -96,7 +123,7 @@ public class VentanaArticulo extends JFrame {
 		});
 
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnCerrar.setBounds(31, 233, 105, 31);
+		btnCerrar.setBounds(32, 206, 105, 31);
 		contentPane.add(btnCerrar);
 
 		JButton btnGuardar = new JButton("Guardar");
@@ -104,7 +131,6 @@ public class VentanaArticulo extends JFrame {
 			private void limpiar() {
 				textCodigo.setText("");
 				textNombre.setText("");
-				textDescripcion.setText("");
 				textPrecio.setText("");
 				txtCantidad.setText("");
 			}
@@ -115,20 +141,20 @@ public class VentanaArticulo extends JFrame {
 				articulo = new createArticulo(textCodigo.getText(), textNombre.getText(),
 						textPrecio.getText(), txtCantidad.getText());
 
-				if (textCodigo.getText() == null || textNombre.getText() == null || textDescripcion.getText() == null
+				if (textCodigo.getText() == null || textNombre.getText() == null
 						|| textPrecio.getText().equals("")) {
 
-					JOptionPane.showMessageDialog(null, "ERROR LLENE TODOS LOS DATOS", "ERROR",
+					JOptionPane.showMessageDialog(null, "Llená todos los datos antes de crear un nuevo artículo", "ERROR",
 							JOptionPane.WARNING_MESSAGE);
 
 				} else if(!Archivo.isNumeric(textCodigo.getText())) {
 					
-					JOptionPane.showMessageDialog(null, "ERROR EL CODIGO Y EL PRECIO TIENE QUE SER UN DATO NUMERICO", "ERROR",
+					JOptionPane.showMessageDialog(null, "Ingresaste un carácter que no es número, volvé a intentarlo.", "ERROR",
 							JOptionPane.WARNING_MESSAGE);
 				}
 				
 				else {
-					JOptionPane.showMessageDialog(null, "LOS DATOS SE HAN GUARDADO", "GUARDADO",
+					JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente.", "GUARDADO",
 							JOptionPane.INFORMATION_MESSAGE);
 				}
 				limpiar();
@@ -138,7 +164,7 @@ public class VentanaArticulo extends JFrame {
 		
 
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnGuardar.setBounds(177, 233, 105, 31);
+		btnGuardar.setBounds(178, 206, 105, 31);
 		contentPane.add(btnGuardar);
 
 		JLabel lblNewLabel_4 = new JLabel("Agregar un articulo");

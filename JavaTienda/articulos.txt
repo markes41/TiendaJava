@@ -1,8 +1,5 @@
-44 Lata 15 55 
-43 Teclado 14 55 
- 
-41 Celular 12 55 
-40 Trapo 11 55 
-39 Cuchillo 10 55 
-1515 qwewqeq 15 15 
-15 qweqweqwe 66 66 
+44 Lata 15 45 
+43 Teclado 14 45 
+40 Trapo 11 45 
+39 Cuchillo 10 45 
+15 Encendedor 56 4 

@@ -128,7 +128,7 @@ public class VentanaPrincipal extends JFrame {
 		try {
 			RemoveEmptyLines();
 		} catch (IOException e2) {
-			// TODO Auto-generated catch block
+			System.out.println("ADASDASDSA");
 			e2.printStackTrace();
 		}
 		//PASAR DATOS DE ARTICULOS.TXT A LA TABLA ARTICULOS//
@@ -429,7 +429,7 @@ public class VentanaPrincipal extends JFrame {
            ArrayList <String> DataArray = new ArrayList<String>();
            while((inputFileReader=reader.readLine())!=null)
            {
-               if(inputFileReader.length()==0)
+               if(inputFileReader.length()<= 1)
                {
                    continue;
                }
