@@ -210,14 +210,16 @@ public class VentanaPrincipal extends JFrame {
 		btnComprar.setBounds(462, 472, 123, 31);
 		contentPane.add(btnComprar);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Actualizar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Vera el nuevo valor en lo ultimo de su tabla pero por falta de personal en nuestras oficinas se le duplicaran sus articulos, para una mayor eficacia agregue sus articulos y reinicie el programa.",
+						"ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
 				ActualizarDatos();
 				pasarDatosDeArticulos();
 			}
 		});
-		btnNewButton.setBounds(329, 518, 89, 23);
+		btnNewButton.setBounds(329, 518, 100, 23);
 		contentPane.add(btnNewButton);
 		
 		if (userType.equals("Cliente")) {
@@ -293,21 +295,22 @@ public class VentanaPrincipal extends JFrame {
 		
 		for(int i = 0; i < nombre.length; i++) {
 			if(nombre[i] == null) {
+				
 				break;
 			}else{
 				modelo.addRow(new Object[] {nombre[i],Integer.parseInt(cantidad[i]) , Integer.parseInt(codigo[i]), Integer.parseInt(price[i])});
 				
+				
 			}
+
 		}
+		
 	}
 	
 	public void ActualizarDatos() {
 		
-		for(int i = modelo.getRowCount() - 1; i >= 0; i--) 
-		{ 
-		    modelo.removeRow(i); 
-		} 
-		
+		modelo.setRowCount(0); 
+
 	}
 	
 	public VentanaPrincipal() {
@@ -322,6 +325,7 @@ public class VentanaPrincipal extends JFrame {
 			String nombreBorrado = modelo.getValueAt(table.getSelectedRow(), 0).toString();
 			modelo.removeRow(table.getSelectedRow());
 			borrarElementoSeleccionado(nombreBorrado);
+			
 		}
 	}
 	
@@ -347,6 +351,7 @@ public class VentanaPrincipal extends JFrame {
 		}
 	}
 	
+
 	public void restarCantidad(int cantidadElegida, int cantidadEnTabla) {
 		 try {
 	           // input the file content to the StringBuffer "input"
