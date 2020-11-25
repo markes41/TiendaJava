@@ -1,6 +1,10 @@
+package Default;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Interfaz.VentanaPrincipal;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.Font;
@@ -8,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import LeerEscribir.Archivo;
 public class ConectarUsuario extends JFrame {
 
 	private static final long serialVersionUID = 1L;

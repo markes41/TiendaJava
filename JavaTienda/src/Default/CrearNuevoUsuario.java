@@ -1,6 +1,10 @@
+package Default;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import LeerEscribir.BuscarUsuariosRepetidos;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 

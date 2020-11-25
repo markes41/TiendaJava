@@ -1,3 +1,6 @@
+package Default;
+import LeerEscribir.Archivo;
+
 public class CrearArticulo {
 	private String codigo, nombre, precio, cantidad;
 	Archivo createArticulo = new Archivo();

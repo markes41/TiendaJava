@@ -1,3 +1,4 @@
+package Interfaz;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -12,6 +13,10 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import Default.CrearArticulo;
+import LeerEscribir.Archivo;
+
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

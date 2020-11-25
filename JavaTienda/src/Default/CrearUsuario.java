@@ -1,3 +1,7 @@
+package Default;
+import LeerEscribir.Archivo;
+import LeerEscribir.BuscarUsuariosRepetidos;
+
 public class CrearUsuario {
 	private String primerNombre, apellido, nombreUsuario, contrasenia, repiteContrasenia;
 	Archivo crearUsuario = new Archivo();
