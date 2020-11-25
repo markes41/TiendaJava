@@ -26,7 +26,7 @@ public class VentanaUsuarioNuevo extends JFrame {
 	private JTextField textPass;
 	private JTextField textRepeatPass;
 	Usuario usuario;
-	VentanaUsuario login = new VentanaUsuario();
+	VentanaLogin login = new VentanaLogin();
 	BuscarUsuariosRepetidos usuarioRepetido = new BuscarUsuariosRepetidos();
 
 	public VentanaUsuarioNuevo() {
@@ -121,7 +121,7 @@ public class VentanaUsuarioNuevo extends JFrame {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new VentanaUsuario().setVisible(true);
+				new VentanaLogin().setVisible(true);
 				this.setVisible(false);
 				dispose();
 			}
