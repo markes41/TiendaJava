@@ -50,7 +50,7 @@ public class ventanaEditar extends JFrame {
 				if (Character.isLetter(validar)) {
 					getToolkit().beep();
 					evt.consume();
-					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo numeros");
 				}
 			}
 		});
@@ -72,7 +72,7 @@ public class ventanaEditar extends JFrame {
 				if (Character.isLetter(validar)) {
 					getToolkit().beep();
 					evt.consume();
-					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo numeros");
 				}
 			}
 		});
@@ -99,7 +99,7 @@ public class ventanaEditar extends JFrame {
 		contentPane.add(lblNewLabel_4);
 
 		JButton btnVolver = new JButton("VOLVER");
-		btnVolver.setBounds(20, 171, 89, 32);
+		btnVolver.setBounds(10, 171, 92, 32);
 		contentPane.add(btnVolver);
 
 		JButton btnGuardar = new JButton("GUARDAR");
@@ -126,7 +126,7 @@ public class ventanaEditar extends JFrame {
 
 			}
 		});
-		btnGuardar.setBounds(134, 171, 89, 32);
+		btnGuardar.setBounds(131, 171, 92, 32);
 		contentPane.add(btnGuardar);
 
 		JLabel lblNewLabel_4_1 = new JLabel("Precio");
@@ -144,7 +144,7 @@ public class ventanaEditar extends JFrame {
 				if (Character.isLetter(validar)) {
 					getToolkit().beep();
 					evt.consume();
-					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo numeros");
 				}
 			}
 		});
