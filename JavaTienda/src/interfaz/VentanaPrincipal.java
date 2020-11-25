@@ -292,7 +292,6 @@ public class VentanaPrincipal extends JFrame {
 		checkArticulos.setBounds(20, 46, 289, 23);
 		
 		contentPane.add(checkArticulos);
-		tableCarrito.setEnabled(false);
 		btnComprar.setEnabled(false);
 		btnBorrar.setEnabled(false);
 		
