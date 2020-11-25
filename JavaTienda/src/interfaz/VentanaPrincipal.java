@@ -2,6 +2,7 @@ package interfaz;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -30,6 +31,8 @@ import java.io.IOException;
 import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JRadioButton;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -48,7 +51,10 @@ public class VentanaPrincipal extends JFrame {
 	VentanaEditar edit;
 	int cantProduct;
 	int fila;
+	JRadioButton checkArticulos;
+	JRadioButton checkCarrito;
 
+	@SuppressWarnings("deprecation")
 	public VentanaPrincipal(String userType) {
 		setResizable(false);
 		setTitle("Stock de Articulos");
@@ -76,17 +82,12 @@ public class VentanaPrincipal extends JFrame {
 		});
 		btnAgregar.setBounds(20, 472, 90, 31);
 		contentPane.add(btnAgregar);
-
+		
+		
 		JButton btnEditar = new JButton("EDITAR");
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				obtenerNombreObjetoModificar();
-			}
-		});
-		btnEditar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-
 			}
 		});
 		btnEditar.setBounds(120, 472, 93, 31);
@@ -105,14 +106,21 @@ public class VentanaPrincipal extends JFrame {
 		table = new JTable();
 
 		table.setModel(
-				new DefaultTableModel(new Object[][] {}, new String[] { "Nombre", "Cantidad", "Codigo", "Precio" }) {
-					private static final long serialVersionUID = 1L;
-					Class[] columnTypes = new Class[] { String.class, Integer.class, Integer.class, Integer.class };
-
-					public Class getColumnClass(int columnIndex) {
-						return columnTypes[columnIndex];
-					}
-				});
+				new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Nombre", "Cantidad", "Codigo", "Precio"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		table.getColumnModel().getColumn(0).setResizable(false);
 		table.getColumnModel().getColumn(3).setResizable(false);
 		scrollPane.setViewportView(table);
 
@@ -174,15 +182,23 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(scrollPane_1);
 
 		tableCarrito = new JTable();
-		tableCarrito.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nombre", "Cantidad", "Total" }) {
-			private static final long serialVersionUID = 1L;
-			Class[] columnTypes = new Class[] { String.class, Integer.class, Double.class };
-
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
+		tableCarrito.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Nombre", "Cantidad", "Total"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
 			}
 		});
+		tableCarrito.getColumnModel().getColumn(0).setResizable(false);
 		scrollPane_1.setViewportView(tableCarrito);
+		
 
 		JButton btnBorrar = new JButton("BORRAR ");
 		btnBorrar.addActionListener(new ActionListener() {
@@ -224,6 +240,61 @@ public class VentanaPrincipal extends JFrame {
 		});
 		btnNewButton.setBounds(319, 518, 100, 23);
 		contentPane.add(btnNewButton);
+		
+		checkCarrito = new JRadioButton("Carrito");
+		checkCarrito.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				//DESACTIVA
+				table.setEnabled(false);
+				btnAgregar.setEnabled(false);
+				btnEditar.setEnabled(false);
+				btnEliminar.setEnabled(false);
+				btnCantidad.setEnabled(false);
+				textCantidad.setEnabled(false);
+				checkArticulos.setSelected(false);
+				
+				//ACTIVA
+				tableCarrito.setEnabled(true);
+				btnComprar.setEnabled(true);
+				btnBorrar.setEnabled(true);
+				checkCarrito.setSelected(true);
+			}
+		});
+		checkCarrito.setHorizontalAlignment(SwingConstants.CENTER);
+		checkCarrito.setBounds(398, 46, 109, 23);
+		checkCarrito.setSelected(false);
+		contentPane.add(checkCarrito);
+		
+		checkArticulos = new JRadioButton("Lista Articulos");
+		checkArticulos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				//DESACTIVA
+				tableCarrito.setEnabled(false);
+				btnComprar.setEnabled(false);
+				btnBorrar.setEnabled(false);
+				checkCarrito.setSelected(false);
+				
+				//ACTIVA
+				table.setEnabled(true);
+				btnAgregar.setEnabled(true);
+				btnEditar.setEnabled(true);
+				btnEliminar.setEnabled(true);
+				btnCantidad.setEnabled(true);
+				textCantidad.setEnabled(true);
+			}
+		});
+		checkArticulos.setHorizontalAlignment(SwingConstants.CENTER);
+		checkArticulos.setBounds(20, 46, 289, 23);
+		
+		contentPane.add(checkArticulos);
+		tableCarrito.setEnabled(false);
+		btnComprar.setEnabled(false);
+		btnBorrar.setEnabled(false);
+		
 
 		if (userType.equals("Cliente")) {
 			btnEliminar.setVisible(false);
@@ -232,7 +303,7 @@ public class VentanaPrincipal extends JFrame {
 			btnCantidad.setBounds(20, 472, 88, 31);
 			textCantidad.setBounds(120, 476, 189, 23);
 		}
-
+		
 	}
 
 	public void confirmarCompraCarrito() {
