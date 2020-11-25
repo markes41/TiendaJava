@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import Default.CrearArticulo;
+import Default.Articulo;
 import LeerEscribir.Archivo;
 
 import javax.swing.JScrollPane;
@@ -35,7 +35,7 @@ public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	CrearArticulo articulo;
+	Articulo articulo;
 	private JTable table;
 	Archivo test = new Archivo();
 	ImageIcon carrito = new ImageIcon("carrito.png");

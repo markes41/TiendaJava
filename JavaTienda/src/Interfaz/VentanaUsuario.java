@@ -1,10 +1,7 @@
-package Default;
+package Interfaz;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import Interfaz.VentanaPrincipal;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.Font;
@@ -13,7 +10,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import LeerEscribir.Archivo;
-public class ConectarUsuario extends JFrame {
+public class VentanaUsuario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -22,7 +19,7 @@ public class ConectarUsuario extends JFrame {
 	Archivo testUser = new Archivo();
 	String typeUser;
 
-	public ConectarUsuario() {
+	public VentanaUsuario() {
 
 		setTitle("Inicio de Sesion");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,7 +77,7 @@ public class ConectarUsuario extends JFrame {
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CrearNuevoUsuario register = new CrearNuevoUsuario();
+				VentanaUsuarioNuevo register = new VentanaUsuarioNuevo();
 				register.setVisible(true);
 				setVisible(false);
 			}

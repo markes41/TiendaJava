@@ -1,8 +1,11 @@
 package Default;
+
+import Interfaz.VentanaUsuario;
+
 public class Main {
 
 	public static void main(String[] args) {
-		ConectarUsuario login = new ConectarUsuario();
+		VentanaUsuario login = new VentanaUsuario();
 		login.setVisible(true);
 		
 	}

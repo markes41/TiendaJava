@@ -1,11 +1,11 @@
 package Default;
 import LeerEscribir.Archivo;
 
-public class CrearArticulo {
+public class Articulo {
 	private String codigo, nombre, precio, cantidad;
 	Archivo createArticulo = new Archivo();
 
-	public CrearArticulo(String codigo, String nombre,  String precio, String cantidad) {
+	public Articulo(String codigo, String nombre,  String precio, String cantidad) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;

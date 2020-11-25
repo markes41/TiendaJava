@@ -1,8 +1,9 @@
-package Default;
+package Interfaz;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Default.Usuario;
 import LeerEscribir.BuscarUsuariosRepetidos;
 
 import javax.swing.JLabel;
@@ -15,7 +16,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CrearNuevoUsuario extends JFrame {
+public class VentanaUsuarioNuevo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -24,11 +25,11 @@ public class CrearNuevoUsuario extends JFrame {
 	private JTextField textUsername;
 	private JTextField textPass;
 	private JTextField textRepeatPass;
-	CrearUsuario usuario;
-	ConectarUsuario login = new ConectarUsuario();
+	Usuario usuario;
+	VentanaUsuario login = new VentanaUsuario();
 	BuscarUsuariosRepetidos usuarioRepetido = new BuscarUsuariosRepetidos();
 
-	public CrearNuevoUsuario() {
+	public VentanaUsuarioNuevo() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(450, 350);
@@ -99,7 +100,7 @@ public class CrearNuevoUsuario extends JFrame {
 					JOptionPane.showMessageDialog(null, "Contraseñas distintas", "Error", JOptionPane.WARNING_MESSAGE);
 				} else {
 
-					usuario = new CrearUsuario(textName.getText(), textLastName.getText(), textUsername.getText(),
+					usuario = new Usuario(textName.getText(), textLastName.getText(), textUsername.getText(),
 							textPass.getText(), textRepeatPass.getText());
 					setVisible(false);
 					login.setVisible(true);
@@ -120,7 +121,7 @@ public class CrearNuevoUsuario extends JFrame {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ConectarUsuario().setVisible(true);
+				new VentanaUsuario().setVisible(true);
 				this.setVisible(false);
 				dispose();
 			}

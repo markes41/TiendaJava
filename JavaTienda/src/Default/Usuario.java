@@ -2,13 +2,13 @@ package Default;
 import LeerEscribir.Archivo;
 import LeerEscribir.BuscarUsuariosRepetidos;
 
-public class CrearUsuario {
+public class Usuario {
 	private String primerNombre, apellido, nombreUsuario, contrasenia, repiteContrasenia;
 	Archivo crearUsuario = new Archivo();
 	private boolean correcto = false;
 	BuscarUsuariosRepetidos usuarioRepetido = new BuscarUsuariosRepetidos();
 
-	public CrearUsuario(String primerNombre, String apellido, String nombreUsuario, String contrasenia, String repiteContrasenia) {
+	public Usuario(String primerNombre, String apellido, String nombreUsuario, String contrasenia, String repiteContrasenia) {
 		super();
 		this.primerNombre = primerNombre;
 		this.apellido = apellido;

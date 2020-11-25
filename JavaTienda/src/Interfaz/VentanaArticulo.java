@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Default.CrearArticulo;
+import Default.Articulo;
 import LeerEscribir.Archivo;
 
 import javax.swing.JLabel;
@@ -25,7 +25,7 @@ public class VentanaArticulo extends JFrame {
 	private JTextField textCodigo;
 	private JTextField textNombre;
 	private JTextField textPrecio;
-	CrearArticulo articulo;
+	Articulo articulo;
 	VentanaPrincipal principal;
 	private JTextField txtCantidad;
 	
@@ -141,7 +141,7 @@ public class VentanaArticulo extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
-				articulo = new CrearArticulo(textCodigo.getText(), textNombre.getText(),
+				articulo = new Articulo(textCodigo.getText(), textNombre.getText(),
 						textPrecio.getText(), txtCantidad.getText());
 
 				if (textCodigo.getText() == null || textNombre.getText() == null
