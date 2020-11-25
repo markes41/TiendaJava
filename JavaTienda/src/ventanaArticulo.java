@@ -51,7 +51,7 @@ public class ventanaArticulo extends JFrame {
 				if(Character.isLetter(validar)) {
 					getToolkit().beep();
 					evt.consume();
-					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo numeros");
 			}
 			}
 		});
@@ -84,7 +84,7 @@ public class ventanaArticulo extends JFrame {
 				if(Character.isLetter(validar)) {
 					getToolkit().beep();
 					evt.consume();
-					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo numeros");
 			}
 			}
 		});
@@ -107,7 +107,7 @@ public class ventanaArticulo extends JFrame {
 				if(Character.isLetter(validar)) {
 					getToolkit().beep();
 					evt.consume();
-					JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+					JOptionPane.showMessageDialog(rootPane, "Ingresar solo numeros");
 			}
 			}
 		});
