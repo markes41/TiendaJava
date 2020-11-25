@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class ventanaEditar extends JFrame {
+public class VentanaEditar extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtCode;
@@ -25,7 +25,7 @@ public class ventanaEditar extends JFrame {
 	private JLabel lblNewLabel_4;
 	private JTextField txtPrice;
 
-	public ventanaEditar(String data) {
+	public VentanaEditar(String data) {
 		setTitle("Editar art\u00EDculo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(249, 248);
@@ -110,8 +110,8 @@ public class ventanaEditar extends JFrame {
 						|| txtPrice.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Completá todos los casilleros antes de darle a 'GUARDAR'.",
 							"Datos sin rellenar", JOptionPane.WARNING_MESSAGE);
-				} else if (!archivo.isNumeric(txtCode.getText()) || !archivo.isNumeric(txtCantidad.getText())
-						|| !archivo.isNumeric(txtPrice.getText())) {
+				} else if (!Archivo.isNumeric(txtCode.getText()) || !Archivo.isNumeric(txtCantidad.getText())
+						|| !Archivo.isNumeric(txtPrice.getText())) {
 
 					JOptionPane.showMessageDialog(null, "Ingresaste un carácter que no es número, volvé a intentarlo.",
 							"Carácter erróneo", JOptionPane.WARNING_MESSAGE);

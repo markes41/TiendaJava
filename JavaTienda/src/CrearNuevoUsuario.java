@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class crearNuevoUsuario extends JFrame {
+public class CrearNuevoUsuario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -20,11 +20,11 @@ public class crearNuevoUsuario extends JFrame {
 	private JTextField textUsername;
 	private JTextField textPass;
 	private JTextField textRepeatPass;
-	crearUsuario usuario;
-	conectarUsuario login = new conectarUsuario();
-	buscarUsuariosRepetidos usuarioRepetido = new buscarUsuariosRepetidos();
+	CrearUsuario usuario;
+	ConectarUsuario login = new ConectarUsuario();
+	BuscarUsuariosRepetidos usuarioRepetido = new BuscarUsuariosRepetidos();
 
-	public crearNuevoUsuario() {
+	public CrearNuevoUsuario() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(450, 350);
@@ -95,7 +95,7 @@ public class crearNuevoUsuario extends JFrame {
 					JOptionPane.showMessageDialog(null, "Contraseñas distintas", "Error", JOptionPane.WARNING_MESSAGE);
 				} else {
 
-					usuario = new crearUsuario(textName.getText(), textLastName.getText(), textUsername.getText(),
+					usuario = new CrearUsuario(textName.getText(), textLastName.getText(), textUsername.getText(),
 							textPass.getText(), textRepeatPass.getText());
 					setVisible(false);
 					login.setVisible(true);
@@ -116,7 +116,7 @@ public class crearNuevoUsuario extends JFrame {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new conectarUsuario().setVisible(true);
+				new ConectarUsuario().setVisible(true);
 				this.setVisible(false);
 				dispose();
 			}

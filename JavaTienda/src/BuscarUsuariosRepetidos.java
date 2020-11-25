@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 
-public class buscarUsuariosRepetidos {
+public class BuscarUsuariosRepetidos {
 
 	BufferedReader br;
 	BufferedWriter bw;

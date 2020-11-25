@@ -1,7 +1,7 @@
-public class main {
+public class Main {
 
 	public static void main(String[] args) {
-		conectarUsuario login = new conectarUsuario();
+		ConectarUsuario login = new ConectarUsuario();
 		login.setVisible(true);
 		
 	}

@@ -9,16 +9,16 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class conectarUsuario extends JFrame {
+public class ConectarUsuario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public JTextField txtUser;
 	public JTextField txtPass;
-	archivo testUser = new archivo();
+	Archivo testUser = new Archivo();
 	String typeUser;
 
-	public conectarUsuario() {
+	public ConectarUsuario() {
 
 		setTitle("Inicio de Sesion");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,7 +60,7 @@ public class conectarUsuario extends JFrame {
 					else
 						typeUser = "Cliente";
 
-					ventanaPrincipal main = new ventanaPrincipal(typeUser);
+					VentanaPrincipal main = new VentanaPrincipal(typeUser);
 					setVisible(false);
 					main.setVisible(true);
 				} else {
@@ -76,7 +76,7 @@ public class conectarUsuario extends JFrame {
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				crearNuevoUsuario register = new crearNuevoUsuario();
+				CrearNuevoUsuario register = new CrearNuevoUsuario();
 				register.setVisible(true);
 				setVisible(false);
 			}

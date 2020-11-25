@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ventanaEliminar {
+public class VentanaEliminar {
 
 	private JFrame frmEliminar;
 
@@ -13,7 +13,7 @@ public class ventanaEliminar {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventanaEliminar window = new ventanaEliminar();
+					VentanaEliminar window = new VentanaEliminar();
 					window.frmEliminar.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -22,7 +22,7 @@ public class ventanaEliminar {
 		});
 	}
 
-	public ventanaEliminar() {
+	public VentanaEliminar() {
 		initialize();
 	}
 

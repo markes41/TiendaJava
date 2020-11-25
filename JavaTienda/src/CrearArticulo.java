@@ -1,8 +1,8 @@
-public class crearArticulo {
+public class CrearArticulo {
 	private String codigo, nombre, precio, cantidad;
-	archivo createArticulo = new archivo();
+	Archivo createArticulo = new Archivo();
 
-	public crearArticulo(String codigo, String nombre,  String precio, String cantidad) {
+	public CrearArticulo(String codigo, String nombre,  String precio, String cantidad) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;

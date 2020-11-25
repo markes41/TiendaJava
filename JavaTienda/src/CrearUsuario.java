@@ -1,10 +1,10 @@
-public class crearUsuario {
+public class CrearUsuario {
 	private String primerNombre, apellido, nombreUsuario, contrasenia, repiteContrasenia;
-	archivo crearUsuario = new archivo();
+	Archivo crearUsuario = new Archivo();
 	private boolean correcto = false;
-	buscarUsuariosRepetidos usuarioRepetido = new buscarUsuariosRepetidos();
+	BuscarUsuariosRepetidos usuarioRepetido = new BuscarUsuariosRepetidos();
 
-	public crearUsuario(String primerNombre, String apellido, String nombreUsuario, String contrasenia, String repiteContrasenia) {
+	public CrearUsuario(String primerNombre, String apellido, String nombreUsuario, String contrasenia, String repiteContrasenia) {
 		super();
 		this.primerNombre = primerNombre;
 		this.apellido = apellido;

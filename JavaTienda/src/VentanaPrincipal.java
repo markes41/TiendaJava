@@ -26,13 +26,13 @@ import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class ventanaPrincipal extends JFrame {
+public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	crearArticulo articulo;
+	CrearArticulo articulo;
 	private JTable table;
-	archivo test = new archivo();
+	Archivo test = new Archivo();
 	ImageIcon carrito = new ImageIcon("carrito.png");
 	private JTextField textCantidad;
 	private JTable tableCarrito;
@@ -40,11 +40,11 @@ public class ventanaPrincipal extends JFrame {
 	double resultFinal;
 	DefaultTableModel modeloCarrito;
 	DefaultTableModel modelo;
-	ventanaEditar edit;
+	VentanaEditar edit;
 	int cantProduct;
 	int fila;
 
-	public ventanaPrincipal(String userType) {
+	public VentanaPrincipal(String userType) {
 		setResizable(false);
 		setTitle("Stock de Articulos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,7 +65,7 @@ public class ventanaPrincipal extends JFrame {
 		JButton btnAgregar = new JButton("NUEVO");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventanaArticulo art = new ventanaArticulo();
+				VentanaArticulo art = new VentanaArticulo();
 				art.setVisible(true);
 			}
 		});
@@ -266,7 +266,7 @@ public class ventanaPrincipal extends JFrame {
 		if (textCantidad.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Rellene el campo o ingrese una cantidad mayor a 0.",
 					"Cantidad errónea", JOptionPane.WARNING_MESSAGE);
-		} else if (!archivo.isNumeric(textCantidad.getText())) {
+		} else if (!Archivo.isNumeric(textCantidad.getText())) {
 			JOptionPane.showMessageDialog(null, "Ingresaste un carácter que no es número, volvé a intentarlo.",
 					"Carácter erróneo", JOptionPane.WARNING_MESSAGE);
 		}
@@ -344,7 +344,7 @@ public class ventanaPrincipal extends JFrame {
 		} else {
 			String datos = modelo.getValueAt(fila, 2).toString() + " " + modelo.getValueAt(fila, 0).toString() + " "
 					+ modelo.getValueAt(fila, 3).toString() + " " + modelo.getValueAt(fila, 1).toString() + " ";
-			edit = new ventanaEditar(datos);
+			edit = new VentanaEditar(datos);
 			edit.setVisible(true);
 
 		}

@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class archivo {
+public class Archivo {
 
 	private boolean existe = false;
 	private boolean vacio = false;
