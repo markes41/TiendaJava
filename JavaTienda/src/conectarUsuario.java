@@ -34,7 +34,7 @@ public class conectarUsuario extends JFrame {
 		lblUsuario.setBounds(35, 11, 47, 31);
 		contentPane.add(lblUsuario);
 
-		JLabel lblNewLabel = new JLabel("Contraseña");
+		JLabel lblNewLabel = new JLabel("ContraseÃ±a");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel.setBounds(10, 53, 72, 31);
 		contentPane.add(lblNewLabel);

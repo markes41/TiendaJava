@@ -155,7 +155,7 @@ public class ventanaPrincipal extends JFrame {
 			}
 
 		});
-		btnCantidad.setBounds(20, 514, 90, 31);
+		btnCantidad.setBounds(20, 514, 88, 31);
 		contentPane.add(btnCantidad);
 
 		JLabel lblNewLabel_1 = new JLabel("Carrito de compras");
@@ -197,7 +197,7 @@ public class ventanaPrincipal extends JFrame {
 
 			}
 		});
-		btnComprar.setBounds(452, 472, 123, 31);
+		btnComprar.setBounds(462, 472, 123, 31);
 		contentPane.add(btnComprar);
 
 		JButton btnNewButton = new JButton("Actualizar");
@@ -217,7 +217,7 @@ public class ventanaPrincipal extends JFrame {
 
 			}
 		});
-		btnNewButton.setBounds(319, 518, 100, 23);
+		btnNewButton.setBounds(329, 518, 100, 23);
 		contentPane.add(btnNewButton);
 
 		if (userType.equals("Cliente")) {
