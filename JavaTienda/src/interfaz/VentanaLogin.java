@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-public class VentanaUsuario extends JFrame {
+public class VentanaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -21,7 +21,7 @@ public class VentanaUsuario extends JFrame {
 	Archivo testUser = new Archivo();
 	String typeUser;
 
-	public VentanaUsuario() {
+	public VentanaLogin() {
 
 		setTitle("Inicio de Sesion");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

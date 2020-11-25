@@ -1,11 +1,11 @@
 package programa;
 
-import interfaz.VentanaUsuario;
+import interfaz.VentanaLogin;
 
 public class Main {
 
 	public static void main(String[] args) {
-		VentanaUsuario login = new VentanaUsuario();
+		VentanaLogin login = new VentanaLogin();
 		login.setVisible(true);
 		
 	}
