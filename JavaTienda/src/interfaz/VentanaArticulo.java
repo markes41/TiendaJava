@@ -1,10 +1,10 @@
-package Interfaz;
+package interfaz;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Default.Articulo;
-import LeerEscribir.Archivo;
+import leerEscribir.Archivo;
+import programa.Articulo;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

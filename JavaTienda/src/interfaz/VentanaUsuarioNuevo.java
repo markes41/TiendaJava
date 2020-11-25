@@ -1,10 +1,10 @@
-package Interfaz;
+package interfaz;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Default.Usuario;
-import LeerEscribir.BuscarUsuariosRepetidos;
+import leerEscribir.BuscarUsuariosRepetidos;
+import programa.Usuario;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

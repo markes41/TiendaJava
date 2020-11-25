@@ -1,5 +1,5 @@
-package Default;
-import LeerEscribir.Archivo;
+package programa;
+import leerEscribir.Archivo;
 
 public class Articulo {
 	private String codigo, nombre, precio, cantidad;

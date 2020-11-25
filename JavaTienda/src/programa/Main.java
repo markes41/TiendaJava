@@ -1,6 +1,6 @@
-package Default;
+package programa;
 
-import Interfaz.VentanaUsuario;
+import interfaz.VentanaUsuario;
 
 public class Main {
 

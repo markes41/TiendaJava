@@ -1,6 +1,6 @@
-package Default;
-import LeerEscribir.Archivo;
-import LeerEscribir.BuscarUsuariosRepetidos;
+package programa;
+import leerEscribir.Archivo;
+import leerEscribir.BuscarUsuariosRepetidos;
 
 public class Usuario {
 	private String primerNombre, apellido, nombreUsuario, contrasenia, repiteContrasenia;
