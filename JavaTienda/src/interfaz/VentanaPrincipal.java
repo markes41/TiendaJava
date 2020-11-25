@@ -247,7 +247,7 @@ public class VentanaPrincipal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				//DESACTIVA
-				table.setEnabled(false);
+				table.setVisible(false);
 				btnAgregar.setEnabled(false);
 				btnEditar.setEnabled(false);
 				btnEliminar.setEnabled(false);
@@ -256,7 +256,7 @@ public class VentanaPrincipal extends JFrame {
 				checkArticulos.setSelected(false);
 				
 				//ACTIVA
-				tableCarrito.setEnabled(true);
+				tableCarrito.setVisible(true);
 				btnComprar.setEnabled(true);
 				btnBorrar.setEnabled(true);
 				checkCarrito.setSelected(true);
@@ -273,18 +273,19 @@ public class VentanaPrincipal extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				
 				//DESACTIVA
-				tableCarrito.setEnabled(false);
+				tableCarrito.setVisible(false);
 				btnComprar.setEnabled(false);
 				btnBorrar.setEnabled(false);
 				checkCarrito.setSelected(false);
 				
 				//ACTIVA
-				table.setEnabled(true);
+				table.setVisible(true);
 				btnAgregar.setEnabled(true);
 				btnEditar.setEnabled(true);
 				btnEliminar.setEnabled(true);
 				btnCantidad.setEnabled(true);
 				textCantidad.setEnabled(true);
+				
 			}
 		});
 		checkArticulos.setHorizontalAlignment(SwingConstants.CENTER);
