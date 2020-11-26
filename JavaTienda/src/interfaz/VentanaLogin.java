@@ -4,6 +4,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import leerEscribir.Archivo;
+import leerEscribir.Parametros;
+import programa.AddUsuarios;
+import programa.Usuario;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -11,6 +14,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 import java.awt.event.ActionEvent;
 public class VentanaLogin extends JFrame {
 
@@ -54,7 +58,20 @@ public class VentanaLogin extends JFrame {
 		JButton btnConectar = new JButton("Conectar");
 		btnConectar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String rutaUsuarios = "usuarios.dat";
 
+				Archivo archi = new Archivo();
+				AddUsuarios AddUsuarios;
+
+				if (archi.createFile(rutaUsuarios)) {
+					AddUsuarios = new AddUsuarios();
+					archi.save(AddUsuarios, rutaUsuarios);
+				} else {
+					AddUsuarios = (AddUsuarios) archi.load(rutaUsuarios);
+				}
+
+
+				Parametros.getInstance().setUsuarioLogueado(ingresar(AddUsuarios));
 			}
 		});
 		btnConectar.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -74,4 +91,24 @@ public class VentanaLogin extends JFrame {
 		contentPane.add(btnRegistrarse);
 	}
 
+	
+	public Usuario ingresar(AddUsuarios usuario) {
+		
+		if(!usuario.existeUsuario(txtUser.getText())) {
+			System.out.println("No existe el usuario");
+			return null;
+		}
+		
+		Usuario u = usuario.getUsuario(txtUser.getText());
+		
+		
+		if(u.isClave(txtPass.getText())) {
+			return u;
+		}
+		return null;
+		
+		
+		
+		
+	}
 }
