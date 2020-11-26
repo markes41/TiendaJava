@@ -109,25 +109,6 @@ public class VentanaEditar extends JFrame {
 		JButton btnGuardar = new JButton("GUARDAR");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				if (txtCode.getText().equals("") || txtName.getText().equals("") || txtCantidad.getText().equals("")
-						|| txtPrice.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Completá todos los casilleros antes de darle a 'GUARDAR'.",
-							"Datos sin rellenar", JOptionPane.WARNING_MESSAGE);
-				} else if (!Archivo.isNumeric(txtCode.getText()) || !Archivo.isNumeric(txtCantidad.getText())
-						|| !Archivo.isNumeric(txtPrice.getText())) {
-
-					JOptionPane.showMessageDialog(null, "Ingresaste un carácter que no es número, volvé a intentarlo.",
-							"Carácter erróneo", JOptionPane.WARNING_MESSAGE);
-
-				} else {
-
-					String replaceWith = txtCode.getText() + " " + txtName.getText() + " " + txtPrice.getText() + " "
-							+ txtCantidad.getText() + " ";
-					replaceSelected(data, replaceWith);
-					setVisible(false);
-				}
-
 			}
 		});
 		btnGuardar.setBounds(131, 171, 92, 32);

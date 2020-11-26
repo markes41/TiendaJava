@@ -11,7 +11,6 @@ public class Articulo {
 		this.nombre = nombre;
 		this.precio = precio;
 		this.cantidad = cantidad;
-		createArticulo.escribirFicheroA(codigo, nombre,  precio, cantidad);
 
 	}
 

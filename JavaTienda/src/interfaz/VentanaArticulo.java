@@ -141,26 +141,6 @@ public class VentanaArticulo extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
-				articulo = new Articulo(textCodigo.getText(), textNombre.getText(),
-						textPrecio.getText(), txtCantidad.getText());
-
-				if (textCodigo.getText() == null || textNombre.getText() == null
-						|| textPrecio.getText().equals("")) {
-
-					JOptionPane.showMessageDialog(null, "Llená todos los datos antes de crear un nuevo artículo", "Datos sin rellenar",
-							JOptionPane.WARNING_MESSAGE);
-
-				} else if(!Archivo.isNumeric(textCodigo.getText())) {
-					
-					JOptionPane.showMessageDialog(null, "Ingresaste un carácter que no es número, volvé a intentarlo.", "Carácter erróneo",
-							JOptionPane.WARNING_MESSAGE);
-				}
-				
-				else {
-					JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente.", "Artículo guardado",
-							JOptionPane.INFORMATION_MESSAGE);
-				}
-				limpiar();
 			}
 			
 		});

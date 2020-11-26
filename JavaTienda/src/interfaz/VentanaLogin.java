@@ -55,21 +55,6 @@ public class VentanaLogin extends JFrame {
 		btnConectar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				testUser.leerFichero(txtUser.getText(), txtPass.getText());
-				if (testUser.isExiste() == true) {
-					testUser.buscarEmpleado(txtUser.getText());
-					if (testUser.isEmptyEmployee() == true)
-						typeUser = "Empleado";
-					else
-						typeUser = "Cliente";
-
-					VentanaPrincipal main = new VentanaPrincipal(typeUser);
-					setVisible(false);
-					main.setVisible(true);
-				} else {
-					JOptionPane.showMessageDialog(null, "No se encontro el usuario y/o contraseña.",
-							"Credenciales erroneas", JOptionPane.WARNING_MESSAGE);
-				}
 			}
 		});
 		btnConectar.setFont(new Font("Tahoma", Font.PLAIN, 14));
