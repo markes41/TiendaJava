@@ -76,7 +76,6 @@ public class Main {
 
 			case "0":
 				fin = true;
-				System.out.println("Gracias por utilizar el programa");
 				break;
 			default:
 
