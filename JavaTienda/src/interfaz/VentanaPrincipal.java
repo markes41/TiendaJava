@@ -55,7 +55,7 @@ public class VentanaPrincipal extends JFrame {
 	JRadioButton checkCarrito;
 
 	@SuppressWarnings("deprecation")
-	public VentanaPrincipal(String userType) {
+	public VentanaPrincipal() {
 		setResizable(false);
 		setTitle("Stock de Articulos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,7 +96,6 @@ public class VentanaPrincipal extends JFrame {
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(20, 34, 289, 14);
-		lblNewLabel.setText(userType);
 		contentPane.add(lblNewLabel);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -124,12 +123,7 @@ public class VentanaPrincipal extends JFrame {
 		table.getColumnModel().getColumn(3).setResizable(false);
 		scrollPane.setViewportView(table);
 
-		try {
-			RemoveEmptyLines();
-		} catch (IOException e2) {
-			System.out.println("ADASDASDSA");
-			e2.printStackTrace();
-		}
+
 
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {
@@ -280,13 +274,7 @@ public class VentanaPrincipal extends JFrame {
 		btnBorrar.setEnabled(false);
 		
 
-		if (userType.equals("Cliente")) {
-			btnEliminar.setVisible(false);
-			btnAgregar.setVisible(false);
-			btnEditar.setVisible(false);
-			btnCantidad.setBounds(20, 472, 88, 31);
-			textCantidad.setBounds(120, 476, 189, 23);
-		}
+	
 		
 	}
 
@@ -405,26 +393,6 @@ public class VentanaPrincipal extends JFrame {
 		}
 	}
 
-	public static void RemoveEmptyLines() throws IOException {
-		File inputFile = new File("articulos.txt");
-		BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-		String inputFileReader;
-		ArrayList<String> DataArray = new ArrayList<String>();
-		while ((inputFileReader = reader.readLine()) != null) {
-			if (inputFileReader.length() <= 1) {
-				continue;
-			}
-			DataArray.add(inputFileReader);
-		}
-		reader.close();
-
-		BufferedWriter bw = new BufferedWriter(new FileWriter("articulos.txt"));
-		for (int i = 0; i < DataArray.size(); i++) {
-			bw.write(DataArray.get(i));
-			bw.newLine();
-			bw.flush();
-		}
-		bw.close();
-	}
+	
 
 }

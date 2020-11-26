@@ -23,7 +23,7 @@ public class VentanaLogin extends JFrame {
 	public JTextField txtUser;
 	public JTextField txtPass;
 	Archivo testUser = new Archivo();
-	String typeUser;
+	VentanaPrincipal main = new VentanaPrincipal();
 
 	public VentanaLogin() {
 
@@ -58,20 +58,8 @@ public class VentanaLogin extends JFrame {
 		JButton btnConectar = new JButton("Conectar");
 		btnConectar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String rutaUsuarios = "usuarios.dat";
-
-				Archivo archi = new Archivo();
-				AddUsuarios AddUsuarios;
-
-				if (archi.createFile(rutaUsuarios)) {
-					AddUsuarios = new AddUsuarios();
-					archi.save(AddUsuarios, rutaUsuarios);
-				} else {
-					AddUsuarios = (AddUsuarios) archi.load(rutaUsuarios);
-				}
-
-
-				Parametros.getInstance().setUsuarioLogueado(ingresar(AddUsuarios));
+				cargarDatosUsuarios();
+				
 			}
 		});
 		btnConectar.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -92,10 +80,30 @@ public class VentanaLogin extends JFrame {
 	}
 
 	
+	public void cargarDatosUsuarios() {
+		String rutaUsuarios = "usuarios.dat";
+
+		Archivo archi = new Archivo();
+		AddUsuarios AddUsuarios;
+
+		if (archi.createFile(rutaUsuarios)) {
+			AddUsuarios = new AddUsuarios();
+			archi.save(AddUsuarios, rutaUsuarios);
+		} else {
+			AddUsuarios = (AddUsuarios) archi.load(rutaUsuarios);
+		}
+
+
+		Parametros.getInstance().setUsuarioLogueado(ingresar(AddUsuarios));
+	}
+	
 	public Usuario ingresar(AddUsuarios usuario) {
 		
 		if(!usuario.existeUsuario(txtUser.getText())) {
-			System.out.println("No existe el usuario");
+			JOptionPane.showMessageDialog(null,
+					"El nombre de usuario que ingresaste no coincide con ninguna cuenta.",
+					"Usuario incorrecto.", JOptionPane.WARNING_MESSAGE);
+			txtUser.setText("");
 			return null;
 		}
 		
@@ -103,10 +111,15 @@ public class VentanaLogin extends JFrame {
 		
 		
 		if(u.isClave(txtPass.getText())) {
+			main.setVisible(true);
+			setVisible(false);
 			return u;
-		}
+		}else {
+			JOptionPane.showMessageDialog(null,
+					"La contraseña que ingresaste es incorrecta.",
+					"Contraseña incorrecta.", JOptionPane.WARNING_MESSAGE);
 		return null;
-		
+		}
 		
 		
 		
