@@ -105,7 +105,6 @@ public class VentanaUsuarioNuevo extends JFrame {
 
 		Archivo archi = new Archivo();
 
-		Scanner sc = new Scanner(System.in);
 		AddUsuarios AddUsuarios;
 
 		if (archi.createFile(rutaUsuarios)) {

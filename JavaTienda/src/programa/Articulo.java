@@ -1,10 +1,12 @@
 package programa;
+import java.io.Serializable;
+
 import leerEscribir.Archivo;
 
-public class Articulo {
-	private String codigo, nombre, precio, cantidad;
-	Archivo createArticulo = new Archivo();
+public class Articulo implements Serializable{
 
+	private static final long serialVersionUID = 2796074017515047685L;
+	private String codigo, nombre, precio, cantidad;
 	public Articulo(String codigo, String nombre,  String precio, String cantidad) {
 		super();
 		this.codigo = codigo;

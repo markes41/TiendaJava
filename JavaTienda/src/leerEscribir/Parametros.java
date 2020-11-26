@@ -1,11 +1,13 @@
 package leerEscribir;
 import programa.Usuario;
+import programa.Articulo;
 public class Parametros {
 		
 		private static Parametros singleton;
-
-		private Usuario usuarioLogueado;
 		
+		
+		private Usuario usuarioLogueado;
+		private Articulo articuloCreado;
 		
 		public static Parametros getInstance() {
 			if(singleton == null) {
@@ -32,6 +34,18 @@ public class Parametros {
 
 		public void setUsuarioLogueado(Usuario usuarioLogueado) {
 			this.usuarioLogueado = usuarioLogueado;
+		}
+
+
+
+		public Articulo getArticuloCreado() {
+			return articuloCreado;
+		}
+
+
+
+		public void setArticuloCreado(Articulo articuloCreado) {
+			this.articuloCreado = articuloCreado;
 		}
 		
 		

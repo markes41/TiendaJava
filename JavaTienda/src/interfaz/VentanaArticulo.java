@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import leerEscribir.Archivo;
+import programa.AddArticulos;
+import programa.AddUsuarios;
 import programa.Articulo;
 
 import javax.swing.JLabel;
@@ -129,23 +131,12 @@ public class VentanaArticulo extends JFrame {
 		btnCerrar.setBounds(32, 206, 105, 31);
 		contentPane.add(btnCerrar);
 
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.addMouseListener(new MouseAdapter() {
-			private void limpiar() {
-				textCodigo.setText("");
-				textNombre.setText("");
-				textPrecio.setText("");
-				txtCantidad.setText("");
+		JButton btnGuardar = new JButton("Guardar");	
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarArticulos();
 			}
-
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				
-			}
-			
 		});
-		
-
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnGuardar.setBounds(178, 206, 105, 31);
 		contentPane.add(btnGuardar);
@@ -158,4 +149,39 @@ public class VentanaArticulo extends JFrame {
 		
 
 	}
+	
+	public void cargarArticulos() {
+		String rutaArticulos = "articulos.dat";
+
+		Archivo archi = new Archivo();
+
+		AddArticulos AddArticulos;
+
+		if (archi.createFile(rutaArticulos)) {
+			AddArticulos = new AddArticulos();
+			archi.save(AddArticulos, rutaArticulos);
+		} else {
+			AddArticulos = (AddArticulos) archi.load(rutaArticulos);
+		}
+		
+		crearArticulo(AddArticulos,rutaArticulos);
+	}
+	
+	public void crearArticulo(AddArticulos articulo, String rutaArticulos) {
+		Archivo archi = new Archivo();
+	
+
+		String codigo = textCodigo.getText();
+		String nombre = textNombre.getText();
+		String precio = textPrecio.getText();
+		String cantidad = txtCantidad.getText();
+		
+		if( articulo.addArticulos(codigo, nombre, precio, cantidad)) {
+			System.out.println("Se creó el artículo");
+			archi.save(articulo, rutaArticulos);
+		}else {
+			System.out.println("No se pudo crear el artículo.");
+		}	
+	
+}
 }

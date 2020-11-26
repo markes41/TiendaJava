@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -16,6 +17,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import leerEscribir.Archivo;
+import programa.AddArticulos;
+import programa.AddUsuarios;
 import programa.Articulo;
 
 import javax.swing.JScrollPane;
@@ -393,6 +396,21 @@ public class VentanaPrincipal extends JFrame {
 		}
 	}
 
-	
+	public void cargarArticulos() {
+		String rutaArticulos = "articulos.dat";
 
+		Archivo archi = new Archivo();
+
+		AddArticulos AddArticulos;
+
+		if (archi.createFile(rutaArticulos)) {
+			AddArticulos = new AddArticulos();
+			archi.save(AddArticulos, rutaArticulos);
+		} else {
+			AddArticulos = (AddArticulos) archi.load(rutaArticulos);
+		}
+	}
+	
+	
+	
 }
