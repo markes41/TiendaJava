@@ -30,7 +30,7 @@ public class AddArticulos implements Serializable {
 		return this.diccionarioArticulos.get(codigo.toLowerCase());
 	}
 	
-	public void mostrarUsuarios() {
+	public void mostrarArticulos() {
 		
 		for( String clave : this.diccionarioArticulos.keySet()   ) {
 			System.out.println(clave);

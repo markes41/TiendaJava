@@ -126,6 +126,8 @@ public class VentanaArticulo extends JFrame {
 				dispose();
 			}
 		});
+		
+		
 
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCerrar.setBounds(32, 206, 105, 31);
@@ -135,6 +137,9 @@ public class VentanaArticulo extends JFrame {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cargarArticulos();
+				AddArticulos AddArticulos = new AddArticulos();
+				AddArticulos.mostrarArticulos();
+				
 			}
 		});
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -176,12 +181,31 @@ public class VentanaArticulo extends JFrame {
 		String precio = textPrecio.getText();
 		String cantidad = txtCantidad.getText();
 		
-		if( articulo.addArticulos(codigo, nombre, precio, cantidad)) {
-			System.out.println("Se creó el artículo");
+		if(textCodigo.getText().equals("") || textNombre.getText().equals("") || 
+				textPrecio.getText().equals("") || txtCantidad.getText().equals("")) {
+			JOptionPane.showMessageDialog(null,
+					"Antes de guardar, tenés que rellenar todos los campos.",
+					"Campos sin rellenar.", JOptionPane.WARNING_MESSAGE);
+		}else if( articulo.addArticulos(codigo, nombre, precio, cantidad)) {
+			JOptionPane.showMessageDialog(null,
+					"El articulo se ha creado correctamente con el código #"+codigo+".",
+					"Articulo creado", JOptionPane.WARNING_MESSAGE);
 			archi.save(articulo, rutaArticulos);
+			limpiar();
 		}else {
-			System.out.println("No se pudo crear el artículo.");
+			JOptionPane.showMessageDialog(null,
+					"No se pudo crear el artículo porque el código #"+codigo+" ya está siendo usado. Intentá con otro.",
+					"Articulo no creado", JOptionPane.WARNING_MESSAGE);
+			limpiar();
 		}	
 	
 }
+	
+	public void limpiar() {
+		textCodigo.setText("");
+		textNombre.setText("");
+		textPrecio.setText("");
+		txtCantidad.setText("");
+		
+	}
 }
