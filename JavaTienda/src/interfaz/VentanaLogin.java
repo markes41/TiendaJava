@@ -23,7 +23,7 @@ public class VentanaLogin extends JFrame {
 	public JTextField txtUser;
 	public JTextField txtPass;
 	Archivo testUser = new Archivo();
-	VentanaPrincipal main = new VentanaPrincipal();
+	VentanaUsuarioCliente client = new VentanaUsuarioCliente();
 
 	public VentanaLogin() {
 
@@ -111,7 +111,7 @@ public class VentanaLogin extends JFrame {
 		
 		
 		if(u.isClave(txtPass.getText())) {
-			main.setVisible(true);
+			client.setVisible(true);
 			setVisible(false);
 			return u;
 		}else {
