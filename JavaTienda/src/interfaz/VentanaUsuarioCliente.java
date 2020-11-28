@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import programa.Usuario;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -54,9 +57,10 @@ public class VentanaUsuarioCliente extends JFrame {
 		JButton btnNewButton_1 = new JButton("Cliente");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				usuario = false;
 				main.setVisible(true);
 				setVisible(false);
-				usuario = false;
+				
 			}
 		});
 		btnNewButton_1.setBounds(175, 82, 97, 41);
@@ -65,12 +69,14 @@ public class VentanaUsuarioCliente extends JFrame {
 		JButton btnNewButton_1_1 = new JButton("Usuario");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				usuario = true;
 				main.setVisible(true);
 				setVisible(false);
-				usuario = true;
+				
 			}
 		});
 		btnNewButton_1_1.setBounds(68, 82, 97, 41);
 		contentPane.add(btnNewButton_1_1);
 	}
+	
 }

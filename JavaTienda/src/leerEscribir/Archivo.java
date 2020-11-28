@@ -4,11 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
-public class Archivo implements Serializable{
+public class Archivo{
 		
-
 		public boolean createFile(String ruta) {
 			File archivo = new File(ruta);
 			try {

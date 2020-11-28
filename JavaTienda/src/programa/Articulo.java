@@ -1,19 +1,16 @@
 package programa;
 import java.io.Serializable;
 
-import leerEscribir.Archivo;
-
 public class Articulo implements Serializable{
 
 	private static final long serialVersionUID = 2796074017515047685L;
 	private String codigo, nombre, precio, cantidad;
+	
 	public Articulo(String codigo, String nombre,  String precio, String cantidad) {
-		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.cantidad = cantidad;
-
 	}
 
 	public String getCodigo() {
@@ -32,7 +29,6 @@ public class Articulo implements Serializable{
 		this.nombre = nombre;
 	}
 
-
 	public String getPrecio() {
 		return precio;
 	}
@@ -49,6 +45,9 @@ public class Articulo implements Serializable{
 		this.cantidad = cantidad;
 	}
 	
+	@Override
+	public String toString() {
+		return "Articulo [Codigo=" + codigo + ", Nombre=" + nombre + ", precio=" + precio + ", Cantidad =" + cantidad +"]";
+	}
 	
-
 }

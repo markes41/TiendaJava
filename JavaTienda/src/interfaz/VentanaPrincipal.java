@@ -40,10 +40,11 @@ import javax.swing.JRadioButton;
 public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+
 	private JPanel contentPane;
 	Articulo articulo;
 	private JTable table;
-	Archivo test = new Archivo();
+	AddArticulos test = new AddArticulos();
 	ImageIcon carrito = new ImageIcon("carrito.png");
 	private JTextField textCantidad;
 	private JTable tableCarrito;
@@ -56,6 +57,7 @@ public class VentanaPrincipal extends JFrame {
 	int fila;
 	JRadioButton checkArticulos;
 	JRadioButton checkCarrito;
+	VentanaUsuarioCliente usu;
 
 	@SuppressWarnings("deprecation")
 	public VentanaPrincipal() {
@@ -75,13 +77,19 @@ public class VentanaPrincipal extends JFrame {
 		lblListaDeArticulos.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblListaDeArticulos.setBounds(20, 11, 289, 23);
 		contentPane.add(lblListaDeArticulos);
-
+		
+		
+		
 		JButton btnAgregar = new JButton("NUEVO");
 		btnAgregar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
-				VentanaArticulo art = new VentanaArticulo();
-				art.setVisible(true);
-			}
+//				if(usu.usuario == true) {
+//				VentanaArticulo art = new VentanaArticulo();
+//				art.setVisible(true);}
+//			}
+			VentanaArticulo art = new VentanaArticulo();
+			art.setVisible(true);}
 		});
 		btnAgregar.setBounds(20, 472, 90, 31);
 		contentPane.add(btnAgregar);
@@ -126,8 +134,7 @@ public class VentanaPrincipal extends JFrame {
 		table.getColumnModel().getColumn(3).setResizable(false);
 		scrollPane.setViewportView(table);
 
-
-
+		test.mostrarArticulosInterfaz();
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -410,6 +417,10 @@ public class VentanaPrincipal extends JFrame {
 			AddArticulos = (AddArticulos) archi.load(rutaArticulos);
 		}
 	}
+	
+	
+	
+	
 	
 	
 	
