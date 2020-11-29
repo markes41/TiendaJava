@@ -96,11 +96,14 @@ public class MenuOpciones {
 		
 		String username;
 		do  {
-		System.out.println("Ingrese el nombre de usuario");
+		System.out.println("Ingrese el nombre de usuario (ingresar 0 para cancelar)");
 		username = sc.next();
 		
 		
-		
+		if (username.equals("0")) {
+			return null;
+			
+		}
 		if(!usuarios.existeUsuario(username)) {
 			System.out.println("No existe el usuario\n");
 			
@@ -131,9 +134,7 @@ public class MenuOpciones {
 		
 		System.out.println("Has superado el limite de intentos.\n");
 		return null;
-		
-		
-		
+
 		
 	}
 	
