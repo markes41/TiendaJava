@@ -4,20 +4,22 @@ import java.io.Serializable;
 public class Articulo implements Serializable{
 
 	private static final long serialVersionUID = 2796074017515047685L;
-	private String codigo, nombre, precio, cantidad;
+	private String nombre;
+	private double precio;
+	private int codigo, cantidad;
 	
-	public Articulo(String codigo, String nombre,  String precio, String cantidad) {
+	public Articulo(int codigo, String nombre,  double precio, int cantidad) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.cantidad = cantidad;
 	}
 
-	public String getCodigo() {
+	public int getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 
@@ -29,19 +31,19 @@ public class Articulo implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public String getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(String precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
-	public String getCantidad() {
+	public int getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(String cantidad) {
+	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
 	

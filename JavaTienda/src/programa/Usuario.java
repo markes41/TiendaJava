@@ -1,44 +1,47 @@
 package programa;
 import java.io.Serializable;
 
-public class Usuario implements Serializable {
+public class Usuario implements Serializable{
 
-	private static final long serialVersionUID = 697162543239062490L;
-	private String nombreUsuario, contrasenia, nombre;
+	private static final long serialVersionUID = -888159244032468800L;
+	private String username;
+	private String password;
+	private String nickname;
 
-	public Usuario(String nombreUsuario, String contrasenia, String nombre) {
-		this.nombreUsuario = nombreUsuario;
-		this.contrasenia = contrasenia;
-		this.nombre = nombre;
+	public Usuario(String username, String password, String nickname) {
+		this.username = username;
+		this.password = password;
+		this.nickname = nickname;
 	}
 
-	public String getContrasenia() {
-		return contrasenia;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getNombreUsuario() {
-		return nombreUsuario;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getUsername() {
+		return username;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [username=" + username + ", password=" + password + ", nickname=" + nickname + "]";
 	}
 	
-	public void setNickname(String nombre) {
-		this.nombre = nombre;
+	public boolean isClave(String password) {
+		return this.getPassword().equals(password);
 	}
 	
-	public boolean isClave(String contrasenia) {
-		return this.getContrasenia().equals(contrasenia);
-	
 
-}
 }

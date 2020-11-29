@@ -10,26 +10,26 @@ public class AddArticulos implements Serializable {
 	private HashMap<String, Articulo> diccionarioArticulos = new HashMap<String, Articulo>();
 	Articulo res;
 
-	public boolean addArticulos(String codigo, String nombre, String precio, String cantidad) {
+	public boolean addArticulos(int codigo, String nombre, double precio, int cantidad) {
 		
-		if(existeArticulo(codigo)){
+		if(existeArticulo(nombre)){
 			return false;
 		}
 		
 		
 		Articulo art = new Articulo(codigo, nombre, precio, cantidad);
 
-		this.diccionarioArticulos.put(codigo.toLowerCase(), art);
+		this.diccionarioArticulos.put(nombre.toLowerCase(), art);
 		
 		return true;
 	}
 	
-	public boolean existeArticulo(String codigo) {
-		return this.diccionarioArticulos.containsKey(codigo.toLowerCase());
+	public boolean existeArticulo(String nombre) {
+		return this.diccionarioArticulos.containsKey(nombre.toLowerCase());
 	}
 	
-	public Articulo getArticulo(String codigo) {
-		return this.diccionarioArticulos.get(codigo.toLowerCase());
+	public Articulo getArticulo(String nombre) {
+		return this.diccionarioArticulos.get(nombre.toLowerCase());
 	}
 	
 	public void mostrarArticulos() {
@@ -41,22 +41,6 @@ public class AddArticulos implements Serializable {
 		
 	}
 	
-	public void mostrarArticulosInterfaz() {
-		  int numero_iteraciones_bucle_for=0;
-		  String [] registros =  new String[numero_iteraciones_bucle_for];
-		  String [] titulos ={"Nombre","Cantidad","Codigo","Precio"};
-		  DefaultTableModel modelo;
-		  modelo= new DefaultTableModel(null,titulos);
-		 // registros [0]=art.getString("Nombre");
-		  int iteracion=1;
-		             for(String clave:this.diccionarioArticulos.keySet()){
-		            	 System.out.println(clave);
-		               registros [iteracion]=this.toString();
-		                iteracion++;
-		                modelo.addRow(registros);
-		                
-		              }                
-
-	}
+	
 
 }
