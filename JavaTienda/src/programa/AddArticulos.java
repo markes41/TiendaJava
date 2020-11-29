@@ -83,15 +83,17 @@ public class AddArticulos implements Serializable {
 	public boolean comprarArticulo() {
 		Scanner sc = new Scanner(System.in);
 		mostrarArticulos();
-		int codigo = 0, nuevaCant = 0;
+		int codigo = 0, nuevaCant = 0, cantComprar = 0, i = 0;
+		double valorCarrito = 0;
 		ArrayList<Double> carrito = new ArrayList<Double>();
 		ArrayList<Integer> productos = new ArrayList<Integer>();
+		ArrayList<Integer> cantidad = new ArrayList<Integer>();
 		
 		do {
-			System.out.println("Escriba el código del artículo que desea comprar (escriba 0 para terminar):  ");
+			System.out.println("Escriba el código del artículo que desea comprar (escriba 0 para terminar de comprar):  ");
 			codigo = sc.nextInt();
 			if(existeArticulo(codigo)){
-				int cantComprar = 0;
+				cantComprar = 0;
 				
 				do{
 					if(diccionarioArticulos.get(codigo).getCantidad() == 0)
@@ -101,12 +103,18 @@ public class AddArticulos implements Serializable {
 					cantComprar = sc.nextInt();
 
 				}while(cantComprar > diccionarioArticulos.get(codigo).getCantidad() || cantComprar < 1);
-				
+				//SETEAMOS NUEVA CANTIDAD
 				nuevaCant = diccionarioArticulos.get(codigo).getCantidad() - cantComprar;
+				//SE LA ASIGNAMOS A LA KEY QUE ELEJIMOS
 				diccionarioArticulos.get(codigo).setCantidad(nuevaCant);
-				double valorCarrito = cantComprar * diccionarioArticulos.get(codigo).getPrecio();
+				//CALCULAMOS EL TOTAL
+				valorCarrito = cantComprar * diccionarioArticulos.get(codigo).getPrecio();
+				//SE LO AGREGAMOS AL ARRAYLIST
 				carrito.add(valorCarrito);
+				//AGREGAMOS EL CÓDIGO PARA TENER LA REFERENCIA
 				productos.add(codigo);
+				//AGREGAMOS LA CANTIDAD PARA TENER LA REFERENCIA
+				cantidad.add(cantComprar);
 				
 				
 			}else {
@@ -114,10 +122,8 @@ public class AddArticulos implements Serializable {
 			}
 			
 			if(codigo == 0) {
-				comprarCarrito(carrito, productos);
+				comprarCarrito(carrito, productos, cantidad);
 			}
-				
-				
 			
 		}while(codigo != 0);
 		return true;
@@ -125,16 +131,20 @@ public class AddArticulos implements Serializable {
 		
 	}
 	
-	public void comprarCarrito(ArrayList<Double> valores, ArrayList<Integer> codigos) {
-		
+	public void comprarCarrito(ArrayList<Double> valores, ArrayList<Integer> codigos, ArrayList<Integer> cantidad) {
+		System.out.println("Carrito de compras: ");
+		System.out.println("---------------------------------------");
+		double total = 0;
 		for(int i = 0; i < valores.size(); i++) {
 			if(valores.get(i) <= 0) {
 				
 			}else {
-				System.out.println("Compraste "+getArticulo(codigos.get(i)).getNombre()+
-						" por un valor de = $"+valores.get(i));
+				System.out.println((i+1)+". "+getArticulo(codigos.get(i)).getNombre()+" ("+cantidad.get(i)+") = $"+
+						valores.get(i));
 			}
+			total += valores.get(i);
 		}
+		System.out.println("Total de la compra: $"+total);
 	}
 
 	public void editarCantidadArticulo() {
