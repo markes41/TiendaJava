@@ -133,6 +133,7 @@ public class MenuOpciones {
 
 		
 		System.err.println("Has superado el limite de intentos.\n");
+		sc.close();
 		return null;
 
 		
