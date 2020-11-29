@@ -42,7 +42,7 @@ public class Main {
 
 		while (!fin) {
 
-			System.out.println("Que accion desea realizar?");
+			System.out.println("\nQue accion desea realizar?");
 			System.out.println("1. Cargar usuarios");
 			System.out.println("2. Mostrar usuarios");
 			System.out.println("3. Ingresar al sistema");
@@ -51,21 +51,20 @@ public class Main {
 			switch (sc.next()) {
 			case "0":
 				fin = true;
-				System.out.println("Gracias por utilizar el programa");
+				System.out.println("\nGracias por utilizar el programa");
 				break;
 
 			case "1":
 				menuOpciones.cargarUsuario(usuarios, rutaUsuarios);
 				break;
 			case "2":
-				System.out.println("\nSus usuarios son:");
+				System.out.println("\nSus usuarios son:\n");
 				usuarios.mostrarUsuarios();
-				System.out.println("\n");
 				break;
 			case "3":
 				Parametros.getInstance().setUsuarioLogueado(menuOpciones.ingresar(usuarios));
 				if (Parametros.getInstance().getUsuarioLogueado() != null) {
-					System.out.println("1. Ingrese como Empleado");
+					System.out.println("\n1. Ingrese como Empleado");
 					System.out.println("2. Ingrese como Cliente");
 					System.out.println("0. Log out");
 					switch (sc.next()) {
