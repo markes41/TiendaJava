@@ -15,17 +15,17 @@ public class MenuOpciones {
 		Archivo archi = new Archivo();
 		Scanner sc = new Scanner(System.in);
 
-			System.out.println("ingrese el nombre del usuario a ingresar (0 para salir)");
+			System.out.println("Ingrese el nombre del usuario a ingresar (0 para salir)");
 			String username = sc.next();
 			
 			if(username.equals("0")) {
 				return;
 			}
 			
-			System.out.println("ingrese la contraseña del usuario a ingresar");
+			System.out.println("Ingrese la contraseña del usuario a ingresar");
 			String password = sc.next();
 			
-			System.out.println("ingrese el nick del usuario a ingresar");
+			System.out.println("Ingrese el nick del usuario a ingresar");
 			String nick = sc.next();
 			
 			

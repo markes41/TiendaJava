@@ -47,10 +47,12 @@ public class Main {
 			System.out.println("2. Mostrar usuarios");
 			System.out.println("3. Ingresar al sistema");
 
-
+			
+			System.out.println("0. Salir");
+			
+			System.out.println("\nOpcion:");
 			
 			
-			System.out.println("0. Salir5");
 
 			switch (sc.next()) {
 			case "0":
@@ -61,11 +63,13 @@ public class Main {
 			case "1":
 				menuOpciones.cargarUsuario(usuarios, rutaUsuarios);
 				break;
+				
 			case "2":
 				System.out.println("\nSus usuarios son:");
 				usuarios.mostrarUsuarios();
 				System.out.println("\n");
 				break;
+				
 			case "3":
 				Parametros.getInstance().setUsuarioLogueado(menuOpciones.ingresar(usuarios));
 
