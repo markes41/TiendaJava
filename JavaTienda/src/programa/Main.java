@@ -43,7 +43,7 @@ public class Main {
 		while (!fin) {
 
 			System.out.println("Que accion desea realizar?");
-			System.out.println("1. Cargar usuarios");
+			System.out.println("1. Crear Usuario");
 			System.out.println("2. Mostrar usuarios");
 			System.out.println("3. Ingresar al sistema");
 
