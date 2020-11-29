@@ -3,13 +3,8 @@ import java.util.Scanner;
 
 import Menues.MenuLogueado;
 import Menues.MenuOpciones;
-import interfaz.VentanaLogin;
-import leerEscribir.*;
-import programa.*;
 import leerEscribir.Parametros;
 import leerEscribir.Archivo;
-
-import interfaz.*;
 
 
 public class Main {
@@ -63,7 +58,7 @@ public class Main {
 			case "2":
 				Parametros.getInstance().setUsuarioLogueado( menuOpciones.ingresar(usuarios));
 				
-				while(Parametros.getInstance().getUsuarioLogueado() == null) {
+				while(Parametros.getInstance().getUsuarioLogueado() != null) {
 					System.out.println("Ingrese una opcion");
 					System.out.println("1. Comprar");
 					System.out.println("2. Mostrar stock");
