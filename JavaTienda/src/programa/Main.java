@@ -18,6 +18,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		String rutaUsuarios = "usuarios.dat";
+		String rutaArticulos = "articulos.dat";
 
 		Archivo archi = new Archivo();
 
@@ -30,6 +31,13 @@ public class Main {
 			archi.save(usuarios, rutaUsuarios);
 		} else {
 			usuarios = (Usuarios) archi.load(rutaUsuarios);
+		}
+		
+		if (archi.createFile(rutaArticulos)) {
+			articulos = new AddArticulos();
+			archi.save(usuarios, rutaUsuarios);
+		} else {
+			articulos = (AddArticulos) archi.load(rutaArticulos);
 		}
 
 		MenuOpciones menuOpciones = new MenuOpciones();
@@ -54,7 +62,6 @@ public class Main {
 				break;
 			case "2":
 				Parametros.getInstance().setUsuarioLogueado( menuOpciones.ingresar(usuarios));
-				articulos = new AddArticulos();
 				
 				while(Parametros.getInstance().getUsuarioLogueado() == null) {
 					System.out.println("Ingrese una opcion");
@@ -68,22 +75,7 @@ public class Main {
 							articulos.mostrarArticulos();
 							break;
 						case "3":
-							System.out.println("Ingrese el nombre del artículo: ");
-							String nombre = sc.next();
-							
-							System.out.println("Ingrese el código del articulo: ");
-							int codigo = sc.nextInt();
-							
-							System.out.println("Ingrese el precio del artículo: ");
-							double precio = sc.nextDouble();
-							
-							System.out.println("Ingrese la cantidad del artículo: ");
-							int cantidad = sc.nextInt();
-							
-							if(articulos.addArticulos(codigo, nombre, precio, cantidad))
-								System.out.println("El artículo con el código #"+codigo+" se creó correctamente");
-							else
-								System.out.println("El artículo con el código #"+codigo+" ya existe. Intente con otro.");
+							menuOpciones.cargarArticulo(articulos, rutaArticulos);
 							break;
 						case "0":
 							Parametros.getInstance().setUsuarioLogueado(null);;			
