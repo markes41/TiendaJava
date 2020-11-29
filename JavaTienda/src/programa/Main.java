@@ -67,6 +67,7 @@ public class Main {
 				if (Parametros.getInstance().getUsuarioLogueado() != null) {
 					System.out.println("1. Ingrese como Empleado");
 					System.out.println("2. Ingrese como Cliente");
+					System.out.println("0. Log out");
 					switch (sc.next()) {
 
 					case "1":
