@@ -111,21 +111,22 @@ public class MenuOpciones {
 		Usuario usu = usuarios.getUsuario(username);
 		
 		
-		int cantintentos = 0;
+		int cantintentos = 3;
 		
 		
 		do {
 		
-		cantintentos ++;
 			
-		System.out.println("Ingrese la clave de usuario");
+		System.out.println("Ingrese la clave de usuario. Te quedan " + cantintentos + " intentos.");
 		String password = sc.next();
 		
 		if(usu.isClave(password)) {
 			return usu;
 		}
 		
-		} while(cantintentos < 3);
+		cantintentos --;
+		
+		} while(cantintentos > 0);
 
 		
 		System.out.println("Has superado el limite de intentos.\n");
