@@ -47,7 +47,10 @@ public class Main {
 			System.out.println("2. Mostrar usuarios");
 			System.out.println("3. Ingresar al sistema");
 
-			System.out.println("0. Salir");
+
+			
+			
+			System.out.println("0. Salir5");
 
 			switch (sc.next()) {
 			case "0":
