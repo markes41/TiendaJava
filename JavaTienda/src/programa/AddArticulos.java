@@ -54,9 +54,21 @@ public class AddArticulos implements Serializable {
 
 			System.out.println("Ingresa la nueva cantidad: ");
 			int nuevaCantidad = sc.nextInt();
+			if (nuevaCantidad < 0) {
+				do {
+					System.out.println("Por favor ingrese una cantidad que no sea negativa: ");
+					nuevaCantidad = sc.nextInt();
+				} while (nuevaCantidad < 0);
+			}
 
 			System.out.println("Ingrese el nuevo precio: ");
 			double nuevoPrecio = sc.nextDouble();
+			if (nuevoPrecio < 0) {
+				do {
+					System.out.println("Ingrese un precio que no sea negativo: ");
+					nuevoPrecio = sc.nextDouble();
+				} while (nuevoPrecio < 0);
+			}
 
 			Articulo changeArticle = new Articulo(codeArticle, nuevoNombre, nuevoPrecio, nuevaCantidad);
 			diccionarioArticulos.replace(codeArticle, changeArticle);
