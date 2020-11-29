@@ -56,7 +56,7 @@ public class Main {
 				Parametros.getInstance().setUsuarioLogueado( menuOpciones.ingresar(usuarios));
 				articulos = new AddArticulos();
 				
-				while(Parametros.getInstance().getUsuarioLogueado() != null) {
+				while(Parametros.getInstance().getUsuarioLogueado() == null) {
 					System.out.println("Ingrese una opcion");
 					System.out.println("1. Comprar");
 					System.out.println("2. Mostrar stock");
@@ -85,7 +85,8 @@ public class Main {
 							else
 								System.out.println("El artículo con el código #"+codigo+" ya existe. Intente con otro.");
 							break;
-							
+						case "0":
+							Parametros.getInstance().setUsuarioLogueado(null);;			
 					}
 					
 				}
