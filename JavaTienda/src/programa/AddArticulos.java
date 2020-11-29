@@ -159,6 +159,12 @@ public class AddArticulos implements Serializable {
 			if(existeArticulo(codigoArticulo)) {
 				System.out.println("Introduzca la nueva cantidad del artículo #"+codigoArticulo+": ");
 				cantidadElegida = sc.nextInt();
+				if (cantidadElegida < 0) {
+					do {
+						System.out.println("Por favor ingrese una cantidad que no sea negativa: ");
+						cantidadElegida = sc.nextInt();
+					} while (cantidadElegida < 0);
+				}
 				
 				int cantidadNueva = diccionarioArticulos.get(codigoArticulo).getCantidad() + cantidadElegida;
 				diccionarioArticulos.get(codigoArticulo).setCantidad(cantidadNueva);
