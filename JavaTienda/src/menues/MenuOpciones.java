@@ -10,6 +10,14 @@ import leerEscribir.Archivo;
 
 public class MenuOpciones {
 
+	private static boolean isNumeric(String cadena){
+		try {
+			Integer.parseInt(cadena);
+			return true;
+		} catch (NumberFormatException nfe){
+			return false;
+		}
+	}
 	
 	public void cargarUsuario(AddUsuarios usuarios, String rutaUsuarios) {
 		Archivo archi = new Archivo();
@@ -41,16 +49,24 @@ public class MenuOpciones {
 		Archivo archi = new Archivo();
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Ingrese el código del articulo: ");
-		int codigo = sc.nextInt();
+		String codigo;
 		
-		if (codigo <0) {
-			do {
-				System.err.println("El codigo no puede ser menor a 0: ");
-				codigo = sc.nextInt();
-			}while(codigo < 0);
-		}
+		do {
+			
+			System.out.println("Ingrese el código del articulo (solo se admiten numeros): ");
+		codigo = sc.next();
+
 		
+			}while ((isNumeric(codigo) == false));
+		
+			
+			
+			
+		
+			
+		
+		
+	
 
 		System.out.println("Ingrese el nombre del artículo (Apretá 0 para terminar): ");
 		String nombre = sc.next();
@@ -80,7 +96,7 @@ public class MenuOpciones {
 				}while(cantidad < 0);
 			}
 			
-			if(articulo.addArticulos(codigo, nombre, precio, cantidad)) {
+			if(articulo.addArticulos(Integer.parseInt(codigo), nombre, precio, cantidad)) {
 				System.out.println("El artículo con el nombre "+nombre+" se creó correctamente");
 				archi.save(articulo, rutaArticulos);
 			}else {
@@ -133,7 +149,6 @@ public class MenuOpciones {
 
 		
 		System.err.println("Has superado el limite de intentos.\n");
-		sc.close();
 		return null;
 
 		
