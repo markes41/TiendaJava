@@ -94,15 +94,22 @@ public class MenuOpciones {
 	public Usuario ingresar(Usuarios usuarios) {
 		Scanner sc = new Scanner(System.in);
 		
+		String username;
+		do  {
 		System.out.println("Ingrese el nombre de usuario");
-		String username = sc.next();
+		username = sc.next();
+		
+		
 		
 		if(!usuarios.existeUsuario(username)) {
-			System.out.println("No existe el usuario");
-			return null;
+			System.out.println("No existe el usuario\n");
+			
 		}
 		
+		} while(!usuarios.existeUsuario(username)); 
+		
 		Usuario usu = usuarios.getUsuario(username);
+		
 		
 
 		
