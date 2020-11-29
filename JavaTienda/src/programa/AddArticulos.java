@@ -132,4 +132,27 @@ public class AddArticulos implements Serializable {
 		}
 	}
 
+	public void editarCantidadArticulo() {
+		Scanner sc = new Scanner(System.in);
+		int cantidadElegida = 0, codigoArticulo = 0;
+		mostrarArticulos();
+		
+		do {
+			System.out.println("Seleccione el código del artículo que quiere editar (Escriba 0 para terminar): ");
+			codigoArticulo = sc.nextInt();
+			
+			if(existeArticulo(codigoArticulo)) {
+				System.out.println("Introduzca la nueva cantidad del artículo #"+codigoArticulo+": ");
+				cantidadElegida = sc.nextInt();
+				
+				int cantidadNueva = diccionarioArticulos.get(codigoArticulo).getCantidad() + cantidadElegida;
+				diccionarioArticulos.get(codigoArticulo).setCantidad(cantidadNueva);
+				
+			}else {
+				System.out.println("El código "+codigoArticulo+" no corresponde a un artículo existente. Vuelva a intentarlo.");
+			}
+		}while(codigoArticulo != 0);
+		
+		
+	}
 }

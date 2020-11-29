@@ -64,21 +64,31 @@ public class Main {
 					System.out.println("2. Mostrar stock");
 					System.out.println("3. Crear articulos");
 					System.out.println("4. Editar articulo");
+					System.out.println("5. Editar cantidad articulo");
 					System.out.println("0. Log out");
 					
 					switch (sc.nextInt()) {
+					
+						///////////////////////////////////////////////////////////////////////
 						case 1:
 							if(articulos.comprarArticulo()) {
 								archi.save(articulos, rutaArticulos);
 							}
 							break;
 						
+						///////////////////////////////////////////////////////////////////////
+							
 						case 2:
 							articulos.mostrarArticulos();
 							break;
+							
+						//////////////////////////////////////////////////////////////////////
+							
 						case 3:
 							menuOpciones.cargarArticulo(articulos, rutaArticulos);
 							break;
+						
+						//////////////////////////////////////////////////////////////////////
 							
 						case 4:
 							if(articulos.modificarArticulo()) {
@@ -89,6 +99,15 @@ public class Main {
 							}
 							
 							break;
+							
+						///////////////////////////////////////////////////////////////////////
+							
+						case 5:
+							articulos.editarCantidadArticulo();
+							archi.save(articulos, rutaArticulos);
+							break;
+						
+						//////////////////////////////////////////////////////////////////////
 							
 						case 0:
 							Parametros.getInstance().setUsuarioLogueado(null);
