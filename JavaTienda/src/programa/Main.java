@@ -1,4 +1,5 @@
 package programa;
+
 import java.util.Scanner;
 
 import leerEscribir.Parametros;
@@ -6,12 +7,10 @@ import menues.MenuLogueado;
 import menues.MenuOpciones;
 import leerEscribir.Archivo;
 
-
 public class Main {
-	
-	
+
 	public static void main(String[] args) {
-		
+
 		String rutaUsuarios = "usuarios.dat";
 		String rutaArticulos = "articulos.dat";
 
@@ -27,7 +26,7 @@ public class Main {
 		} else {
 			usuarios = (Usuarios) archi.load(rutaUsuarios);
 		}
-		
+
 		if (archi.createFile(rutaArticulos)) {
 			articulos = new AddArticulos();
 			archi.save(usuarios, rutaUsuarios);
@@ -38,7 +37,6 @@ public class Main {
 		MenuOpciones menuOpciones = new MenuOpciones();
 
 		MenuLogueado menuLogueado = new MenuLogueado();
-
 
 		boolean fin = false;
 
@@ -53,74 +51,117 @@ public class Main {
 
 			switch (sc.next()) {
 			case "1":
-				menuOpciones.cargarUsuario(usuarios,rutaUsuarios);
+				menuOpciones.cargarUsuario(usuarios, rutaUsuarios);
 				break;
 			case "2":
-				Parametros.getInstance().setUsuarioLogueado( menuOpciones.ingresar(usuarios));
-				
-				while(Parametros.getInstance().getUsuarioLogueado() != null) {
-					System.out.println("Ingrese una opcion");
-					System.out.println("1. Comprar");
-					System.out.println("2. Mostrar stock");
-					System.out.println("3. Crear articulos");
-					System.out.println("4. Editar articulo");
-					System.out.println("5. Editar cantidad articulo");
-					System.out.println("0. Log out");
-					
-					switch (sc.nextInt()) {
-					
+				Parametros.getInstance().setUsuarioLogueado(menuOpciones.ingresar(usuarios));
+
+				System.out.println("1. Ingrese como cliente");
+				System.out.println("2. Ingrese como usuario");
+				switch (sc.next()) {
+
+				case "1":
+					while (Parametros.getInstance().getUsuarioLogueado() != null) {
+						System.out.println("Ingrese una opcion");
+						System.out.println("1. Comprar");
+						System.out.println("2. Mostrar stock");
+						System.out.println("3. Crear articulos");
+						System.out.println("4. Editar articulo");
+						System.out.println("5. Editar cantidad articulo");
+						System.out.println("0. Log out");
+
+						switch (sc.nextInt()) {
+
 						///////////////////////////////////////////////////////////////////////
 						case 1:
-							if(articulos.comprarArticulo()) {
+							if (articulos.comprarArticulo()) {
 								archi.save(articulos, rutaArticulos);
 							}
 							break;
-						
+
 						///////////////////////////////////////////////////////////////////////
-							
+
 						case 2:
 							articulos.mostrarArticulos();
 							break;
-							
+
 						//////////////////////////////////////////////////////////////////////
-							
+
 						case 3:
 							menuOpciones.cargarArticulo(articulos, rutaArticulos);
 							break;
-						
+
 						//////////////////////////////////////////////////////////////////////
-							
+
 						case 4:
-							if(articulos.modificarArticulo()) {
+							if (articulos.modificarArticulo()) {
 								System.out.println("El articulo se editó correctamente.");
 								archi.save(articulos, rutaArticulos);
-							}else {
+							} else {
 								System.out.println("No fue posible editar el artículo.");
 							}
-							
+
 							break;
-							
+
 						///////////////////////////////////////////////////////////////////////
-							
+
 						case 5:
 							articulos.editarCantidadArticulo();
 							archi.save(articulos, rutaArticulos);
 							break;
-						
+
 						//////////////////////////////////////////////////////////////////////
-							
+
 						case 0:
 							Parametros.getInstance().setUsuarioLogueado(null);
 							break;
-							
+
 						default:
 							System.out.println("Opción no válida.");
 							break;
-					}
-					
-				}
+						}
 
-				break;
+					}
+
+					break;
+				case "2":
+					while (Parametros.getInstance().getUsuarioLogueado() != null) {
+						System.out.println("Ingrese una opcion");
+						System.out.println("1. Comprar");
+						System.out.println("2. Mostrar stock");
+						System.out.println("0. Log out");
+
+						switch (sc.nextInt()) {
+
+						///////////////////////////////////////////////////////////////////////
+						case 1:
+							if (articulos.comprarArticulo()) {
+								archi.save(articulos, rutaArticulos);
+							}
+							break;
+
+						///////////////////////////////////////////////////////////////////////
+
+						case 2:
+							articulos.mostrarArticulos();
+							break;
+
+						//////////////////////////////////////////////////////////////////////
+
+						case 0:
+							Parametros.getInstance().setUsuarioLogueado(null);
+							break;
+
+						default:
+							System.out.println("Opción no válida.");
+							break;
+						}
+
+					}
+
+					break;
+
+				}
 			case "3":
 				usuarios.mostrarUsuarios();
 				break;
@@ -138,5 +179,4 @@ public class Main {
 		}
 
 	}
-	}
-
+}
