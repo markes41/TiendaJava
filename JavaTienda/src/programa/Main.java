@@ -46,10 +46,6 @@ public class Main {
 			System.out.println("1. Cargar usuarios");
 			System.out.println("2. Mostrar usuarios");
 			System.out.println("3. Ingresar al sistema");
-
-
-			
-			
 			System.out.println("0. Salir");
 
 			switch (sc.next()) {
@@ -70,7 +66,7 @@ public class Main {
 				Parametros.getInstance().setUsuarioLogueado(menuOpciones.ingresar(usuarios));
 				if(Parametros.getInstance().getUsuarioLogueado() != null) {								
 				System.out.println("1. Ingrese como Empleado");
-				System.out.println("2. Ingrese como Cliente");	}
+				System.out.println("2. Ingrese como Cliente");	
 				switch (sc.next()) {
 				
 				case "1":
@@ -182,7 +178,7 @@ public class Main {
 
 			}
 
-		}
+		}}
 
 	}
 }
