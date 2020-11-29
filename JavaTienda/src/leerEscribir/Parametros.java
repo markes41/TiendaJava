@@ -1,6 +1,6 @@
 package leerEscribir;
-import programa.Usuario;
-import programa.Articulo;
+import usuariosArticulos.Articulo;
+import usuariosArticulos.Usuario;
 public class Parametros {
 		
 		private static Parametros singleton;

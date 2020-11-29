@@ -3,9 +3,9 @@ package menues;
 import java.util.Scanner;
 
 import leerEscribir.Archivo;
-import programa.Usuarios;
-import programa.AddArticulos;
-import programa.Usuario;
+import usuariosArticulos.AddArticulos;
+import usuariosArticulos.Usuario;
+import usuariosArticulos.Usuarios;
 import leerEscribir.Archivo;
 
 public class MenuOpciones {
