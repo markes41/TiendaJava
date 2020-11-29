@@ -83,27 +83,31 @@ public class AddArticulos implements Serializable {
 	public boolean comprarArticulo() {
 		Scanner sc = new Scanner(System.in);
 		mostrarArticulos();
-		int codigo = 0, cantComprar = 0, nuevaCant = 0;
+		int codigo = 0, nuevaCant = 0;
 		ArrayList<Double> carrito = new ArrayList<Double>();
 		ArrayList<Integer> productos = new ArrayList<Integer>();
-		//ArrayList<Integer> cantidad = new ArrayList<Integer>();
 		
 		do {
 			System.out.println("Escriba el código del artículo que desea comprar (escriba 0 para terminar):  ");
 			codigo = sc.nextInt();
 			if(existeArticulo(codigo)){
+				int cantComprar = 0;
 				
 				do{
+					if(diccionarioArticulos.get(codigo).getCantidad() == 0)
+						break;
+					
 					System.out.println("Seleccione la cantidad que desea comprar que no sea mayor a "+diccionarioArticulos.get(codigo).getCantidad()+": ");
 					cantComprar = sc.nextInt();
-				}while(cantComprar > diccionarioArticulos.get(codigo).getCantidad());
+
+				}while(cantComprar > diccionarioArticulos.get(codigo).getCantidad() || cantComprar < 1);
 				
 				nuevaCant = diccionarioArticulos.get(codigo).getCantidad() - cantComprar;
 				diccionarioArticulos.get(codigo).setCantidad(nuevaCant);
 				double valorCarrito = cantComprar * diccionarioArticulos.get(codigo).getPrecio();
 				carrito.add(valorCarrito);
 				productos.add(codigo);
-				//cantidad.add(cantComprar);
+				
 				
 			}else {
 				System.out.println("El código escrito no corresponde a un artículo existente.");
@@ -124,11 +128,12 @@ public class AddArticulos implements Serializable {
 	public void comprarCarrito(ArrayList<Double> valores, ArrayList<Integer> codigos) {
 		
 		for(int i = 0; i < valores.size(); i++) {
-			//int cantidadNueva = 0;
-			System.out.println("Compraste "+getArticulo(codigos.get(i)).getNombre()+
-					" por un valor de = $"+valores.get(i));
-			/*cantidadNueva = diccionarioArticulos.get(codigos.get(i)).getCantidad() - cantidad.get(i); 
-			diccionarioArticulos.get(codigos.get(i)).setCantidad(cantidadNueva);*/
+			if(valores.get(i) <= 0) {
+				
+			}else {
+				System.out.println("Compraste "+getArticulo(codigos.get(i)).getNombre()+
+						" por un valor de = $"+valores.get(i));
+			}
 		}
 	}
 
