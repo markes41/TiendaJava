@@ -66,6 +66,8 @@ public class MenuOpciones {
 	}
 	
 	
+	
+	
 	public Usuario ingresar(Usuarios usuarios) {
 		Scanner sc = new Scanner(System.in);
 		

@@ -41,6 +41,8 @@ public class AddArticulos implements Serializable {
 		
 	}
 	
+
+	
 	
 
 }
