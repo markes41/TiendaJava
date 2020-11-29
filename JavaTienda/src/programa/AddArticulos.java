@@ -1,6 +1,7 @@
 package programa;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Scanner;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -37,8 +38,17 @@ public class AddArticulos implements Serializable {
 		for( String clave : this.diccionarioArticulos.keySet()   ) {
 			System.out.println(clave);
 			System.out.println(this.getArticulo(clave));
+			
+			
 		}
 		
+	}
+	
+	public void getCantidad(String nombre) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Ingresa la nueva cantidad: ");
+		int setearCantidad = sc.nextInt();
+		this.diccionarioArticulos.get(nombre.toLowerCase()).setCantidad(setearCantidad);
 	}
 	
 	

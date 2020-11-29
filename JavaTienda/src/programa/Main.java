@@ -65,14 +65,20 @@ public class Main {
 					System.out.println("3. Crear articulos");
 					System.out.println("0. Log out");
 					
-					switch (sc.next()) {
-						case "2":
+					switch (sc.nextInt()) {
+						case 1:
+							articulos.mostrarArticulos();
+							articulos.getCantidad(sc.next());;
+							archi.save(articulos, rutaArticulos);
+							break;
+						
+						case 2:
 							articulos.mostrarArticulos();
 							break;
-						case "3":
+						case 3:
 							menuOpciones.cargarArticulo(articulos, rutaArticulos);
 							break;
-						case "0":
+						case 0:
 							Parametros.getInstance().setUsuarioLogueado(null);;			
 					}
 					
