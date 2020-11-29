@@ -78,6 +78,7 @@ public class Main {
 							System.out.println("3. Crear articulos");
 							System.out.println("4. Editar articulo");
 							System.out.println("5. Editar cantidad articulo");
+							System.out.println("6. Eliminar articulo");
 							System.out.println("0. Log out");
 
 							switch (sc.next()) {
@@ -121,7 +122,12 @@ public class Main {
 								break;
 
 							//////////////////////////////////////////////////////////////////////
-
+							
+							case "6":
+								articulos.eliminarArticulo();
+								archi.save(articulos, rutaArticulos);
+								break;
+							
 							case "0":
 								Parametros.getInstance().setUsuarioLogueado(null);
 								break;

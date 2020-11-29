@@ -176,4 +176,22 @@ public class AddArticulos implements Serializable {
 		
 		
 	}
+	
+	public void eliminarArticulo() {
+		Scanner sc = new Scanner(System.in);
+		mostrarArticulos();
+		int codigoArticulo;
+		
+		do {
+			System.out.println("Seleccione el código del artículo que desea borrar (Escriba 0 para salir): ");
+			codigoArticulo = sc.nextInt();
+			
+			if(existeArticulo(codigoArticulo)) {
+				diccionarioArticulos.remove(codigoArticulo);
+				System.out.println("El artículo #"+codigoArticulo+" se eliminó correctamente.");
+			}else {
+				System.out.println("No existe un artículo con el código #"+codigoArticulo+".");
+			}
+		}while(codigoArticulo != 0);
+	}
 }
