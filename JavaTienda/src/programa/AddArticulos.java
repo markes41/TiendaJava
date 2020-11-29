@@ -68,6 +68,33 @@ public class AddArticulos implements Serializable {
 		
 	}
 	
+	public boolean comprarArticulo() {
+		Scanner sc = new Scanner(System.in);
+		mostrarArticulos();
+		
+		System.out.println("Escriba el código del artículo que desea comprar: ");
+		int codigo = sc.nextInt();
+		
+		if(existeArticulo(codigo)){
+			int cantComprar;
+			do{
+				System.out.println("Seleccione la cantidad que desea comprar (que no supere la cantidad que existe del articulo): ");
+				cantComprar = sc.nextInt();
+			}while(cantComprar > diccionarioArticulos.get(codigo).getCantidad());
+			
+			double precioArticulo = diccionarioArticulos.get(codigo).getPrecio();
+			double total = cantComprar * precioArticulo;
+			System.out.println("Realizaste una compra por: $"+total);
+			diccionarioArticulos.get(codigo).setCantidad(diccionarioArticulos.get(codigo).getCantidad() - cantComprar);
+			
+			return true;
+		}
+		System.out.println("No se pudo realizar la compra correctamente.");
+		return false;
+		
+		
+	}
+	
 	
 
 }

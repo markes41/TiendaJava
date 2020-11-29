@@ -1,9 +1,9 @@
 package programa;
 import java.util.Scanner;
 
-import Menues.MenuLogueado;
-import Menues.MenuOpciones;
 import leerEscribir.Parametros;
+import menues.MenuLogueado;
+import menues.MenuOpciones;
 import leerEscribir.Archivo;
 
 
@@ -68,7 +68,9 @@ public class Main {
 					
 					switch (sc.nextInt()) {
 						case 1:
-							
+							if(articulos.comprarArticulo()) {
+								archi.save(articulos, rutaArticulos);
+							}
 							break;
 						
 						case 2:
