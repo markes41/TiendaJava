@@ -66,8 +66,8 @@ public class Main {
 			case "3":
 				Parametros.getInstance().setUsuarioLogueado(menuOpciones.ingresar(usuarios));
 
-				System.out.println("1. Ingrese como cliente");
-				System.out.println("2. Ingrese como usuario");
+				System.out.println("1. Ingrese como Empleado");
+				System.out.println("2. Ingrese como Cliente");
 				switch (sc.next()) {
 
 				case "1":
