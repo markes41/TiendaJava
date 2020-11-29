@@ -17,14 +17,14 @@ public class Main {
 		Archivo archi = new Archivo();
 
 		Scanner sc = new Scanner(System.in);
-		Usuarios usuarios;
+		AddUsuarios usuarios;
 		AddArticulos articulos;
 
 		if (archi.createFile(rutaUsuarios)) {
-			usuarios = new Usuarios();
+			usuarios = new AddUsuarios();
 			archi.save(usuarios, rutaUsuarios);
 		} else {
-			usuarios = (Usuarios) archi.load(rutaUsuarios);
+			usuarios = (AddUsuarios) archi.load(rutaUsuarios);
 		}
 
 		if (archi.createFile(rutaArticulos)) {

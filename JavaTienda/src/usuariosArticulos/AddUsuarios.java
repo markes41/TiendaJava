@@ -3,7 +3,7 @@ package usuariosArticulos;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class Usuarios implements Serializable{
+public class AddUsuarios implements Serializable{
 
 	
 	private static final long serialVersionUID = 716376672158449670L;

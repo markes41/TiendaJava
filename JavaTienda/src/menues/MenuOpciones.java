@@ -5,13 +5,13 @@ import java.util.Scanner;
 import leerEscribir.Archivo;
 import usuariosArticulos.AddArticulos;
 import usuariosArticulos.Usuario;
-import usuariosArticulos.Usuarios;
+import usuariosArticulos.AddUsuarios;
 import leerEscribir.Archivo;
 
 public class MenuOpciones {
 
 	
-	public void cargarUsuario(Usuarios usuarios, String rutaUsuarios) {
+	public void cargarUsuario(AddUsuarios usuarios, String rutaUsuarios) {
 		Archivo archi = new Archivo();
 		Scanner sc = new Scanner(System.in);
 
@@ -91,7 +91,7 @@ public class MenuOpciones {
 	
 	
 	
-	public Usuario ingresar(Usuarios usuarios) {
+	public Usuario ingresar(AddUsuarios usuarios) {
 		Scanner sc = new Scanner(System.in);
 		
 		String username;
