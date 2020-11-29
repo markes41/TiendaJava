@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import leerEscribir.Archivo;
 import programa.Usuarios;
+import programa.AddArticulos;
 import programa.Usuario;
 import leerEscribir.Archivo;
 
@@ -33,6 +34,34 @@ public class MenuOpciones {
 				archi.save(usuarios, rutaUsuarios);
 			}else {
 				System.out.println("Ya existe un usuario con ese nombre");
+			}
+	}
+	
+	public void cargarArticulo(AddArticulos articulo, String rutaArticulos) {
+		Archivo archi = new Archivo();
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Ingrese el nombre del artículo (Apretá 0 para terminar): ");
+		String nombre = sc.next();
+			
+			if(nombre.equals("0")) {
+				return;
+			}
+			
+			System.out.println("Ingrese el código del articulo: ");
+			int codigo = sc.nextInt();
+			
+			System.out.println("Ingrese el precio del artículo: ");
+			double precio = sc.nextDouble();
+			
+			System.out.println("Ingrese la cantidad del artículo: ");
+			int cantidad = sc.nextInt();
+			
+			if(articulo.addArticulos(codigo, nombre, precio, cantidad)) {
+				System.out.println("El artículo con el código #"+codigo+" se creó correctamente");
+				archi.save(articulo, rutaArticulos);
+			}else {
+				System.out.println("El artículo con el código #"+codigo+" ya existe. Intente con otro.");
 			}
 	}
 	
