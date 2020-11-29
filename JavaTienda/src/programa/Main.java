@@ -73,7 +73,9 @@ public class Main {
 							menuOpciones.cargarArticulo(articulos, rutaArticulos);
 							break;
 						case "0":
-							Parametros.getInstance().setUsuarioLogueado(null);;			
+							
+							Parametros.getInstance().setUsuarioLogueado(null);		
+							break;
 					}
 					
 				}
