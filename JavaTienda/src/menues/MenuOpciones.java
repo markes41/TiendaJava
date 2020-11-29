@@ -33,7 +33,7 @@ public class MenuOpciones {
 				System.out.println("El usuario se creó perfectamente");
 				archi.save(usuarios, rutaUsuarios);
 			}else {
-				System.out.println("Ya existe un usuario con ese nombre");
+				System.err.println("Ya existe un usuario con ese nombre");
 			}
 	}
 	
@@ -46,7 +46,7 @@ public class MenuOpciones {
 		
 		if (codigo <0) {
 			do {
-				System.out.println("El codigo no puede ser menor a 0: ");
+				System.err.println("El codigo no puede ser menor a 0: ");
 				codigo = sc.nextInt();
 			}while(codigo < 0);
 		}
@@ -65,7 +65,7 @@ public class MenuOpciones {
 			
 			if (precio < 0) {
 				do {
-					System.out.println("El precio no puede ser menor a 0: ");
+					System.err.println("El precio no puede ser menor a 0: ");
 					precio = sc.nextDouble();
 				}while(precio < 0);
 			}
@@ -75,7 +75,7 @@ public class MenuOpciones {
 			
 			if(cantidad < 0) {
 				do {
-					System.out.println("La cantidad no puede ser menor a 0: ");
+					System.err.println("La cantidad no puede ser menor a 0: ");
 					cantidad = sc.nextInt();
 				}while(cantidad < 0);
 			}
@@ -105,7 +105,7 @@ public class MenuOpciones {
 			
 		}
 		if(!usuarios.existeUsuario(username)) {
-			System.out.println("No existe el usuario\n");
+			System.err.println("No existe el usuario\n");
 			
 		}
 		
@@ -132,7 +132,7 @@ public class MenuOpciones {
 		} while(cantintentos > 0);
 
 		
-		System.out.println("Has superado el limite de intentos.\n");
+		System.err.println("Has superado el limite de intentos.\n");
 		return null;
 
 		
