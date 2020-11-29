@@ -15,7 +15,7 @@ public class MenuOpciones {
 		Archivo archi = new Archivo();
 		Scanner sc = new Scanner(System.in);
 
-			System.out.println("Ingrese el nombre del usuario a ingresar (0 para salir)");
+			System.out.println("\nIngrese el nombre del usuario a ingresar (0 para salir)");
 			String username = sc.next();
 			
 			if(username.equals("0")) {
@@ -30,10 +30,10 @@ public class MenuOpciones {
 			
 			
 			if(   usuarios.addUsuario(username, password, nick)     ) {
-				System.out.println("El usuario se creó perfectamente");
+				System.out.println("\nEl usuario se creó perfectamente");
 				archi.save(usuarios, rutaUsuarios);
 			}else {
-				System.err.println("Ya existe un usuario con ese nombre");
+				System.err.println("\nYa existe un usuario con ese nombre");
 			}
 	}
 	
@@ -96,7 +96,7 @@ public class MenuOpciones {
 		
 		String username;
 		do  {
-		System.out.println("Ingrese el nombre de usuario (ingresar 0 para cancelar)");
+		System.out.println("\nIngrese el nombre de usuario (ingresar 0 para cancelar)");
 		username = sc.next();
 		
 		
