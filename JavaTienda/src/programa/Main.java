@@ -83,10 +83,10 @@ public class Main {
 						System.out.println("5. Editar cantidad articulo");
 						System.out.println("0. Log out");
 
-						switch (sc.nextInt()) {
+						switch (sc.next()) {
 
 						///////////////////////////////////////////////////////////////////////
-						case 1:
+						case "1":
 							if (articulos.comprarArticulo()) {
 								archi.save(articulos, rutaArticulos);
 							}
@@ -94,19 +94,19 @@ public class Main {
 
 						///////////////////////////////////////////////////////////////////////
 
-						case 2:
+						case "2":
 							articulos.mostrarArticulos();
 							break;
 
 						//////////////////////////////////////////////////////////////////////
 
-						case 3:
+						case "3":
 							menuOpciones.cargarArticulo(articulos, rutaArticulos);
 							break;
 
 						//////////////////////////////////////////////////////////////////////
 
-						case 4:
+						case "4":
 							if (articulos.modificarArticulo()) {
 								System.out.println("El articulo se editó correctamente.");
 								archi.save(articulos, rutaArticulos);
@@ -118,14 +118,14 @@ public class Main {
 
 						///////////////////////////////////////////////////////////////////////
 
-						case 5:
+						case "5":
 							articulos.editarCantidadArticulo();
 							archi.save(articulos, rutaArticulos);
 							break;
 
 						//////////////////////////////////////////////////////////////////////
 
-						case 0:
+						case "0":
 							Parametros.getInstance().setUsuarioLogueado(null);
 							break;
 
@@ -144,10 +144,10 @@ public class Main {
 						System.out.println("2. Mostrar stock");
 						System.out.println("0. Log out");
 
-						switch (sc.nextInt()) {
+						switch (sc.next()) {
 
 						///////////////////////////////////////////////////////////////////////
-						case 1:
+						case "1":
 							if (articulos.comprarArticulo()) {
 								archi.save(articulos, rutaArticulos);
 							}
@@ -155,13 +155,13 @@ public class Main {
 
 						///////////////////////////////////////////////////////////////////////
 
-						case 2:
+						case "2":
 							articulos.mostrarArticulos();
 							break;
 
 						///////////////////////////////////////////////////////////////////////
 
-						case 0:
+						case "0":
 							Parametros.getInstance().setUsuarioLogueado(null);
 							break;
 
