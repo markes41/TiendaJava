@@ -29,7 +29,7 @@ public class Main {
 
 		if (archi.createFile(rutaArticulos)) {
 			articulos = new AddArticulos();
-			archi.save(usuarios, rutaUsuarios);
+			archi.save(articulos, rutaArticulos);
 		} else {
 			articulos = (AddArticulos) archi.load(rutaArticulos);
 		}
