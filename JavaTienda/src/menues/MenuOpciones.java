@@ -40,6 +40,17 @@ public class MenuOpciones {
 	public void cargarArticulo(AddArticulos articulo, String rutaArticulos) {
 		Archivo archi = new Archivo();
 		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Ingrese el código del articulo: ");
+		int codigo = sc.nextInt();
+		
+		if (codigo <0) {
+			do {
+				System.out.println("El codigo no puede ser menor a 0: ");
+				codigo = sc.nextInt();
+			}while(codigo < 0);
+		}
+		
 
 		System.out.println("Ingrese el nombre del artículo (Apretá 0 para terminar): ");
 		String nombre = sc.next();
@@ -48,14 +59,26 @@ public class MenuOpciones {
 				return;
 			}
 			
-			System.out.println("Ingrese el código del articulo: ");
-			int codigo = sc.nextInt();
 			
 			System.out.println("Ingrese el precio del artículo: ");
 			double precio = sc.nextDouble();
 			
+			if (precio < 0) {
+				do {
+					System.out.println("El precio no puede ser menor a 0: ");
+					precio = sc.nextDouble();
+				}while(precio < 0);
+			}
+			
 			System.out.println("Ingrese la cantidad del artículo: ");
 			int cantidad = sc.nextInt();
+			
+			if(cantidad < 0) {
+				do {
+					System.out.println("La cantidad no puede ser menor a 0: ");
+					cantidad = sc.nextInt();
+				}while(cantidad < 0);
+			}
 			
 			if(articulo.addArticulos(codigo, nombre, precio, cantidad)) {
 				System.out.println("El artículo con el nombre "+nombre+" se creó correctamente");
