@@ -63,13 +63,12 @@ public class Main {
 					System.out.println("1. Comprar");
 					System.out.println("2. Mostrar stock");
 					System.out.println("3. Crear articulos");
+					System.out.println("4. Editar articulo");
 					System.out.println("0. Log out");
 					
 					switch (sc.nextInt()) {
 						case 1:
-							articulos.mostrarArticulos();
-							articulos.getCantidad(sc.next());;
-							archi.save(articulos, rutaArticulos);
+							
 							break;
 						
 						case 2:
@@ -78,8 +77,24 @@ public class Main {
 						case 3:
 							menuOpciones.cargarArticulo(articulos, rutaArticulos);
 							break;
+							
+						case 4:
+							if(articulos.modificarArticulo()) {
+								System.out.println("El articulo se editó correctamente.");
+								archi.save(articulos, rutaArticulos);
+							}else {
+								System.out.println("No fue posible editar el artículo.");
+							}
+							
+							break;
+							
 						case 0:
-							Parametros.getInstance().setUsuarioLogueado(null);;			
+							Parametros.getInstance().setUsuarioLogueado(null);
+							break;
+							
+						default:
+							System.out.println("Opción no válida.");
+							break;
 					}
 					
 				}

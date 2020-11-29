@@ -58,10 +58,10 @@ public class MenuOpciones {
 			int cantidad = sc.nextInt();
 			
 			if(articulo.addArticulos(codigo, nombre, precio, cantidad)) {
-				System.out.println("El artículo con el código #"+codigo+" se creó correctamente");
+				System.out.println("El artículo con el nombre "+nombre+" se creó correctamente");
 				archi.save(articulo, rutaArticulos);
 			}else {
-				System.out.println("El artículo con el código #"+codigo+" ya existe. Intente con otro.");
+				System.out.println("El artículo con el nombre "+nombre+" ya existe. Intente con otro.");
 			}
 	}
 	

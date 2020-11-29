@@ -44,12 +44,16 @@ public class AddArticulos implements Serializable {
 		
 	}
 	
+<<<<<<< HEAD
 	public void getCantidad(String nombre) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Ingresa la nueva cantidad: ");
 		int setearCantidad = sc.nextInt();
 		this.diccionarioArticulos.get(nombre.toLowerCase()).setCantidad(setearCantidad);
 	}
+=======
+
+>>>>>>> 81f8fe4ae17132d63dfbf31b8f20db12fb6c63e0
 	
 	
 

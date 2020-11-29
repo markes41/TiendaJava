@@ -49,7 +49,7 @@ public class Articulo implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Articulo [Codigo=" + codigo + ", Nombre=" + nombre + ", precio=" + precio + ", Cantidad =" + cantidad +"]";
+		return "Articulo [Codigo=" + codigo + ", Nombre=" + nombre + ", precio=" + precio + ", Cantidad=" + cantidad +"]";
 	}
 	
 }
