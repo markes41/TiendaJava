@@ -44,16 +44,26 @@ public class Main {
 
 			System.out.println("Que accion desea realizar?");
 			System.out.println("1. Cargar usuarios");
-			System.out.println("2. Ingresar al sistema");
-			System.out.println("3. Mostrar usuarios");
+			System.out.println("2. Mostrar usuarios");
+			System.out.println("3. Ingresar al sistema");
 
 			System.out.println("0. Salir");
 
 			switch (sc.next()) {
+			case "0":
+				fin = true;
+				System.out.println("Gracias por utilizar el programa");
+				break;
+
 			case "1":
 				menuOpciones.cargarUsuario(usuarios, rutaUsuarios);
 				break;
 			case "2":
+				System.out.println("\nSus usuarios son:");
+				usuarios.mostrarUsuarios();
+				System.out.println("\n");
+				break;
+			case "3":
 				Parametros.getInstance().setUsuarioLogueado(menuOpciones.ingresar(usuarios));
 
 				System.out.println("1. Ingrese como cliente");
@@ -161,19 +171,12 @@ public class Main {
 
 					break;
 
+				default:
+
+					System.out.println("Opcion incorrecta");
+					break;
 				}
-			case "3":
-				usuarios.mostrarUsuarios();
-				break;
 
-			case "0":
-				fin = true;
-				System.out.println("Gracias por utilizar el programa");
-				break;
-			default:
-
-				System.out.println("Opcion incorrecta");
-				break;
 			}
 
 		}
