@@ -174,15 +174,18 @@ public class AddArticulos implements Serializable {
 		String codigoArticulo;
 
 		do {
-			System.out.println("Seleccione el código del artículo que desea borrar (Escriba 0 para salir): ");
-			codigoArticulo = sc.next();
-			
-			if (existeArticulo(Integer.parseInt(codigoArticulo))) {
-				diccionarioArticulos.remove(Integer.parseInt(codigoArticulo));
-				System.out.println("El artículo #" + codigoArticulo + " se eliminó correctamente.");
-			} else if((Integer.parseInt(codigoArticulo) != 0)) {
-				System.out.println("No existe un artículo con el código #" + codigoArticulo + ".");
-			}
+			do {
+				System.out.println("Seleccione el código del artículo que desea borrar (Escriba 0 para salir): ");
+				codigoArticulo = sc.next();
+				
+				if(codigoArticulo.equals("0")) {
+					break;
+				}
+			}while ((MenuOp.isNumeric(codigoArticulo) == false) ||  Integer.parseInt(codigoArticulo) < 0 || existeArticulo(Integer.parseInt(codigoArticulo)) == false);
+				
+			diccionarioArticulos.remove(Integer.parseInt(codigoArticulo));
+			System.out.println("El artículo con el #"+codigoArticulo+" se borró correctamente.");
+				
 		} while ((Integer.parseInt(codigoArticulo) != 0));
 	
 		
