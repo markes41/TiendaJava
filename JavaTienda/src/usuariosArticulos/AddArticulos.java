@@ -148,31 +148,33 @@ public class AddArticulos implements Serializable {
 	}
 
 	public void editarCantidadArticulo() {
-		Scanner sc = new Scanner(System.in);
-		String codigoArticulo;
-		String cantidadElegida;
-		mostrarArticulos();
+        Scanner sc = new Scanner(System.in);
+        String  codigoArticulo ;
+        String cantidadElegida;
+        mostrarArticulos();
 
-		do {
-			System.out.println("Seleccione el código del artículo que quiere editar (Escriba 0 para terminar): ");
-			codigoArticulo = sc.next();
+        do {
+            System.out.println("Seleccione el código del artículo que quiere editar (Escriba 0 para terminar): ");
+            codigoArticulo = sc.next();
 
-		} while ((MenuOp.isNumeric(codigoArticulo) == false) || Integer.parseInt(codigoArticulo) < 0
-				|| existeArticulo(Integer.parseInt(codigoArticulo)) == false);
+        } while ((MenuOp.isNumeric(codigoArticulo) == false) ||  Integer.parseInt(codigoArticulo) < 0 || existeArticulo(Integer.parseInt(codigoArticulo)) == false);
 
-		do {
-			System.out.println("Introduzca la nueva cantidad del artículo #" + codigoArticulo + ": ");
-			cantidadElegida = sc.next();
 
-			if (MenuOp.isNumeric(cantidadElegida) == true && Integer.parseInt(cantidadElegida) > 0) {
-				int cantidadNueva = diccionarioArticulos.get(Integer.parseInt(codigoArticulo)).getCantidad()
-						+ Integer.parseInt(cantidadElegida);
-				diccionarioArticulos.get(Integer.parseInt(codigoArticulo)).setCantidad(cantidadNueva);
-			}
 
-		} while ((MenuOp.isNumeric(cantidadElegida) == false) || Integer.parseInt(cantidadElegida) < 0);
 
-	}
+        do {
+             System.out.println("Introduzca la nueva cantidad del artículo #" + codigoArticulo + ": ");
+             cantidadElegida = sc.next();
+
+              if (MenuOp.isNumeric(cantidadElegida) == true && Integer.parseInt(cantidadElegida) > 0 ){
+              int cantidadNueva = diccionarioArticulos.get(Integer.parseInt(codigoArticulo)).getCantidad() + Integer.parseInt(cantidadElegida);
+              diccionarioArticulos.get(Integer.parseInt(codigoArticulo)).setCantidad(cantidadNueva);
+              }
+
+
+        } while ((MenuOp.isNumeric(cantidadElegida) == false) || Integer.parseInt(cantidadElegida) < 0);
+
+    }
 
 	public void eliminarArticulo() {
 		Scanner sc = new Scanner(System.in);
@@ -182,16 +184,15 @@ public class AddArticulos implements Serializable {
 		do {
 			System.out.println("Seleccione el código del artículo que desea borrar (Escriba 0 para salir): ");
 			codigoArticulo = sc.next();
-
-			if (MenuOp.isNumeric(codigoArticulo) == true && Integer.parseInt(codigoArticulo) > 0) {
+			
+			if (existeArticulo(Integer.parseInt(codigoArticulo))) {
 				diccionarioArticulos.remove(Integer.parseInt(codigoArticulo));
 				System.out.println("El artículo #" + codigoArticulo + " se eliminó correctamente.");
-			} 
-			
-			
-			else {
+			} else {
 				System.out.println("No existe un artículo con el código #" + codigoArticulo + ".");
 			}
 		} while ((MenuOp.isNumeric(codigoArticulo) == false) || Integer.parseInt(codigoArticulo) < 0);
+	
+		
 	}
 }
