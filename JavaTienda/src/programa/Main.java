@@ -1,9 +1,9 @@
 package programa;
 
 import java.util.Scanner;
-import leerEscribir.Parametros;
-import menues.MenuLogueado;
-import menues.MenuOpciones;
+import leerEscribir.Status;
+import menues.MenuLog;
+import menues.MenuOp;
 import usuariosArticulos.*;
 import leerEscribir.Archivo;
 
@@ -34,9 +34,9 @@ public class Main {
 			articulos = (AddArticulos) archi.load(rutaArticulos);
 		}
 
-		MenuOpciones menuOpciones = new MenuOpciones();
+		MenuOp menuOpciones = new MenuOp();
 
-		MenuLogueado menuLogueado = new MenuLogueado();
+		MenuLog menuLogueado = new MenuLog();
 
 		boolean fin = false;
 
@@ -62,15 +62,15 @@ public class Main {
 				usuarios.mostrarUsuarios();
 				break;
 			case "3":
-				Parametros.getInstance().setUsuarioLogueado(menuOpciones.ingresar(usuarios));
-				if (Parametros.getInstance().getUsuarioLogueado() != null) {
+				Status.getInstance().setUsuarioLogueado(menuOpciones.ingresar(usuarios));
+				if (Status.getInstance().getUsuarioLogueado() != null) {
 					System.out.println("\n1. Ingrese como Empleado");
 					System.out.println("2. Ingrese como Cliente");
 					System.out.println("0. Log out");
 					switch (sc.next()) {
 
 					case "1":
-						while (Parametros.getInstance().getUsuarioLogueado() != null) {
+						while (Status.getInstance().getUsuarioLogueado() != null) {
 							System.out.println("Ingrese una opcion");
 							System.out.println("1. Comprar");
 							System.out.println("2. Mostrar stock");
@@ -121,14 +121,14 @@ public class Main {
 								break;
 
 							//////////////////////////////////////////////////////////////////////
-							
+
 							case "6":
 								articulos.eliminarArticulo();
 								archi.save(articulos, rutaArticulos);
 								break;
-							
+
 							case "0":
-								Parametros.getInstance().setUsuarioLogueado(null);
+								Status.getInstance().setUsuarioLogueado(null);
 								break;
 
 							default:
@@ -140,7 +140,7 @@ public class Main {
 
 						break;
 					case "2":
-						while (Parametros.getInstance().getUsuarioLogueado() != null) {
+						while (Status.getInstance().getUsuarioLogueado() != null) {
 							System.out.println("Ingrese una opcion");
 							System.out.println("1. Comprar");
 							System.out.println("2. Mostrar stock");
@@ -164,7 +164,7 @@ public class Main {
 							///////////////////////////////////////////////////////////////////////
 
 							case "0":
-								Parametros.getInstance().setUsuarioLogueado(null);
+								Status.getInstance().setUsuarioLogueado(null);
 								break;
 
 							default:

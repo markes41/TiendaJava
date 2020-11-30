@@ -8,7 +8,7 @@ import usuariosArticulos.Usuario;
 import usuariosArticulos.AddUsuarios;
 import leerEscribir.Archivo;
 
-public class MenuOpciones {
+public class MenuOp {
 
 	private static boolean isNumeric(String cadena) {
 		try {

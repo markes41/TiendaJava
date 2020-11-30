@@ -1,7 +1,8 @@
 package usuariosArticulos;
+
 import java.io.Serializable;
 
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = -888159244032468800L;
 	private String username;
@@ -38,10 +39,9 @@ public class Usuario implements Serializable{
 	public String toString() {
 		return "Usuario [username=" + username + ", password=" + password + ", nickname=" + nickname + "]";
 	}
-	
+
 	public boolean isClave(String password) {
 		return this.getPassword().equals(password);
 	}
-	
 
 }

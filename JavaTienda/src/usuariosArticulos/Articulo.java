@@ -1,14 +1,15 @@
 package usuariosArticulos;
+
 import java.io.Serializable;
 
-public class Articulo implements Serializable{
+public class Articulo implements Serializable {
 
 	private static final long serialVersionUID = 2796074017515047685L;
 	private String nombre;
 	private double precio;
 	private int codigo, cantidad;
-	
-	public Articulo(int codigo, String nombre,  double precio, int cantidad) {
+
+	public Articulo(int codigo, String nombre, double precio, int cantidad) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.precio = precio;
@@ -46,10 +47,11 @@ public class Articulo implements Serializable{
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Articulo [Codigo=" + codigo + ", Nombre=" + nombre + ", precio=" + precio + ", Cantidad=" + cantidad +"]";
+		return "Articulo [Codigo=" + codigo + ", Nombre=" + nombre + ", precio=" + precio + ", Cantidad=" + cantidad
+				+ "]";
 	}
-	
+
 }

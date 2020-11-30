@@ -88,76 +88,76 @@ public class AddArticulos implements Serializable {
 		ArrayList<Double> carrito = new ArrayList<Double>();
 		ArrayList<Integer> productos = new ArrayList<Integer>();
 		ArrayList<Integer> cantidad = new ArrayList<Integer>();
-		
+
 		do {
-			System.out.println("Escriba el código del artículo que desea comprar (escriba 0 para terminar de comprar):  ");
+			System.out.println(
+					"Escriba el código del artículo que desea comprar (escriba 0 para terminar de comprar):  ");
 			codigo = sc.nextInt();
-			if(existeArticulo(codigo)){
+			if (existeArticulo(codigo)) {
 				cantComprar = 0;
-				
-				do{
-					if(diccionarioArticulos.get(codigo).getCantidad() == 0)
+
+				do {
+					if (diccionarioArticulos.get(codigo).getCantidad() == 0)
 						break;
-					
-					System.out.println("Seleccione la cantidad que desea comprar que no sea mayor a "+diccionarioArticulos.get(codigo).getCantidad()+": ");
+
+					System.out.println("Seleccione la cantidad que desea comprar que no sea mayor a "
+							+ diccionarioArticulos.get(codigo).getCantidad() + ": ");
 					cantComprar = sc.nextInt();
 
-				}while(cantComprar > diccionarioArticulos.get(codigo).getCantidad() || cantComprar < 1);
-				//SETEAMOS NUEVA CANTIDAD
+				} while (cantComprar > diccionarioArticulos.get(codigo).getCantidad() || cantComprar < 1);
+				// SETEAMOS NUEVA CANTIDAD
 				nuevaCant = diccionarioArticulos.get(codigo).getCantidad() - cantComprar;
-				//SE LA ASIGNAMOS A LA KEY QUE ELEJIMOS
+				// SE LA ASIGNAMOS A LA KEY QUE ELEJIMOS
 				diccionarioArticulos.get(codigo).setCantidad(nuevaCant);
-				//CALCULAMOS EL TOTAL
+				// CALCULAMOS EL TOTAL
 				valorCarrito = cantComprar * diccionarioArticulos.get(codigo).getPrecio();
-				//SE LO AGREGAMOS AL ARRAYLIST
+				// SE LO AGREGAMOS AL ARRAYLIST
 				carrito.add(valorCarrito);
-				//AGREGAMOS EL CÓDIGO PARA TENER LA REFERENCIA
+				// AGREGAMOS EL CÓDIGO PARA TENER LA REFERENCIA
 				productos.add(codigo);
-				//AGREGAMOS LA CANTIDAD PARA TENER LA REFERENCIA
+				// AGREGAMOS LA CANTIDAD PARA TENER LA REFERENCIA
 				cantidad.add(cantComprar);
-				
-				
-			}else {
+
+			} else {
 				System.out.println("El código escrito no corresponde a un artículo existente.");
 			}
-			
-			if(codigo == 0) {
+
+			if (codigo == 0) {
 				comprarCarrito(carrito, productos, cantidad);
 			}
-			
-		}while(codigo != 0);
+
+		} while (codigo != 0);
 		return true;
-		
-		
+
 	}
-	
+
 	public void comprarCarrito(ArrayList<Double> valores, ArrayList<Integer> codigos, ArrayList<Integer> cantidad) {
 		System.out.println("Carrito de compras: ");
 		System.out.println("---------------------------------------");
 		double total = 0;
-		for(int i = 0; i < valores.size(); i++) {
-			if(valores.get(i) <= 0) {
-				
-			}else {
-				System.out.println((i+1)+". "+getArticulo(codigos.get(i)).getNombre()+" ("+cantidad.get(i)+") = $"+
-						valores.get(i));
+		for (int i = 0; i < valores.size(); i++) {
+			if (valores.get(i) <= 0) {
+
+			} else {
+				System.out.println((i + 1) + ". " + getArticulo(codigos.get(i)).getNombre() + " (" + cantidad.get(i)
+						+ ") = $" + valores.get(i));
 			}
 			total += valores.get(i);
 		}
-		System.out.println("Total de la compra: $"+total);
+		System.out.println("Total de la compra: $" + total);
 	}
 
 	public void editarCantidadArticulo() {
 		Scanner sc = new Scanner(System.in);
 		int cantidadElegida = 0, codigoArticulo = 0;
 		mostrarArticulos();
-		
+
 		do {
 			System.out.println("Seleccione el código del artículo que quiere editar (Escriba 0 para terminar): ");
 			codigoArticulo = sc.nextInt();
-			
-			if(existeArticulo(codigoArticulo)) {
-				System.out.println("Introduzca la nueva cantidad del artículo #"+codigoArticulo+": ");
+
+			if (existeArticulo(codigoArticulo)) {
+				System.out.println("Introduzca la nueva cantidad del artículo #" + codigoArticulo + ": ");
 				cantidadElegida = sc.nextInt();
 				if (cantidadElegida < 0) {
 					do {
@@ -165,33 +165,33 @@ public class AddArticulos implements Serializable {
 						cantidadElegida = sc.nextInt();
 					} while (cantidadElegida < 0);
 				}
-				
+
 				int cantidadNueva = diccionarioArticulos.get(codigoArticulo).getCantidad() + cantidadElegida;
 				diccionarioArticulos.get(codigoArticulo).setCantidad(cantidadNueva);
-				
-			}else {
-				System.out.println("El código "+codigoArticulo+" no corresponde a un artículo existente. Vuelva a intentarlo.");
+
+			} else {
+				System.out.println("El código " + codigoArticulo
+						+ " no corresponde a un artículo existente. Vuelva a intentarlo.");
 			}
-		}while(codigoArticulo != 0);
-		
-		
+		} while (codigoArticulo != 0);
+
 	}
-	
+
 	public void eliminarArticulo() {
 		Scanner sc = new Scanner(System.in);
 		mostrarArticulos();
 		int codigoArticulo;
-		
+
 		do {
 			System.out.println("Seleccione el código del artículo que desea borrar (Escriba 0 para salir): ");
 			codigoArticulo = sc.nextInt();
-			
-			if(existeArticulo(codigoArticulo)) {
+
+			if (existeArticulo(codigoArticulo)) {
 				diccionarioArticulos.remove(codigoArticulo);
-				System.out.println("El artículo #"+codigoArticulo+" se eliminó correctamente.");
-			}else {
-				System.out.println("No existe un artículo con el código #"+codigoArticulo+".");
+				System.out.println("El artículo #" + codigoArticulo + " se eliminó correctamente.");
+			} else {
+				System.out.println("No existe un artículo con el código #" + codigoArticulo + ".");
 			}
-		}while(codigoArticulo != 0);
+		} while (codigoArticulo != 0);
 	}
 }
