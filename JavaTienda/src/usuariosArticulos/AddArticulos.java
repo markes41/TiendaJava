@@ -44,89 +44,81 @@ public class AddArticulos implements Serializable {
 
 	public boolean modificarArticulo() {
 		Scanner sc = new Scanner(System.in);
+		String codeArticle, nuevaCantidad, nuevoPrecio;
+		
 		mostrarArticulos();
-		System.out.println("Seleccione el artículo que quiere editar, escribiendo su codigo: ");
-		int codeArticle = sc.nextInt();
-		if (existeArticulo(codeArticle)) {
+		
+		do {
+			System.out.println("Seleccione el artículo que quiere editar, escribiendo su codigo: ");
+			codeArticle = sc.next();
+		}while ((MenuOp.isNumeric(codeArticle) == false) || Integer.parseInt(codeArticle) < 0
+					|| existeArticulo(Integer.parseInt(codeArticle)) == false);
+		
 
 			System.out.println("Ingrese el nuevo nombre: ");
 			String nuevoNombre = sc.next();
 
-			System.out.println("Ingresa la nueva cantidad: ");
-			int nuevaCantidad = sc.nextInt();
-			if (nuevaCantidad < 0) {
-				do {
-					System.out.println("Por favor ingrese una cantidad que no sea negativa: ");
-					nuevaCantidad = sc.nextInt();
-				} while (nuevaCantidad < 0);
-			}
+			do {
+				System.out.println("Ingrese una nueva cantidad: ");
+				nuevaCantidad = sc.next();
+			}while ((MenuOp.isNumeric(nuevaCantidad) == false) || Integer.parseInt(nuevaCantidad) < 0);
+			
 
-			System.out.println("Ingrese el nuevo precio: ");
-			double nuevoPrecio = sc.nextDouble();
-			if (nuevoPrecio < 0) {
-				do {
-					System.out.println("Ingrese un precio que no sea negativo: ");
-					nuevoPrecio = sc.nextDouble();
-				} while (nuevoPrecio < 0);
-			}
+			do {
+				System.out.println("Ingrese el nuevo precio: ");
+				nuevoPrecio = sc.next();
+			}while((MenuOp.isNumeric(nuevoPrecio) == false) || Double.parseDouble(nuevoPrecio) < 0);
+			
+			
+			
+			Articulo changeArticle = new Articulo(Integer.parseInt(codeArticle), nuevoNombre, Double.parseDouble(nuevoPrecio), Integer.parseInt(nuevaCantidad));
+			diccionarioArticulos.replace(Integer.parseInt(codeArticle), changeArticle);
 
-			Articulo changeArticle = new Articulo(codeArticle, nuevoNombre, nuevoPrecio, nuevaCantidad);
-			diccionarioArticulos.replace(codeArticle, changeArticle);
-
-			return true;
-		} else {
-			return false;
-		}
-
+			
+		return true;
 	}
 
 	public boolean comprarArticulo() {
 		Scanner sc = new Scanner(System.in);
 		mostrarArticulos();
-		int codigo = 0, nuevaCant = 0, cantComprar = 0, i = 0;
+		String codigo, cantComprar = null;
+		int nuevaCant = 0, i = 0;
 		double valorCarrito = 0;
 		ArrayList<Double> carrito = new ArrayList<Double>();
 		ArrayList<Integer> productos = new ArrayList<Integer>();
 		ArrayList<Integer> cantidad = new ArrayList<Integer>();
 
 		do {
-			System.out.println(
-					"Escriba el código del artículo que desea comprar (escriba 0 para terminar de comprar):  ");
-			codigo = sc.nextInt();
-			if (existeArticulo(codigo)) {
-				cantComprar = 0;
-
+			System.out.println("Escriba el código del artículo que desea comprar (escriba 0 para terminar de comprar):  ");
+			codigo = sc.next();
+			if (existeArticulo(Integer.parseInt(codigo))) {
 				do {
-					if (diccionarioArticulos.get(codigo).getCantidad() == 0)
+					if (diccionarioArticulos.get(Integer.parseInt(codigo)).getCantidad() == 0)
 						break;
 
 					System.out.println("Seleccione la cantidad que desea comprar que no sea mayor a "
-							+ diccionarioArticulos.get(codigo).getCantidad() + ": ");
-					cantComprar = sc.nextInt();
+							+ diccionarioArticulos.get(Integer.parseInt(codigo)).getCantidad() + ": ");
+					cantComprar = sc.next();
 
-				} while (cantComprar > diccionarioArticulos.get(codigo).getCantidad() || cantComprar < 1);
-				// SETEAMOS NUEVA CANTIDAD
-				nuevaCant = diccionarioArticulos.get(codigo).getCantidad() - cantComprar;
-				// SE LA ASIGNAMOS A LA KEY QUE ELEJIMOS
-				diccionarioArticulos.get(codigo).setCantidad(nuevaCant);
-				// CALCULAMOS EL TOTAL
-				valorCarrito = cantComprar * diccionarioArticulos.get(codigo).getPrecio();
-				// SE LO AGREGAMOS AL ARRAYLIST
+				}while (Integer.parseInt(cantComprar) > diccionarioArticulos.get(Integer.parseInt(codigo)).getCantidad() || Integer.parseInt(cantComprar) < 1
+						|| (MenuOp.isNumeric(cantComprar) == false));
+				
+				nuevaCant = diccionarioArticulos.get(Integer.parseInt(codigo)).getCantidad() - Integer.parseInt(cantComprar);
+				diccionarioArticulos.get(Integer.parseInt(codigo)).setCantidad(nuevaCant);
+				valorCarrito = Integer.parseInt(cantComprar) * diccionarioArticulos.get(Integer.parseInt(codigo)).getPrecio();
 				carrito.add(valorCarrito);
-				// AGREGAMOS EL CÓDIGO PARA TENER LA REFERENCIA
-				productos.add(codigo);
-				// AGREGAMOS LA CANTIDAD PARA TENER LA REFERENCIA
-				cantidad.add(cantComprar);
+				productos.add(Integer.parseInt(codigo));
+				cantidad.add(Integer.parseInt(cantComprar));
 
 			} else {
 				System.out.println("El código escrito no corresponde a un artículo existente.");
 			}
 
-			if (codigo == 0) {
+			if (Integer.parseInt(codigo) == 0) {
 				comprarCarrito(carrito, productos, cantidad);
 			}
 
-		} while (codigo != 0);
+		} while (Integer.parseInt(codigo) != 0);
 		return true;
 
 	}
