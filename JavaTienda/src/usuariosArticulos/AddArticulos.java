@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-
+import menues.*;
 import javax.swing.table.DefaultTableModel;
 
 public class AddArticulos implements Serializable {
@@ -149,31 +149,28 @@ public class AddArticulos implements Serializable {
 
 	public void editarCantidadArticulo() {
 		Scanner sc = new Scanner(System.in);
-		int cantidadElegida = 0, codigoArticulo = 0;
+		String codigoArticulo;
+		String cantidadElegida;
 		mostrarArticulos();
 
 		do {
 			System.out.println("Seleccione el código del artículo que quiere editar (Escriba 0 para terminar): ");
-			codigoArticulo = sc.nextInt();
+			codigoArticulo = sc.next();
 
-			if (existeArticulo(codigoArticulo)) {
-				System.out.println("Introduzca la nueva cantidad del artículo #" + codigoArticulo + ": ");
-				cantidadElegida = sc.nextInt();
-				if (cantidadElegida < 0) {
-					do {
-						System.out.println("Por favor ingrese una cantidad que no sea negativa: ");
-						cantidadElegida = sc.nextInt();
-					} while (cantidadElegida < 0);
-				}
+		} while ((MenuOp.isNumeric(codigoArticulo) == false) || Integer.parseInt(codigoArticulo) < 0
+				|| existeArticulo(Integer.parseInt(codigoArticulo)) == false);
 
-				int cantidadNueva = diccionarioArticulos.get(codigoArticulo).getCantidad() + cantidadElegida;
-				diccionarioArticulos.get(codigoArticulo).setCantidad(cantidadNueva);
+		do {
+			System.out.println("Introduzca la nueva cantidad del artículo #" + codigoArticulo + ": ");
+			cantidadElegida = sc.next();
 
-			} else {
-				System.out.println("El código " + codigoArticulo
-						+ " no corresponde a un artículo existente. Vuelva a intentarlo.");
+			if (MenuOp.isNumeric(cantidadElegida) == true && Integer.parseInt(cantidadElegida) > 0) {
+				int cantidadNueva = diccionarioArticulos.get(Integer.parseInt(codigoArticulo)).getCantidad()
+						+ Integer.parseInt(cantidadElegida);
+				diccionarioArticulos.get(Integer.parseInt(codigoArticulo)).setCantidad(cantidadNueva);
 			}
-		} while (codigoArticulo != 0);
+
+		} while ((MenuOp.isNumeric(cantidadElegida) == false) || Integer.parseInt(cantidadElegida) < 0);
 
 	}
 
