@@ -71,14 +71,14 @@ public class Main {
 
 					case "1":
 						while (Status.getInstance().getUsuarioLogueado() != null) {
-							System.out.println("Ingrese una opcion");
+							System.out.println("\nIngrese una opcion");
 							System.out.println("1. Comprar");
 							System.out.println("2. Mostrar stock");
 							System.out.println("3. Crear articulos");
 							System.out.println("4. Editar articulo");
 							System.out.println("5. Editar cantidad articulo");
 							System.out.println("6. Eliminar articulo");
-							System.out.println("0. Log out");
+							System.out.println("0. Log out\n");
 
 							switch (sc.next()) {
 
