@@ -177,18 +177,21 @@ public class AddArticulos implements Serializable {
 	public void eliminarArticulo() {
 		Scanner sc = new Scanner(System.in);
 		mostrarArticulos();
-		int codigoArticulo;
+		String codigoArticulo;
 
 		do {
 			System.out.println("Seleccione el código del artículo que desea borrar (Escriba 0 para salir): ");
-			codigoArticulo = sc.nextInt();
+			codigoArticulo = sc.next();
 
-			if (existeArticulo(codigoArticulo)) {
-				diccionarioArticulos.remove(codigoArticulo);
+			if (MenuOp.isNumeric(codigoArticulo) == true && Integer.parseInt(codigoArticulo) > 0) {
+				diccionarioArticulos.remove(Integer.parseInt(codigoArticulo));
 				System.out.println("El artículo #" + codigoArticulo + " se eliminó correctamente.");
-			} else {
+			} 
+			
+			
+			else {
 				System.out.println("No existe un artículo con el código #" + codigoArticulo + ".");
 			}
-		} while (codigoArticulo != 0);
+		} while ((MenuOp.isNumeric(codigoArticulo) == false) || Integer.parseInt(codigoArticulo) < 0);
 	}
 }
