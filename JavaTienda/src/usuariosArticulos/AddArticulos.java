@@ -184,6 +184,9 @@ public class AddArticulos implements Serializable {
 			}while ((MenuOp.isNumeric(codigoArticulo) == false) ||  Integer.parseInt(codigoArticulo) < 0 || existeArticulo(Integer.parseInt(codigoArticulo)) == false);
 				
 			diccionarioArticulos.remove(Integer.parseInt(codigoArticulo));
+			if(codigoArticulo.equals("0")) {
+				System.out.println("Finalizo el borrado de articulos.");
+			}else
 			System.out.println("El artículo con el #"+codigoArticulo+" se borró correctamente.");
 				
 		} while ((Integer.parseInt(codigoArticulo) != 0));
