@@ -180,10 +180,10 @@ public class AddArticulos implements Serializable {
 			if (existeArticulo(Integer.parseInt(codigoArticulo))) {
 				diccionarioArticulos.remove(Integer.parseInt(codigoArticulo));
 				System.out.println("El artículo #" + codigoArticulo + " se eliminó correctamente.");
-			} else {
+			} else if((Integer.parseInt(codigoArticulo) != 0)) {
 				System.out.println("No existe un artículo con el código #" + codigoArticulo + ".");
 			}
-		} while ((MenuOp.isNumeric(codigoArticulo) == false) || Integer.parseInt(codigoArticulo) < 0);
+		} while ((Integer.parseInt(codigoArticulo) != 0));
 	
 		
 	}
